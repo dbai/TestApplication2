@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D41FFBB24060DA300377503 /* TestApp StickerPackExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3D41FFBA24060DA300377503 /* TestApp StickerPackExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3D41FFBF24060DA300377503 /* Stickers.xcstickers in Resources */ = {isa = PBXBuildFile; fileRef = 3D41FFBE24060DA300377503 /* Stickers.xcstickers */; };
+		3D41FFC024060DA300377503 /* Stickers.xcstickers in Resources */ = {isa = PBXBuildFile; fileRef = 3D41FFBE24060DA300377503 /* Stickers.xcstickers */; };
 		E6D929671EB18A1F0082239E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D929661EB18A1F0082239E /* AppDelegate.swift */; };
 		E6D929691EB18A1F0082239E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D929681EB18A1F0082239E /* ViewController.swift */; };
 		E6D9296C1EB18A1F0082239E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6D9296A1EB18A1F0082239E /* Main.storyboard */; };
@@ -14,9 +17,18 @@
 		E6D929711EB18A1F0082239E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6D9296F1EB18A1F0082239E /* LaunchScreen.storyboard */; };
 		E6D9297C1EB18A1F0082239E /* TestApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D9297B1EB18A1F0082239E /* TestApplicationTests.swift */; };
 		E6D929871EB18A200082239E /* TestApplicationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D929861EB18A200082239E /* TestApplicationUITests.swift */; };
+		E6D929951EB18F790082239E /* Page1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D929941EB18F790082239E /* Page1ViewController.swift */; };
+		E6D929971EB18FE80082239E /* Page2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D929961EB18FE80082239E /* Page2ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3D41FFBC24060DA300377503 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6D9295B1EB18A1F0082239E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D41FFB924060DA300377503;
+			remoteInfo = "TestApp StickerPackExtension";
+		};
 		E6D929781EB18A1F0082239E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E6D9295B1EB18A1F0082239E /* Project object */;
@@ -33,7 +45,36 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3D41FFB424060D6900377503 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D41FFC424060DA300377503 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3D41FFBB24060DA300377503 /* TestApp StickerPackExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3D41FFAB24060D6900377503 /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
+		3D41FFAD24060D6900377503 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D41FFB724060DA300377503 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D41FFBA24060DA300377503 /* TestApp StickerPackExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TestApp StickerPackExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D41FFBE24060DA300377503 /* Stickers.xcstickers */ = {isa = PBXFileReference; lastKnownFileType = folder.stickers; name = Stickers.xcstickers; path = "TestApp StickerPackExtension/Stickers.xcstickers"; sourceTree = "<group>"; };
 		E6D929631EB18A1F0082239E /* TestApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6D929661EB18A1F0082239E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6D929681EB18A1F0082239E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +88,8 @@
 		E6D929821EB18A200082239E /* TestApplicationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestApplicationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6D929861EB18A200082239E /* TestApplicationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApplicationUITests.swift; sourceTree = "<group>"; };
 		E6D929881EB18A200082239E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6D929941EB18F790082239E /* Page1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page1ViewController.swift; sourceTree = "<group>"; };
+		E6D929961EB18FE80082239E /* Page2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page2ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,12 +117,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D41FFAA24060D6700377503 /* TestApp */ = {
+			isa = PBXGroup;
+			children = (
+				3D41FFAB24060D6900377503 /* Stickers.xcassets */,
+				3D41FFAD24060D6900377503 /* Info.plist */,
+			);
+			path = TestApp;
+			sourceTree = "<group>";
+		};
 		E6D9295A1EB18A1F0082239E = {
 			isa = PBXGroup;
 			children = (
+				3D41FFBE24060DA300377503 /* Stickers.xcstickers */,
 				E6D929651EB18A1F0082239E /* TestApplication */,
 				E6D9297A1EB18A1F0082239E /* TestApplicationTests */,
 				E6D929851EB18A200082239E /* TestApplicationUITests */,
+				3D41FFAA24060D6700377503 /* TestApp */,
 				E6D929641EB18A1F0082239E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +144,8 @@
 				E6D929631EB18A1F0082239E /* TestApplication.app */,
 				E6D929771EB18A1F0082239E /* TestApplicationTests.xctest */,
 				E6D929821EB18A200082239E /* TestApplicationUITests.xctest */,
+				3D41FFB724060DA300377503 /* TestApp.app */,
+				3D41FFBA24060DA300377503 /* TestApp StickerPackExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +159,8 @@
 				E6D9296D1EB18A1F0082239E /* Assets.xcassets */,
 				E6D9296F1EB18A1F0082239E /* LaunchScreen.storyboard */,
 				E6D929721EB18A1F0082239E /* Info.plist */,
+				E6D929941EB18F790082239E /* Page1ViewController.swift */,
+				E6D929961EB18FE80082239E /* Page2ViewController.swift */,
 			);
 			path = TestApplication;
 			sourceTree = "<group>";
@@ -128,6 +186,38 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3D41FFB624060DA300377503 /* TestApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D41FFC524060DA300377503 /* Build configuration list for PBXNativeTarget "TestApp" */;
+			buildPhases = (
+				3D41FFB524060DA300377503 /* Resources */,
+				3D41FFC424060DA300377503 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D41FFBD24060DA300377503 /* PBXTargetDependency */,
+			);
+			name = TestApp;
+			productName = TestApp;
+			productReference = 3D41FFB724060DA300377503 /* TestApp.app */;
+			productType = "com.apple.product-type.application.messages";
+		};
+		3D41FFB924060DA300377503 /* TestApp StickerPackExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D41FFC124060DA300377503 /* Build configuration list for PBXNativeTarget "TestApp StickerPackExtension" */;
+			buildPhases = (
+				3D41FFB824060DA300377503 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TestApp StickerPackExtension";
+			productName = "TestApp StickerPackExtension";
+			productReference = 3D41FFBA24060DA300377503 /* TestApp StickerPackExtension.appex */;
+			productType = "com.apple.product-type.app-extension.messages-sticker-pack";
+		};
 		E6D929621EB18A1F0082239E /* TestApplication */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6D9298B1EB18A200082239E /* Build configuration list for PBXNativeTarget "TestApplication" */;
@@ -135,6 +225,7 @@
 				E6D9295F1EB18A1F0082239E /* Sources */,
 				E6D929601EB18A1F0082239E /* Frameworks */,
 				E6D929611EB18A1F0082239E /* Resources */,
+				3D41FFB424060D6900377503 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -191,9 +282,19 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = GrandFunk;
 				TargetAttributes = {
+					3D41FFB624060DA300377503 = {
+						CreatedOnToolsVersion = 11.3.1;
+						DevelopmentTeam = W47WJBN2WL;
+						ProvisioningStyle = Automatic;
+					};
+					3D41FFB924060DA300377503 = {
+						CreatedOnToolsVersion = 11.3.1;
+						DevelopmentTeam = W47WJBN2WL;
+						ProvisioningStyle = Automatic;
+					};
 					E6D929621EB18A1F0082239E = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = W47WJBN2WL;
+						DevelopmentTeam = 36E9BQ7925;
 						ProvisioningStyle = Automatic;
 					};
 					E6D929761EB18A1F0082239E = {
@@ -215,6 +316,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -226,11 +328,29 @@
 				E6D929621EB18A1F0082239E /* TestApplication */,
 				E6D929761EB18A1F0082239E /* TestApplicationTests */,
 				E6D929811EB18A1F0082239E /* TestApplicationUITests */,
+				3D41FFB624060DA300377503 /* TestApp */,
+				3D41FFB924060DA300377503 /* TestApp StickerPackExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3D41FFB524060DA300377503 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D41FFC024060DA300377503 /* Stickers.xcstickers in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D41FFB824060DA300377503 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D41FFBF24060DA300377503 /* Stickers.xcstickers in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E6D929611EB18A1F0082239E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,7 +382,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6D929951EB18F790082239E /* Page1ViewController.swift in Sources */,
 				E6D929691EB18A1F0082239E /* ViewController.swift in Sources */,
+				E6D929971EB18FE80082239E /* Page2ViewController.swift in Sources */,
 				E6D929671EB18A1F0082239E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +408,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3D41FFBD24060DA300377503 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D41FFB924060DA300377503 /* TestApp StickerPackExtension */;
+			targetProxy = 3D41FFBC24060DA300377503 /* PBXContainerItemProxy */;
+		};
 		E6D929791EB18A1F0082239E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E6D929621EB18A1F0082239E /* TestApplication */;
@@ -318,6 +445,118 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3D41FFC224060DA300377503 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W47WJBN2WL;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "TestApp StickerPackExtension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paitest.TestApp.StickerPackExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3D41FFC324060DA300377503 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W47WJBN2WL;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "TestApp StickerPackExtension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paitest.TestApp.StickerPackExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3D41FFC624060DA300377503 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W47WJBN2WL;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TestApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paitest.TestApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3D41FFC724060DA300377503 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W47WJBN2WL;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TestApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paitest.TestApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E6D929891EB18A200082239E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -417,12 +656,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W47WJBN2WL;
+				DEVELOPMENT_TEAM = 36E9BQ7925;
 				INFOPLIST_FILE = TestApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.paitest.TestApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -430,12 +669,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W47WJBN2WL;
+				DEVELOPMENT_TEAM = 36E9BQ7925;
 				INFOPLIST_FILE = TestApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.paitest.TestApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -500,6 +739,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3D41FFC124060DA300377503 /* Build configuration list for PBXNativeTarget "TestApp StickerPackExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D41FFC224060DA300377503 /* Debug */,
+				3D41FFC324060DA300377503 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D41FFC524060DA300377503 /* Build configuration list for PBXNativeTarget "TestApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D41FFC624060DA300377503 /* Debug */,
+				3D41FFC724060DA300377503 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E6D9295E1EB18A1F0082239E /* Build configuration list for PBXProject "TestApplication" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -516,6 +773,7 @@
 				E6D9298D1EB18A200082239E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E6D9298E1EB18A200082239E /* Build configuration list for PBXNativeTarget "TestApplicationTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +782,7 @@
 				E6D929901EB18A200082239E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E6D929911EB18A200082239E /* Build configuration list for PBXNativeTarget "TestApplicationUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +791,7 @@
 				E6D929931EB18A200082239E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

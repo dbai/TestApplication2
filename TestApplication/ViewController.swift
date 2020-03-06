@@ -20,6 +20,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func goToPage1(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toPage1", sender: nil)
+    }
 
+    @IBAction func goToPage2(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toPage2", sender: nil)
+    }
 }
 

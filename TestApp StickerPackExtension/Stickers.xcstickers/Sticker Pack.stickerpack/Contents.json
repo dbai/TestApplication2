@@ -1,0 +1,50 @@
+{
+  "stickers" : [
+    {
+      "filename" : "baby-12.sticker"
+    },
+    {
+      "filename" : "baby-11.sticker"
+    },
+    {
+      "filename" : "baby-10.sticker"
+    },
+    {
+      "filename" : "baby-9.sticker"
+    },
+    {
+      "filename" : "baby-8.sticker"
+    },
+    {
+      "filename" : "baby-7.sticker"
+    },
+    {
+      "filename" : "baby-6.sticker"
+    },
+    {
+      "filename" : "baby-5.sticker"
+    },
+    {
+      "filename" : "baby-4.sticker"
+    },
+    {
+      "filename" : "baby-3.sticker"
+    },
+    {
+      "filename" : "baby-2.sticker"
+    },
+    {
+      "filename" : "baby-1.sticker"
+    },
+    {
+      "filename" : "Sticker Sequence.stickersequence"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "grid-size" : "regular"
+  }
+}
