@@ -24,17 +24,52 @@ class Page1ViewController : UIViewController {
     @IBOutlet weak var separator: UILabel!
     @IBOutlet weak var calculateButton: UIButton!
     
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var label3: UILabel!    
+    @IBOutlet weak var errorMessage: UILabel!
+    var labels = [[UILabel]]()
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
+//    var focusedLabelTag = 0
+    var focusedLabel: UILabel?
+    @IBOutlet weak var btn1: UIButton!
+    @IBOutlet weak var btn2: UIButton!
+    @IBOutlet weak var btn3: UIButton!
+    @IBOutlet weak var btnBackspace: UIButton!
+    var hasError = false
+    
     var isAdd = true // 預設的兩列所選到要用的運算元
 
     var removeRowButtons = [UIButton]() // 刪列按鈕
     var operatorButtons = [UIButton]() // 時間列前的 + 和 - 按鈕
     var operators = [Bool]() // 每列選到的運算元，true for +, false for -
     var timeRow = [[UITextField]]() // 時間列
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         calculateButton.frame.origin.y = separator.frame.origin.y
+        
+        // Tap gesture recognizers
+        let tap = UITapGestureRecognizer(target: self, action: #selector(focus(_:)))
+
+        labels = [[label1, label2, label3]]
+        for i in 0...labels.count - 1 {
+            for j in 0...labels[i].count - 1 {
+                labels[i][j].tag = i * 3 + j
+            }
+        }
+        focusedLabel = labels[0][0]
+        self.errorMessage.text = ""
+        // Gesture recognizer Label
+//        label1.isUserInteractionEnabled = true
+//        label1.addGestureRecognizer(tap)
+//        label2.isUserInteractionEnabled = true
+//        label2.addGestureRecognizer(tap)
+//        label3.isUserInteractionEnabled = true
+//        label3.addGestureRecognizer(tap)
     }
     
     @IBAction func addOrSubstract(_ sender: UIButton) {
@@ -73,6 +108,13 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func calculate(_ sender: UIButton) {
+        if hasError {
+            errorMessage.text = "有錯誤，請修正"
+        }
+        else {
+            errorMessage.text = ""
+        
+        
         let hr1 = Int(self.hr1.text!)!
         let min1 = Int(self.min1.text!)!
         let sec1 = Int(self.sec1.text!)!
@@ -114,6 +156,7 @@ class Page1ViewController : UIViewController {
         self.hrResult.text = String(format: "%02d", hrResult)
         self.minResult.text = String(format: "%02d", minResult)
         self.secResult.text = String(format: "%02d", secResult)
+        }
     }
     
     @IBAction func addRow(_ sender: UIButton) {
@@ -251,6 +294,118 @@ class Page1ViewController : UIViewController {
             self.hrResult.frame.origin.y = self.separator.frame.origin.y + 46
             self.minResult.frame.origin.y = self.separator.frame.origin.y + 46
             self.secResult.frame.origin.y = self.separator.frame.origin.y + 46
+        }
+    }
+    
+    @IBAction func focus(_ sender: UITapGestureRecognizer) {
+        guard let label = sender.view as? UILabel else {
+            return
+        }
+        
+        for i in self.labels {
+            for j in i {
+                if j.tag == label.tag {
+                    self.focusedLabel?.backgroundColor = .white
+                    label.backgroundColor = .gray
+                    self.focusedLabel = label
+                }
+            }
+        }
+                
+//        label.frame.size.width = 200
+//        label.text = "按\(label.text!)"
+    }
+    
+    @IBAction func moveFocus(_ sender: UIButton) {
+        if sender.titleLabel?.text == "left" {
+            if self.focusedLabel!.tag > 0 {
+                var tmp: UILabel?
+                for i in labels {
+                    for j in i {
+//                        print("j.tag: \(j.tag), focusedLabel: \((focusedLabel?.tag)!)")
+                        if j.tag + 1 == self.focusedLabel!.tag {
+                            j.backgroundColor = .gray
+                            tmp = j
+                        }
+                        else if j.tag == self.focusedLabel!.tag {
+                            j.backgroundColor = .white
+                            self.focusedLabel = tmp
+                            break
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            var noOfLabel = 0
+            for i in labels {
+                for _ in i {
+                    noOfLabel += 1
+                }
+            }
+            if self.focusedLabel!.tag < noOfLabel {
+                for i in labels {
+                    for j in i {
+//                        print("j.tag: \(j.tag), focusedLabel: \((focusedLabel?.tag)!)")
+                        if j.tag == self.focusedLabel!.tag {
+                            j.backgroundColor = .white
+                        }
+                        else if j.tag == self.focusedLabel!.tag + 1 {
+                            self.focusedLabel = j
+                            j.backgroundColor = .gray
+                            break
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func inputDigit(_ sender: UIButton) {
+        if self.focusedLabel?.text! == "00" {
+            self.focusedLabel?.text = ""
+        }
+//        if self.focusedLabel!.tag % 3 != 0 && Int((self.focusedLabel?.text!)! + (sender.titleLabel?.text!)!)! >= 60 {
+//            self.errorMessage.text = "分或秒不能大於 59"
+//            hasError = true
+//        }
+//        else if self.focusedLabel!.tag % 3 == 0 && Int((self.focusedLabel?.text!)! + (sender.titleLabel?.text!)!)! >= 24 {
+//            self.errorMessage.text = "小時不能大於 24"
+//            hasError = true
+//        }
+//        else {
+//            self.focusedLabel?.text! += (sender.titleLabel?.text!)!
+//        }
+        
+        printErrorMessage(label: self.focusedLabel!, value: Int((self.focusedLabel?.text!)! + (sender.titleLabel?.text!)!)!)
+        
+        if !hasError {
+//            print("No error")
+            self.focusedLabel?.text! += (sender.titleLabel?.text!)!
+        }
+    }
+    
+    
+    @IBAction func backspace(_ sender: UIButton) {
+        if self.focusedLabel?.text! == "00" {
+            self.focusedLabel?.text = ""
+        }
+        
+        if (self.focusedLabel?.text!.count)! > 0 {
+            self.focusedLabel?.text!.removeLast()
+        }
+        printErrorMessage(label: self.focusedLabel!, value: Int((self.focusedLabel?.text!)!)!)
+    }
+    
+    func printErrorMessage(label: UILabel, value: Int) {
+//        print("\(value)")
+        if label.tag % 3 != 0 && value >= 60 {
+            self.errorMessage.text = "分或秒不能大於 59"
+            hasError = true
+        }
+        else if label.tag % 3 == 0 && value >= 24 {
+            self.errorMessage.text = "小時不能大於 24"
+            hasError = true
         }
     }
 }
