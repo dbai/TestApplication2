@@ -51,7 +51,8 @@ class Page1ViewController : UIViewController {
 //    var timeRow = [[UITextField]]() // 時間列
     var timeRows = [[UILabel]]()
     
-    var lighterGray = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1.0)
+    var timeLabelBavkgroundColor = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1.0)
+    var timeLabelBorderColor = UIColor.lightGray.cgColor
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +68,7 @@ class Page1ViewController : UIViewController {
             for j in 0...2 {
                 timeRows[i][j].tag = i * 3 + j
                 timeRows[i][j].layer.borderWidth = 1
-                timeRows[i][j].layer.borderColor = UIColor.lightGray.cgColor
+                timeRows[i][j].layer.borderColor = timeLabelBorderColor
             }
         }
         
@@ -124,7 +125,13 @@ class Page1ViewController : UIViewController {
             errorMessage.text = "有錯誤，請修正"
             return
         }
+        
         errorMessage.text = ""
+        for i in timeRows {
+            for j in i {
+                j.layer.borderColor = timeLabelBorderColor
+            }
+        }
         
         let hr1 = Int(self.hr1.text!)!
         let min1 = Int(self.min1.text!)!
@@ -213,7 +220,7 @@ class Page1ViewController : UIViewController {
             label.text = "00"
             label.font = .systemFont(ofSize: 20)
             label.layer.borderWidth = 1
-            label.layer.borderColor = UIColor.lightGray.cgColor
+            label.layer.borderColor = timeLabelBorderColor
             label.textAlignment = .center
             self.view.addSubview(label)
         }
@@ -312,7 +319,7 @@ class Page1ViewController : UIViewController {
             for j in i {
                 if j.tag == label.tag {
                     self.focusedLabel?.backgroundColor = .white
-                    label.backgroundColor = lighterGray
+                    label.backgroundColor = timeLabelBavkgroundColor
                     self.focusedLabel = label
                 }
             }
@@ -326,7 +333,7 @@ class Page1ViewController : UIViewController {
                 outerLoop: for i in timeRows {
                     for j in i {
                         if j.tag + 1 == self.focusedLabel!.tag {
-                            j.backgroundColor = lighterGray
+                            j.backgroundColor = timeLabelBavkgroundColor
                             tmp = j
                         }
                         else if j.tag == self.focusedLabel!.tag {
@@ -353,7 +360,7 @@ class Page1ViewController : UIViewController {
                         }
                         else if j.tag == self.focusedLabel!.tag + 1 {
                             self.focusedLabel = j
-                            j.backgroundColor = lighterGray
+                            j.backgroundColor = timeLabelBavkgroundColor
                             break outerLoop
                         }
                     }
@@ -384,6 +391,7 @@ class Page1ViewController : UIViewController {
         for i in timeRows {
             for j in i {
                 j.text = "00"
+                j.layer.borderColor = timeLabelBorderColor
             }
         }
     }
@@ -402,7 +410,7 @@ class Page1ViewController : UIViewController {
             }
         }
         
-        self.focusedLabel?.backgroundColor = lighterGray
+        self.focusedLabel?.backgroundColor = timeLabelBavkgroundColor
         
         return result
     }
