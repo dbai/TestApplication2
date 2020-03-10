@@ -61,42 +61,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Auc-7I-tl3">
-                                <rect key="frame" x="42" y="80" width="54" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KQp-6q-kzM">
-                                <rect key="frame" x="135" y="80" width="54" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v5N-Py-3fa">
-                                <rect key="frame" x="232" y="80" width="54" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PGD-50-1bN">
-                                <rect key="frame" x="42" y="155" width="54" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lbl-aG-N9i">
-                                <rect key="frame" x="135" y="155" width="54" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iis-yf-DWu">
-                                <rect key="frame" x="232" y="155" width="54" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="========================" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rg1-nA-dUL">
                                 <rect key="frame" x="36" y="212" width="256" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -188,7 +152,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQT-Jz-ij4">
-                                <rect key="frame" x="93" y="364" width="40" height="21"/>
+                                <rect key="frame" x="42" y="80" width="54" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
@@ -200,7 +164,7 @@
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUa-ky-gom">
-                                <rect key="frame" x="188" y="364" width="40" height="21"/>
+                                <rect key="frame" x="135" y="80" width="54" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -211,7 +175,7 @@
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKX-U6-u5N">
-                                <rect key="frame" x="282" y="364" width="40" height="21"/>
+                                <rect key="frame" x="232" y="80" width="54" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -356,7 +320,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDY-Qd-eR6">
-                                <rect key="frame" x="93" y="411" width="40" height="21"/>
+                                <rect key="frame" x="42" y="155" width="54" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -367,7 +331,7 @@
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jx-Ml-6R9">
-                                <rect key="frame" x="188" y="411" width="40" height="21"/>
+                                <rect key="frame" x="135" y="155" width="54" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -378,7 +342,7 @@
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRE-Tz-pzi">
-                                <rect key="frame" x="282" y="411" width="40" height="21"/>
+                                <rect key="frame" x="232" y="155" width="54" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -406,22 +370,16 @@
                         <outlet property="btnBackspace" destination="N2H-bw-MJz" id="BxK-gD-SPd"/>
                         <outlet property="calculateButton" destination="H94-7v-Yse" id="qMj-dq-IeZ"/>
                         <outlet property="errorMessage" destination="2uT-QF-4Fu" id="f7K-gp-vkn"/>
-                        <outlet property="hr1" destination="Auc-7I-tl3" id="GcI-6T-Xwv"/>
-                        <outlet property="hr2" destination="PGD-50-1bN" id="cER-EX-VqS"/>
+                        <outlet property="hr1" destination="iQT-Jz-ij4" id="GKq-60-tRI"/>
+                        <outlet property="hr2" destination="qDY-Qd-eR6" id="QXo-Ne-7Qc"/>
                         <outlet property="hrResult" destination="CnS-Ax-cbP" id="alf-Ma-PaH"/>
-                        <outlet property="label1" destination="iQT-Jz-ij4" id="UQE-Ft-2rh"/>
-                        <outlet property="label2" destination="vUa-ky-gom" id="zAy-Jk-5Xr"/>
-                        <outlet property="label3" destination="YKX-U6-u5N" id="bU6-bN-KZi"/>
-                        <outlet property="label4" destination="qDY-Qd-eR6" id="7hr-gQ-1uJ"/>
-                        <outlet property="label5" destination="4Jx-Ml-6R9" id="NRw-HN-pCt"/>
-                        <outlet property="label6" destination="cRE-Tz-pzi" id="pU2-ac-vRa"/>
                         <outlet property="leftButton" destination="Cfm-uW-whZ" id="qWi-eO-wAC"/>
-                        <outlet property="min1" destination="KQp-6q-kzM" id="czX-pG-wcP"/>
-                        <outlet property="min2" destination="Lbl-aG-N9i" id="K7s-Q1-d9T"/>
+                        <outlet property="min1" destination="vUa-ky-gom" id="zAy-Jk-5Xr"/>
+                        <outlet property="min2" destination="4Jx-Ml-6R9" id="6yu-qR-1RB"/>
                         <outlet property="minResult" destination="5QQ-Jf-0cZ" id="uRc-kh-plm"/>
                         <outlet property="rightButton" destination="c2O-17-ixN" id="gLW-MJ-bRd"/>
-                        <outlet property="sec1" destination="v5N-Py-3fa" id="D4G-Qk-0eb"/>
-                        <outlet property="sec2" destination="iis-yf-DWu" id="Hvm-Ki-iTQ"/>
+                        <outlet property="sec1" destination="YKX-U6-u5N" id="sCF-VA-lfX"/>
+                        <outlet property="sec2" destination="cRE-Tz-pzi" id="aMJ-2Z-bR2"/>
                         <outlet property="secResult" destination="Jta-6r-Kyw" id="zjx-5m-InM"/>
                         <outlet property="separator" destination="rg1-nA-dUL" id="Rm6-Z5-iBX"/>
                         <outlet property="substractButton" destination="ewU-Ql-SQ3" id="vz3-c5-OIc"/>

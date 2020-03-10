@@ -10,28 +10,23 @@ import Foundation
 import UIKit
 
 class Page1ViewController : UIViewController {
-    @IBOutlet weak var hr1: UITextField!
-    @IBOutlet weak var min1: UITextField!
-    @IBOutlet weak var sec1: UITextField!
-    @IBOutlet weak var hr2: UITextField!
-    @IBOutlet weak var min2: UITextField!
-    @IBOutlet weak var sec2: UITextField!
+    @IBOutlet weak var hr1: UILabel!
+    @IBOutlet weak var min1: UILabel!
+    @IBOutlet weak var sec1: UILabel!
+    @IBOutlet weak var hr2: UILabel!
+    @IBOutlet weak var min2: UILabel!
+    @IBOutlet weak var sec2: UILabel!
+    
     @IBOutlet weak var hrResult: UILabel!
     @IBOutlet weak var minResult: UILabel!
     @IBOutlet weak var secResult: UILabel!
+    
     @IBOutlet weak var addButton: UIButton! // 預設兩列間的 + 按鈕
     @IBOutlet weak var substractButton: UIButton! // 預設兩列間的 - 按鈕
     @IBOutlet weak var separator: UILabel!
     @IBOutlet weak var calculateButton: UIButton!
     
-    @IBOutlet weak var label1: UILabel!
-    @IBOutlet weak var label2: UILabel!
-    @IBOutlet weak var label3: UILabel!
-    @IBOutlet weak var label4: UILabel!
-    @IBOutlet weak var label5: UILabel!
-    @IBOutlet weak var label6: UILabel!
     @IBOutlet weak var errorMessage: UILabel!
-    var labels = [[UILabel]]()
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     var focusedLabel: UILabel?
@@ -53,7 +48,8 @@ class Page1ViewController : UIViewController {
     var removeRowButtons = [UIButton]() // 刪列按鈕
     var operatorButtons = [UIButton]() // 時間列前的 + 和 - 按鈕
     var operators = [Bool]() // 每列選到的運算元，true for +, false for -
-    var timeRow = [[UITextField]]() // 時間列
+//    var timeRow = [[UITextField]]() // 時間列
+    var timeRows = [[UILabel]]()
     
     var lighterGray = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1.0)
 
@@ -66,23 +62,26 @@ class Page1ViewController : UIViewController {
         // Tap gesture recognizers
         let tap = UITapGestureRecognizer(target: self, action: #selector(focus(_:)))
 
-        labels = [[label1, label2, label3],[label4, label5, label6]]
-        for i in 0...labels.count - 1 {
+        timeRows = [[hr1, min1, sec1],[hr2, min2, sec2]]
+        for i in 0...timeRows.count - 1 {
             for j in 0...2 {
-                labels[i][j].tag = i * 3 + j
-                labels[i][j].layer.borderWidth = 1
-                labels[i][j].layer.borderColor = UIColor.lightGray.cgColor
+                timeRows[i][j].tag = i * 3 + j
+                timeRows[i][j].layer.borderWidth = 1
+                timeRows[i][j].layer.borderColor = UIColor.lightGray.cgColor
             }
         }
-        focusedLabel = labels[0][0]
+        
+        focusedLabel = timeRows[0][0]
+        
         self.errorMessage.text = ""
+        
         // Gesture recognizer Label
-//        label1.isUserInteractionEnabled = true
-//        label1.addGestureRecognizer(tap)
-//        label2.isUserInteractionEnabled = true
-//        label2.addGestureRecognizer(tap)
-//        label3.isUserInteractionEnabled = true
-//        label3.addGestureRecognizer(tap)
+//        hr1.isUserInteractionEnabled = true
+//        hr1.addGestureRecognizer(tap)
+//        min1.isUserInteractionEnabled = true
+//        min1.addGestureRecognizer(tap)
+//        sec1.isUserInteractionEnabled = true
+//        sec1.addGestureRecognizer(tap)
     }
     
     @IBAction func addOrSubstract(_ sender: UIButton) {
@@ -146,18 +145,21 @@ class Page1ViewController : UIViewController {
         }
 
         var totalSecN = 0
-        for (i, line) in self.timeRow.enumerated() {
-            let hrN = Int(line[0].text!)!
-            let minN = Int(line[1].text!)!
-            let secN = Int(line[2].text!)!
+        
+        if timeRows.count > 2 {
+            for (i, line) in self.timeRows.enumerated() {
+                let hrN = Int(line[0].text!)!
+                let minN = Int(line[1].text!)!
+                let secN = Int(line[2].text!)!
 
-            totalSecN = hrN * 3600 + minN * 60 + secN
-            
-            if operators[i] {
-                totalSec = totalSec + totalSecN
-            }
-            else {
-                totalSec = totalSec - totalSecN
+                totalSecN = hrN * 3600 + minN * 60 + secN
+                
+                if operators[i] {
+                    totalSec = totalSec + totalSecN
+                }
+                else {
+                    totalSec = totalSec - totalSecN
+                }
             }
         }
         
@@ -200,29 +202,22 @@ class Page1ViewController : UIViewController {
         
         
         // 增加時間欄位列
-        let lastRowY = self.timeRow.count == 0 ? self.hr2.frame.origin.y + 75 : self.timeRow[self.timeRow.count - 1][2].frame.origin.y + 75
-        let textFieldLine: [UITextField] = [UITextField(), UITextField(), UITextField()]
+        let lastRowY = self.timeRows.count == 0 ? self.hr2.frame.origin.y + 75 : self.timeRows[self.timeRows.count - 1][2].frame.origin.y + 75
+        let row: [UILabel] = [UILabel(), UILabel(), UILabel()]
         
-        textFieldLine[0].frame = CGRect(x: self.hr2.frame.origin.x, y: lastRowY, width: 54, height: 34)
-        textFieldLine[1].frame = CGRect(x: self.min2.frame.origin.x, y: lastRowY, width: 54, height: 34)
-        textFieldLine[2].frame = CGRect(x: self.sec2.frame.origin.x, y: lastRowY, width: 54, height: 34)
-        
+        row[0].frame = CGRect(x: self.hr2.frame.origin.x, y: lastRowY, width: 54, height: 34)
+        row[1].frame = CGRect(x: self.min2.frame.origin.x, y: lastRowY, width: 54, height: 34)
+        row[2].frame = CGRect(x: self.sec2.frame.origin.x, y: lastRowY, width: 54, height: 34)
         // 加進 timeRow 陣列以及畫面上
-        for field in textFieldLine {
-            field.text = "00"
-            field.font = .systemFont(ofSize: 20)
-            field.borderStyle = .roundedRect
-            field.autocorrectionType = .no
-            field.keyboardType = .default
-            field.returnKeyType = .done
-            field.clearButtonMode = .whileEditing;
-            field.contentVerticalAlignment = .center
-            field.textAlignment = .center
-            field.clearButtonMode = .never
-            field.delegate = self
-            self.view.addSubview(field)
+        for label in row {
+            label.text = "00"
+            label.font = .systemFont(ofSize: 20)
+            label.layer.borderWidth = 1
+            label.layer.borderColor = UIColor.lightGray.cgColor
+            label.textAlignment = .center
+            self.view.addSubview(label)
         }
-        self.timeRow.append(textFieldLine)
+        self.timeRows.append(row)
         
         
         // 增加減列按鈕
@@ -243,16 +238,16 @@ class Page1ViewController : UIViewController {
         let n = sender.tag
 
         // 判斷欲刪之列是不是最後一列，如果不是，就要把後面的列往上移
-        var shouldMoveUpRemainingFields = false
+        var shouldMoveUpRemainingRows = false
         if n < self.operators.count - 1 {
-            shouldMoveUpRemainingFields = true
+            shouldMoveUpRemainingRows = true
         }
         
         // 刪除時間欄位
-        for (_, field) in self.timeRow[n].enumerated() {
-            field.removeFromSuperview()
+        for (_, label) in self.timeRows[n].enumerated() {
+            label.removeFromSuperview()
         }
-        self.timeRow.remove(at: n)
+        self.timeRows.remove(at: n)
         
         // 刪除 + 和 - 按鈕
         self.operatorButtons[n * 2 + 1].removeFromSuperview()
@@ -274,14 +269,14 @@ class Page1ViewController : UIViewController {
         }
 
         //若刪的是中間的列，則下面的列要往上移
-        if shouldMoveUpRemainingFields {
+        if shouldMoveUpRemainingRows {
             for i in n...self.operators.count - 1 {
                 self.operatorButtons[i * 2].frame.origin.y -= 75
                 self.operatorButtons[i * 2 + 1].frame.origin.y -= 75
                 
-                self.timeRow[i][0].frame.origin.y -= 75
-                self.timeRow[i][1].frame.origin.y -= 75
-                self.timeRow[i][2].frame.origin.y -= 75
+                self.timeRows[i][0].frame.origin.y -= 75
+                self.timeRows[i][1].frame.origin.y -= 75
+                self.timeRows[i][2].frame.origin.y -= 75
                 
                 self.removeRowButtons[i].frame.origin.y -= 75
             }
@@ -313,7 +308,7 @@ class Page1ViewController : UIViewController {
             return
         }
         
-        for i in self.labels {
+        for i in self.timeRows {
             for j in i {
                 if j.tag == label.tag {
                     self.focusedLabel?.backgroundColor = .white
@@ -328,7 +323,7 @@ class Page1ViewController : UIViewController {
         if sender.titleLabel?.text == "left" {
             if self.focusedLabel!.tag > 0 {
                 var tmp: UILabel?
-                outerLoop: for i in labels {
+                outerLoop: for i in timeRows {
                     for j in i {
                         if j.tag + 1 == self.focusedLabel!.tag {
                             j.backgroundColor = lighterGray
@@ -345,13 +340,13 @@ class Page1ViewController : UIViewController {
         }
         else {
             var noOfLabel = 0
-            for i in labels {
+            for i in timeRows {
                 for _ in i {
                     noOfLabel += 1
                 }
             }
             if self.focusedLabel!.tag < noOfLabel - 1 {
-                outerLoop: for i in labels {
+                outerLoop: for i in timeRows {
                     for j in i {
                         if j.tag == self.focusedLabel!.tag {
                             j.backgroundColor = .white
@@ -386,7 +381,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func clear(_ sender: UIButton) {
-        for i in labels {
+        for i in timeRows {
             for j in i {
                 j.text = "00"
             }
@@ -396,7 +391,7 @@ class Page1ViewController : UIViewController {
     func validate() -> Bool {
         var result = true
         
-        for (_, line) in self.labels.enumerated() {
+        for (_, line) in self.timeRows.enumerated() {
             for j in 0...2 {
                 line[j].backgroundColor = .white
                 let value = Int(line[j].text!)!
@@ -411,56 +406,4 @@ class Page1ViewController : UIViewController {
         
         return result
     }
-}
-
-extension Page1ViewController: UITextFieldDelegate {
-
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        // return NO to disallow editing.
-//        print("TextField should begin editing method called")
-        return true
-    }
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        // became first responder
-//        print("TextField did begin editing method called")
-    }
-
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
-//        print("TextField should end editing method called")
-        return true
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
-//        print("TextField did end editing method called")
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        // if implemented, called in place of textFieldDidEndEditing:
-//        print("Text: \(textField.text!)")
-//        print("TextField did end editing with reason method called")
-    }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // return NO to not change text
-//        print("While entering the characters this method gets called")
-        return true
-    }
-
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        // called when clear button pressed. return NO to ignore (no notifications)
-//        print("TextField should clear method called")
-        return true
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // called when 'return' key pressed. return NO to ignore.
-//        print("TextField should return method called")
-        // may be useful: textField.resignFirstResponder()
-        return true
-    }
-
-    
 }
