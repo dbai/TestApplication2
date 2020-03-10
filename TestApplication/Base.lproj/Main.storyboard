@@ -187,33 +187,34 @@
                                     <action selector="calculate:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="dzG-R5-MTW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQT-Jz-ij4">
-                                <rect key="frame" x="48" y="320" width="40" height="21"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQT-Jz-ij4">
+                                <rect key="frame" x="93" y="364" width="40" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="3l1-St-bIV" appends="YES" id="aeO-op-gKm"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUa-ky-gom">
-                                <rect key="frame" x="143" y="320" width="40" height="21"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUa-ky-gom">
+                                <rect key="frame" x="188" y="364" width="40" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="DHv-mq-dPl" appends="YES" id="uhK-QE-8M4"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKX-U6-u5N">
-                                <rect key="frame" x="237" y="320" width="40" height="21"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKX-U6-u5N">
+                                <rect key="frame" x="282" y="364" width="40" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
@@ -221,7 +222,7 @@
                                 </connections>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfm-uW-whZ">
-                                <rect key="frame" x="102" y="352" width="30" height="24"/>
+                                <rect key="frame" x="138" y="476" width="30" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="left" image="arrow.left" catalog="system"/>
@@ -230,7 +231,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2O-17-ixN">
-                                <rect key="frame" x="211" y="352" width="30" height="24"/>
+                                <rect key="frame" x="247" y="476" width="30" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="right" image="arrow.right" catalog="system"/>
@@ -239,7 +240,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXc-Bi-4Gc">
-                                <rect key="frame" x="88" y="382" width="30" height="36"/>
+                                <rect key="frame" x="98" y="519" width="30" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="1"/>
@@ -248,7 +249,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2L-2M-zch">
-                                <rect key="frame" x="147" y="382" width="30" height="36"/>
+                                <rect key="frame" x="157" y="519" width="30" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="2"/>
@@ -257,7 +258,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpa-87-W7l">
-                                <rect key="frame" x="211" y="382" width="30" height="36"/>
+                                <rect key="frame" x="221" y="519" width="30" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="3"/>
@@ -266,28 +267,142 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uT-QF-4Fu">
-                                <rect key="frame" x="20" y="291" width="374" height="21"/>
+                                <rect key="frame" x="20" y="317" width="374" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2H-bw-MJz">
-                                <rect key="frame" x="298" y="389" width="25" height="22"/>
+                                <rect key="frame" x="289" y="570" width="25" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="delete.left" catalog="system"/>
                                 <connections>
                                     <action selector="backspace:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="qHY-Hl-9gU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRl-Nd-55W">
+                                <rect key="frame" x="98" y="563" width="30" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="4"/>
+                                <connections>
+                                    <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="Yfg-aS-ks0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moh-uo-v77">
+                                <rect key="frame" x="157" y="563" width="30" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="5"/>
+                                <connections>
+                                    <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="zBU-pZ-em5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZJ-qI-lsO">
+                                <rect key="frame" x="221" y="563" width="30" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="6"/>
+                                <connections>
+                                    <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="cuX-v2-pjw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAF-Zn-RGk">
+                                <rect key="frame" x="98" y="607" width="30" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="7"/>
+                                <connections>
+                                    <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="Zrv-VD-aha"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G51-Su-QmQ">
+                                <rect key="frame" x="157" y="607" width="30" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="8"/>
+                                <connections>
+                                    <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="Doj-4m-Nsf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JI8-pP-OTZ">
+                                <rect key="frame" x="221" y="607" width="30" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="9"/>
+                                <connections>
+                                    <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="DxD-HE-f2f"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0Y-fZ-aZ4">
+                                <rect key="frame" x="286" y="607" width="30" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="0"/>
+                                <connections>
+                                    <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="sHh-mT-kRV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1q-SE-q8o">
+                                <rect key="frame" x="284" y="519" width="30" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="C"/>
+                                <connections>
+                                    <action selector="clear:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="tlG-Oa-1ir"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDY-Qd-eR6">
+                                <rect key="frame" x="93" y="411" width="40" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="nlZ-F9-jxY" appends="YES" id="xGg-r2-jS7"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jx-Ml-6R9">
+                                <rect key="frame" x="188" y="411" width="40" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="YKE-yg-bON" appends="YES" id="80h-IQ-cHn"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRE-Tz-pzi">
+                                <rect key="frame" x="282" y="411" width="40" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="z1C-iP-Woc" appends="YES" id="KPc-vy-rEq"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="HRe-Jg-JKe" id="Cmn-sa-NkV"/>
+                        <outlet property="btn0" destination="E0Y-fZ-aZ4" id="knQ-Jh-7Gx"/>
                         <outlet property="btn1" destination="UXc-Bi-4Gc" id="qpF-hW-at7"/>
                         <outlet property="btn2" destination="k2L-2M-zch" id="BtI-eY-w3Y"/>
                         <outlet property="btn3" destination="tpa-87-W7l" id="SLW-dk-H1L"/>
+                        <outlet property="btn4" destination="PRl-Nd-55W" id="ikl-kl-G3g"/>
+                        <outlet property="btn5" destination="moh-uo-v77" id="PrN-7N-Wwh"/>
+                        <outlet property="btn6" destination="1ZJ-qI-lsO" id="uZm-Gg-sVI"/>
+                        <outlet property="btn7" destination="IAF-Zn-RGk" id="pjW-QE-vXJ"/>
+                        <outlet property="btn8" destination="G51-Su-QmQ" id="EKX-b2-h7E"/>
+                        <outlet property="btn9" destination="JI8-pP-OTZ" id="0Ew-Xp-F8G"/>
                         <outlet property="btnBackspace" destination="N2H-bw-MJz" id="BxK-gD-SPd"/>
                         <outlet property="calculateButton" destination="H94-7v-Yse" id="qMj-dq-IeZ"/>
                         <outlet property="errorMessage" destination="2uT-QF-4Fu" id="f7K-gp-vkn"/>
@@ -297,6 +412,9 @@
                         <outlet property="label1" destination="iQT-Jz-ij4" id="UQE-Ft-2rh"/>
                         <outlet property="label2" destination="vUa-ky-gom" id="zAy-Jk-5Xr"/>
                         <outlet property="label3" destination="YKX-U6-u5N" id="bU6-bN-KZi"/>
+                        <outlet property="label4" destination="qDY-Qd-eR6" id="7hr-gQ-1uJ"/>
+                        <outlet property="label5" destination="4Jx-Ml-6R9" id="NRw-HN-pCt"/>
+                        <outlet property="label6" destination="cRE-Tz-pzi" id="pU2-ac-vRa"/>
                         <outlet property="leftButton" destination="Cfm-uW-whZ" id="qWi-eO-wAC"/>
                         <outlet property="min1" destination="KQp-6q-kzM" id="czX-pG-wcP"/>
                         <outlet property="min2" destination="Lbl-aG-N9i" id="K7s-Q1-d9T"/>
@@ -323,6 +441,21 @@
                 <tapGestureRecognizer id="t9h-eO-MfG" userLabel="Tap Gesture Recognizer 3">
                     <connections>
                         <action selector="focus:" destination="LA2-4o-4IQ" id="bTv-8C-oMZ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="nlZ-F9-jxY" userLabel="Tap Gesture Recognizer 4">
+                    <connections>
+                        <action selector="focus:" destination="LA2-4o-4IQ" id="01P-tn-3tW"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="YKE-yg-bON" userLabel="Tap Gesture Recognizer 5">
+                    <connections>
+                        <action selector="focus:" destination="LA2-4o-4IQ" id="LBK-nE-Gw0"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="z1C-iP-Woc" userLabel="Tap Gesture Recognizer 6">
+                    <connections>
+                        <action selector="focus:" destination="LA2-4o-4IQ" id="8da-d3-ai9"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

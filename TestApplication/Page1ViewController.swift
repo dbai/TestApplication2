@@ -26,18 +26,27 @@ class Page1ViewController : UIViewController {
     
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
-    @IBOutlet weak var label3: UILabel!    
+    @IBOutlet weak var label3: UILabel!
+    @IBOutlet weak var label4: UILabel!
+    @IBOutlet weak var label5: UILabel!
+    @IBOutlet weak var label6: UILabel!
     @IBOutlet weak var errorMessage: UILabel!
     var labels = [[UILabel]]()
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
-//    var focusedLabelTag = 0
     var focusedLabel: UILabel?
     @IBOutlet weak var btn1: UIButton!
     @IBOutlet weak var btn2: UIButton!
     @IBOutlet weak var btn3: UIButton!
+    @IBOutlet weak var btn4: UIButton!
+    @IBOutlet weak var btn5: UIButton!
+    @IBOutlet weak var btn6: UIButton!
+    @IBOutlet weak var btn7: UIButton!
+    @IBOutlet weak var btn8: UIButton!
+    @IBOutlet weak var btn9: UIButton!
+    @IBOutlet weak var btn0: UIButton!
+    @IBOutlet weak var btnClear: UIButton!
     @IBOutlet weak var btnBackspace: UIButton!
-    var hasError = false
     
     var isAdd = true // 預設的兩列所選到要用的運算元
 
@@ -45,6 +54,8 @@ class Page1ViewController : UIViewController {
     var operatorButtons = [UIButton]() // 時間列前的 + 和 - 按鈕
     var operators = [Bool]() // 每列選到的運算元，true for +, false for -
     var timeRow = [[UITextField]]() // 時間列
+    
+    var lighterGray = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,10 +66,12 @@ class Page1ViewController : UIViewController {
         // Tap gesture recognizers
         let tap = UITapGestureRecognizer(target: self, action: #selector(focus(_:)))
 
-        labels = [[label1, label2, label3]]
+        labels = [[label1, label2, label3],[label4, label5, label6]]
         for i in 0...labels.count - 1 {
-            for j in 0...labels[i].count - 1 {
+            for j in 0...2 {
                 labels[i][j].tag = i * 3 + j
+                labels[i][j].layer.borderWidth = 1
+                labels[i][j].layer.borderColor = UIColor.lightGray.cgColor
             }
         }
         focusedLabel = labels[0][0]
@@ -108,12 +121,11 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func calculate(_ sender: UIButton) {
-        if hasError {
+        if !validate() {
             errorMessage.text = "有錯誤，請修正"
+            return
         }
-        else {
-            errorMessage.text = ""
-        
+        errorMessage.text = ""
         
         let hr1 = Int(self.hr1.text!)!
         let min1 = Int(self.min1.text!)!
@@ -156,7 +168,6 @@ class Page1ViewController : UIViewController {
         self.hrResult.text = String(format: "%02d", hrResult)
         self.minResult.text = String(format: "%02d", minResult)
         self.secResult.text = String(format: "%02d", secResult)
-        }
     }
     
     @IBAction func addRow(_ sender: UIButton) {
@@ -306,31 +317,27 @@ class Page1ViewController : UIViewController {
             for j in i {
                 if j.tag == label.tag {
                     self.focusedLabel?.backgroundColor = .white
-                    label.backgroundColor = .gray
+                    label.backgroundColor = lighterGray
                     self.focusedLabel = label
                 }
             }
         }
-                
-//        label.frame.size.width = 200
-//        label.text = "按\(label.text!)"
     }
     
     @IBAction func moveFocus(_ sender: UIButton) {
         if sender.titleLabel?.text == "left" {
             if self.focusedLabel!.tag > 0 {
                 var tmp: UILabel?
-                for i in labels {
+                outerLoop: for i in labels {
                     for j in i {
-//                        print("j.tag: \(j.tag), focusedLabel: \((focusedLabel?.tag)!)")
                         if j.tag + 1 == self.focusedLabel!.tag {
-                            j.backgroundColor = .gray
+                            j.backgroundColor = lighterGray
                             tmp = j
                         }
                         else if j.tag == self.focusedLabel!.tag {
                             j.backgroundColor = .white
                             self.focusedLabel = tmp
-                            break
+                            break outerLoop
                         }
                     }
                 }
@@ -343,17 +350,16 @@ class Page1ViewController : UIViewController {
                     noOfLabel += 1
                 }
             }
-            if self.focusedLabel!.tag < noOfLabel {
-                for i in labels {
+            if self.focusedLabel!.tag < noOfLabel - 1 {
+                outerLoop: for i in labels {
                     for j in i {
-//                        print("j.tag: \(j.tag), focusedLabel: \((focusedLabel?.tag)!)")
                         if j.tag == self.focusedLabel!.tag {
                             j.backgroundColor = .white
                         }
                         else if j.tag == self.focusedLabel!.tag + 1 {
                             self.focusedLabel = j
-                            j.backgroundColor = .gray
-                            break
+                            j.backgroundColor = lighterGray
+                            break outerLoop
                         }
                     }
                 }
@@ -365,48 +371,45 @@ class Page1ViewController : UIViewController {
         if self.focusedLabel?.text! == "00" {
             self.focusedLabel?.text = ""
         }
-//        if self.focusedLabel!.tag % 3 != 0 && Int((self.focusedLabel?.text!)! + (sender.titleLabel?.text!)!)! >= 60 {
-//            self.errorMessage.text = "分或秒不能大於 59"
-//            hasError = true
-//        }
-//        else if self.focusedLabel!.tag % 3 == 0 && Int((self.focusedLabel?.text!)! + (sender.titleLabel?.text!)!)! >= 24 {
-//            self.errorMessage.text = "小時不能大於 24"
-//            hasError = true
-//        }
-//        else {
-//            self.focusedLabel?.text! += (sender.titleLabel?.text!)!
-//        }
-        
-        printErrorMessage(label: self.focusedLabel!, value: Int((self.focusedLabel?.text!)! + (sender.titleLabel?.text!)!)!)
-        
-        if !hasError {
-//            print("No error")
-            self.focusedLabel?.text! += (sender.titleLabel?.text!)!
-        }
+        self.focusedLabel?.text! += (sender.titleLabel?.text!)!
     }
     
     
     @IBAction func backspace(_ sender: UIButton) {
-        if self.focusedLabel?.text! == "00" {
-            self.focusedLabel?.text = ""
-        }
-        
-        if (self.focusedLabel?.text!.count)! > 0 {
+        if (self.focusedLabel?.text!.count)! > 0 && Int((self.focusedLabel?.text!)!)! != 0 {
             self.focusedLabel?.text!.removeLast()
         }
-        printErrorMessage(label: self.focusedLabel!, value: Int((self.focusedLabel?.text!)!)!)
+        
+        if (self.focusedLabel?.text!.count)! == 0 {
+            self.focusedLabel?.text = "00"
+        }
     }
     
-    func printErrorMessage(label: UILabel, value: Int) {
-//        print("\(value)")
-        if label.tag % 3 != 0 && value >= 60 {
-            self.errorMessage.text = "分或秒不能大於 59"
-            hasError = true
+    @IBAction func clear(_ sender: UIButton) {
+        for i in labels {
+            for j in i {
+                j.text = "00"
+            }
         }
-        else if label.tag % 3 == 0 && value >= 24 {
-            self.errorMessage.text = "小時不能大於 24"
-            hasError = true
+    }
+    
+    func validate() -> Bool {
+        var result = true
+        
+        for (_, line) in self.labels.enumerated() {
+            for j in 0...2 {
+                line[j].backgroundColor = .white
+                let value = Int(line[j].text!)!
+                if (j == 0 && value >= 24) || (j != 0 && value >= 60) {
+                    line[j].layer.borderColor = UIColor.red.cgColor
+                    result = false
+                }
+            }
         }
+        
+        self.focusedLabel?.backgroundColor = lighterGray
+        
+        return result
     }
 }
 
