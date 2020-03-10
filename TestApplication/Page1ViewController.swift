@@ -40,10 +40,10 @@ class Page1ViewController : UIViewController {
     @IBOutlet weak var btn8: UIButton!
     @IBOutlet weak var btn9: UIButton!
     @IBOutlet weak var btn0: UIButton!
-    @IBOutlet weak var btnClear: UIButton!
+//    @IBOutlet weak var btnClear: UIButton!
     @IBOutlet weak var btnBackspace: UIButton!
     
-    var isAdd = true // 預設的兩列所選到要用的運算元
+//    var isAdd = true // 預設的兩列所選到要用的運算元
 
     var removeRowButtons = [UIButton]() // 刪列按鈕
     var operatorButtons = [UIButton]() // 時間列前的 + 和 - 按鈕
@@ -51,7 +51,7 @@ class Page1ViewController : UIViewController {
 //    var timeRow = [[UITextField]]() // 時間列
     var timeRows = [[UILabel]]()
     
-    var timeLabelBavkgroundColor = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1.0)
+    var timeLabelBackgroundColor = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1.0)
     var timeLabelBorderColor = UIColor.lightGray.cgColor
 
     override func viewDidLoad() {
@@ -59,20 +59,23 @@ class Page1ViewController : UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         calculateButton.frame.origin.y = separator.frame.origin.y
+                
+//        timeRows = [[hr1, min1, sec1],[hr2, min2, sec2]]
+//        for i in 0...timeRows.count - 1 {
+//            for j in 0...2 {
+//                timeRows[i][j].tag = i * 3 + j
+//                timeRows[i][j].layer.borderWidth = 1
+//                timeRows[i][j].layer.borderColor = timeLabelBorderColor
+//            }
+//        }
         
-        // Tap gesture recognizers
-        let tap = UITapGestureRecognizer(target: self, action: #selector(focus(_:)))
-
-        timeRows = [[hr1, min1, sec1],[hr2, min2, sec2]]
-        for i in 0...timeRows.count - 1 {
-            for j in 0...2 {
-                timeRows[i][j].tag = i * 3 + j
-                timeRows[i][j].layer.borderWidth = 1
-                timeRows[i][j].layer.borderColor = timeLabelBorderColor
-            }
-        }
-        
+        addRow(UIButton())
+        timeRows[0][0].backgroundColor = self.timeLabelBackgroundColor
         focusedLabel = timeRows[0][0]
+        addRow(UIButton())
+        
+//        operatorButtons.append(addButton)
+//        operatorButtons.append(substractButton)
         
         self.errorMessage.text = ""
         
@@ -87,36 +90,36 @@ class Page1ViewController : UIViewController {
     
     @IBAction func addOrSubstract(_ sender: UIButton) {
         if sender.titleLabel?.text == "+" {
-            if sender.tag != 10000 {
+//            if sender.tag != 10000 {
                 self.operatorButtons[sender.tag].setTitleColor(.blue, for: .normal)
                 self.operatorButtons[sender.tag].backgroundColor = .lightGray
                 self.operatorButtons[sender.tag + 1].setTitleColor(.gray, for: .normal)
                 self.operatorButtons[sender.tag + 1].backgroundColor = .white
                 self.operators[sender.tag / 2] = true
-            }
-            else {
-                self.addButton.setTitleColor(.blue, for: .normal)
-                self.addButton.backgroundColor = .lightGray
-                self.substractButton.setTitleColor(.gray, for: .normal)
-                self.substractButton.backgroundColor = .white
-                self.isAdd = true
-            }
+//            }
+//            else {
+//                self.addButton.setTitleColor(.blue, for: .normal)
+//                self.addButton.backgroundColor = .lightGray
+//                self.substractButton.setTitleColor(.gray, for: .normal)
+//                self.substractButton.backgroundColor = .white
+//                self.isAdd = true
+//            }
         }
         else {
-            if sender.tag != 10001 {
+//            if sender.tag != 10001 {
                 self.operatorButtons[sender.tag - 1].setTitleColor(.gray, for: .normal)
                 self.operatorButtons[sender.tag - 1].backgroundColor = .white
                 self.operatorButtons[sender.tag].setTitleColor(.blue, for: .normal)
                 self.operatorButtons[sender.tag].backgroundColor = .lightGray
                 self.operators[sender.tag / 2] = false
-            }
-            else {
-                self.addButton.setTitleColor(.gray, for: .normal)
-                self.addButton.backgroundColor = .white
-                self.substractButton.setTitleColor(.blue, for: .normal)
-                self.substractButton.backgroundColor = .lightGray
-                self.isAdd = false
-            }
+//            }
+//            else {
+//                self.addButton.setTitleColor(.gray, for: .normal)
+//                self.addButton.backgroundColor = .white
+//                self.substractButton.setTitleColor(.blue, for: .normal)
+//                self.substractButton.backgroundColor = .lightGray
+//                self.isAdd = false
+//            }
         }
     }
     
@@ -133,23 +136,23 @@ class Page1ViewController : UIViewController {
             }
         }
         
-        let hr1 = Int(self.hr1.text!)!
-        let min1 = Int(self.min1.text!)!
-        let sec1 = Int(self.sec1.text!)!
-        let hr2 = Int(self.hr2.text!)!
-        let min2 = Int(self.min2.text!)!
-        let sec2 = Int(self.sec2.text!)!
-
-        let totalSec1 = hr1 * 3600 + min1 * 60 + sec1
-        let totalSec2 = hr2 * 3600 + min2 * 60 + sec2
+//        let hr1 = Int(self.hr1.text!)!
+//        let min1 = Int(self.min1.text!)!
+//        let sec1 = Int(self.sec1.text!)!
+//        let hr2 = Int(self.hr2.text!)!
+//        let min2 = Int(self.min2.text!)!
+//        let sec2 = Int(self.sec2.text!)!
+//
+//        let totalSec1 = hr1 * 3600 + min1 * 60 + sec1
+//        let totalSec2 = hr2 * 3600 + min2 * 60 + sec2
         
         var totalSec = 0
-        if isAdd {
-            totalSec = totalSec1 + totalSec2// + totalSecN
-        }
-        else {
-            totalSec = totalSec1 - totalSec2// - totalSecN
-        }
+//        if isAdd {
+//            totalSec = totalSec1 + totalSec2// + totalSecN
+//        }
+//        else {
+//            totalSec = totalSec1 - totalSec2// - totalSecN
+//        }
 
         var totalSecN = 0
         
@@ -184,59 +187,64 @@ class Page1ViewController : UIViewController {
         adjustSeparatorAndResultLabels(isAppend: true)
         
         // 增加 + 和 - 按鈕
-        let operatorLine: [UIButton] = [UIButton(type: .system), UIButton(type: .system)]
+        if timeRows.count != 0 {
+            let operatorRow: [UIButton] = [UIButton(type: .system), UIButton(type: .system)]
 
-        if (self.operatorButtons.count == 0) {
-            operatorLine[0].frame = CGRect(x: self.addButton.frame.origin.x, y: self.addButton.frame.origin.y + 75, width: 30, height: 25) //+
-            operatorLine[1].frame = CGRect(x: self.substractButton.frame.origin.x, y: self.substractButton.frame.origin.y + 75, width: 30, height: 25) //-
+            if (self.operatorButtons.count == 0) {
+                operatorRow[0].frame = CGRect(x: 129, y: 121, width: 30, height: 25) //+
+                operatorRow[1].frame = CGRect(x: 167, y: 121, width: 30, height: 25) //-
+            }
+            else {
+                operatorRow[0].frame = CGRect(x: 129/*self.operatorButtons[self.operatorButtons.count - 2].frame.origin.x*/, y: self.operatorButtons[self.operatorButtons.count - 2].frame.origin.y + 75, width: 30, height: 25) //+
+                operatorRow[1].frame = CGRect(x: 167/*self.operatorButtons[self.operatorButtons.count - 1].frame.origin.x*/, y: self.operatorButtons[self.operatorButtons.count - 1].frame.origin.y + 75, width: 30, height: 25) //-
+            }
+            
+            // 加進 operatorButtons 陣列以及畫到畫面上
+            for (i, button) in operatorRow.enumerated() {
+                button.setTitle(i == 0 ? "+" : "-", for: .normal)
+                button.setTitleColor(i == 0 ? .systemBlue : .gray, for: .normal)
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+                button.tag = operatorButtons.count
+                button.addTarget(self, action: #selector(addOrSubstract(_:)), for: .touchUpInside)
+                operatorButtons.append(button)
+                self.view.addSubview(button)
+            }
+            operators.append(true)
         }
-        else {
-            operatorLine[0].frame = CGRect(x: self.operatorButtons[self.operatorButtons.count - 2].frame.origin.x, y: self.operatorButtons[self.operatorButtons.count - 2].frame.origin.y + 75, width: 30, height: 25) //+
-            operatorLine[1].frame = CGRect(x: self.operatorButtons[self.operatorButtons.count - 1].frame.origin.x, y: self.operatorButtons[self.operatorButtons.count - 1].frame.origin.y + 75, width: 30, height: 25) //-
-        }
-        
-        // 加進 operatorButtons 陣列以及畫到畫面上
-        for (i, button) in operatorLine.enumerated() {
-            button.setTitle(i == 0 ? "+" : "-", for: .normal)
-            button.setTitleColor(i == 0 ? .systemBlue : .gray, for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-            button.tag = operatorButtons.count
-            button.addTarget(self, action: #selector(addOrSubstract(_:)), for: .touchUpInside)
-            operatorButtons.append(button)
-            self.view.addSubview(button)
-        }
-        operators.append(true)
-        
         
         // 增加時間欄位列
-        let lastRowY = self.timeRows.count == 0 ? self.hr2.frame.origin.y + 75 : self.timeRows[self.timeRows.count - 1][2].frame.origin.y + 75
+        let lastRowY = self.timeRows.count == 0 ? 80 : self.timeRows[self.timeRows.count - 1][2].frame.origin.y + 75
         let row: [UILabel] = [UILabel(), UILabel(), UILabel()]
+        row[0].frame = CGRect(x: 42, y: lastRowY, width: 54, height: 34)
+        row[1].frame = CGRect(x: 135, y: lastRowY, width: 54, height: 34)
+        row[2].frame = CGRect(x: 232, y: lastRowY, width: 54, height: 34)
         
-        row[0].frame = CGRect(x: self.hr2.frame.origin.x, y: lastRowY, width: 54, height: 34)
-        row[1].frame = CGRect(x: self.min2.frame.origin.x, y: lastRowY, width: 54, height: 34)
-        row[2].frame = CGRect(x: self.sec2.frame.origin.x, y: lastRowY, width: 54, height: 34)
-        // 加進 timeRow 陣列以及畫面上
+        // 加進 timeRows 陣列以及畫面上
         for label in row {
             label.text = "00"
             label.font = .systemFont(ofSize: 20)
             label.layer.borderWidth = 1
             label.layer.borderColor = timeLabelBorderColor
             label.textAlignment = .center
+            label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focus(_:))))
+            label.isUserInteractionEnabled = true
             self.view.addSubview(label)
         }
         self.timeRows.append(row)
         
         
         // 增加減列按鈕
-        let removeButton = UIButton(type: .system)
-        removeButton.setTitle("減列", for: .normal)
-        removeButton.setTitleColor(.systemBlue, for: .normal)
-        removeButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-        removeButton.frame = CGRect(x: 321, y: self.operatorButtons[self.operatorButtons.count - 1].frame.origin.y, width: 41, height: 36)
-        removeButton.tag = self.removeRowButtons.count
-        removeButton.addTarget(self, action: #selector(removeRow(_:)), for: .touchUpInside)
-        self.view.addSubview(removeButton)
-        self.removeRowButtons.append(removeButton)
+        if timeRows.count > 2 {
+            let removeButton = UIButton(type: .system)
+            removeButton.setTitle("減列", for: .normal)
+            removeButton.setTitleColor(.systemBlue, for: .normal)
+            removeButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+            removeButton.frame = CGRect(x: 321, y: self.operatorButtons[self.operatorButtons.count - 1].frame.origin.y, width: 41, height: 36)
+            removeButton.tag = self.removeRowButtons.count
+            removeButton.addTarget(self, action: #selector(removeRow(_:)), for: .touchUpInside)
+            self.view.addSubview(removeButton)
+            self.removeRowButtons.append(removeButton)
+        }
         
         calculateButton.frame.origin.y = separator.frame.origin.y
     }
@@ -296,6 +304,10 @@ class Page1ViewController : UIViewController {
     }
     
     func adjustSeparatorAndResultLabels(isAppend: Bool) {
+        if timeRows.count < 2 {
+            return
+        }
+        
         if isAppend {
             self.separator.frame.origin.y += 75
             self.hrResult.frame.origin.y = self.separator.frame.origin.y + 46
@@ -319,7 +331,7 @@ class Page1ViewController : UIViewController {
             for j in i {
                 if j.tag == label.tag {
                     self.focusedLabel?.backgroundColor = .white
-                    label.backgroundColor = timeLabelBavkgroundColor
+                    label.backgroundColor = timeLabelBackgroundColor
                     self.focusedLabel = label
                 }
             }
@@ -333,7 +345,7 @@ class Page1ViewController : UIViewController {
                 outerLoop: for i in timeRows {
                     for j in i {
                         if j.tag + 1 == self.focusedLabel!.tag {
-                            j.backgroundColor = timeLabelBavkgroundColor
+                            j.backgroundColor = timeLabelBackgroundColor
                             tmp = j
                         }
                         else if j.tag == self.focusedLabel!.tag {
@@ -360,7 +372,7 @@ class Page1ViewController : UIViewController {
                         }
                         else if j.tag == self.focusedLabel!.tag + 1 {
                             self.focusedLabel = j
-                            j.backgroundColor = timeLabelBavkgroundColor
+                            j.backgroundColor = timeLabelBackgroundColor
                             break outerLoop
                         }
                     }
@@ -410,7 +422,7 @@ class Page1ViewController : UIViewController {
             }
         }
         
-        self.focusedLabel?.backgroundColor = timeLabelBavkgroundColor
+        self.focusedLabel?.backgroundColor = timeLabelBackgroundColor
         
         return result
     }
