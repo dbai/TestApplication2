@@ -9,20 +9,12 @@
 import Foundation
 import UIKit
 
-class Page1ViewController : UIViewController {
-    @IBOutlet weak var hr1: UILabel!
-    @IBOutlet weak var min1: UILabel!
-    @IBOutlet weak var sec1: UILabel!
-    @IBOutlet weak var hr2: UILabel!
-    @IBOutlet weak var min2: UILabel!
-    @IBOutlet weak var sec2: UILabel!
-    
+class Page1ViewController : UIViewController {    
     @IBOutlet weak var hrResult: UILabel!
     @IBOutlet weak var minResult: UILabel!
     @IBOutlet weak var secResult: UILabel!
     
-    @IBOutlet weak var addButton: UIButton! // 預設兩列間的 + 按鈕
-    @IBOutlet weak var substractButton: UIButton! // 預設兩列間的 - 按鈕
+    @IBOutlet weak var addRowButton: UIButton!
     @IBOutlet weak var separator: UILabel!
     @IBOutlet weak var calculateButton: UIButton!
     
@@ -130,9 +122,6 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func addRow(_ sender: UIButton) {
-        // 調整結果列
-        adjustSeparatorAndResultLabels(isAppend: true)
-        
         // 增加 + 和 - 按鈕
         if timeRows.count != 0 {
             let operatorRow: [UIButton] = [UIButton(type: .system), UIButton(type: .system)]
@@ -181,50 +170,50 @@ class Page1ViewController : UIViewController {
         }
         self.timeRows.append(row)
         
-        
         // 增加減列按鈕
-        if timeRows.count > 0 {
+        if timeRows.count > 1 {
             let removeButton = UIButton(type: .system)
             removeButton.setTitle("減列", for: .normal)
             removeButton.setTitleColor(.systemBlue, for: .normal)
             removeButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-            removeButton.frame = CGRect(x: 321, y: removeRowButtons.count == 0 ? 46 : self.removeRowButtons[self.removeRowButtons.count - 1].frame.origin.y + 75, width: 41, height: 36)
+            removeButton.frame = CGRect(x: 321, y: removeRowButtons.count == 0 ? 155 : self.removeRowButtons[self.removeRowButtons.count - 1].frame.origin.y + 75, width: 41, height: 36)
             removeButton.tag = self.removeRowButtons.count
             removeButton.addTarget(self, action: #selector(removeRow(_:)), for: .touchUpInside)
             self.view.addSubview(removeButton)
             self.removeRowButtons.append(removeButton)
         }
-        
-//        print("operatorButtons.count: \(operatorButtons.count), operators.count: \(operators.count), removeRowButtons.count: \(removeRowButtons.count)")
-        calculateButton.frame.origin.y = separator.frame.origin.y
+
+        // 調整結果列
+        adjustSeparatorAndResultLabels(isAppend: true)
+                
+        refeshRemoveButtons()
     }
     
     @IBAction func removeRow(_ sender: UIButton) {
         let n = sender.tag
-        print("Delete Button: \(n)")
         
         // 判斷欲刪之列是不是最後一列，如果不是，就要把刪除之列後面的列往上移
         var shouldMoveUpRemainingRows = false
-        if n < self.timeRows.count - 1 {
+        if n + 1 < self.timeRows.count - 1 {
             shouldMoveUpRemainingRows = true
         }
         
         // 刪除時間欄位
-        for (_, label) in self.timeRows[n].enumerated() {
+        for (_, label) in self.timeRows[n + 1].enumerated() {
             label.removeFromSuperview()
         }
-        self.timeRows.remove(at: n)
+        self.timeRows.remove(at: n + 1)
         
         // 刪除 + 和 - 按鈕
-        self.operatorButtons[(n - 1) * 2 + 1].removeFromSuperview()
-        self.operatorButtons[(n - 1) * 2].removeFromSuperview()
-        self.operatorButtons.remove(at: (n - 1) * 2 + 1)
-        self.operatorButtons.remove(at: (n - 1) * 2)
+        self.operatorButtons[n * 2 + 1].removeFromSuperview()
+        self.operatorButtons[n * 2].removeFromSuperview()
+        self.operatorButtons.remove(at: n * 2 + 1)
+        self.operatorButtons.remove(at: n * 2)
         // 重新照順序排定每列所選運算元按鈕的 tag
         for (i, operatorButton) in self.operatorButtons.enumerated() {
             operatorButton.tag = i
         }
-        self.operators.remove(at: n - 1)
+        self.operators.remove(at: n)
         
         // 刪除減列按鈕
         self.removeRowButtons[n].removeFromSuperview()
@@ -235,10 +224,9 @@ class Page1ViewController : UIViewController {
         }
 
         //若刪的是中間的列，則下面的列要往上移
-        print("operatorButtons.count: \(operatorButtons.count), operators.count: \(operators.count), removeRowButtons.count: \(removeRowButtons.count)")
+//        print("operatorButtons.count: \(operatorButtons.count), operators.count: \(operators.count), removeRowButtons.count: \(removeRowButtons.count), timeRows.count: \(timeRows.count)")
         if shouldMoveUpRemainingRows {
-//            print("n: \(n), timeRows.count - 1: \(timeRows.count - 1)")
-            for i in n...self.timeRows.count - 1 {
+            for i in n + 1...self.timeRows.count - 1 {
                 self.operatorButtons[(i - 1) * 2].frame.origin.y -= 75
                 self.operatorButtons[(i - 1) * 2 + 1].frame.origin.y -= 75
 
@@ -246,34 +234,35 @@ class Page1ViewController : UIViewController {
                 self.timeRows[i][1].frame.origin.y -= 75
                 self.timeRows[i][2].frame.origin.y -= 75
 
-                self.removeRowButtons[i].frame.origin.y -= 75
+                self.removeRowButtons[i - 1].frame.origin.y -= 75
             }
         }
 
         // 調整結果列
         adjustSeparatorAndResultLabels(isAppend: false)
         
-        // 調整計算按鈕列
-        calculateButton.frame.origin.y = separator.frame.origin.y
+        refeshRemoveButtons()
     }
     
     func adjustSeparatorAndResultLabels(isAppend: Bool) {
-        if timeRows.count < 2 {
-            return
+        if timeRows.count >= 2 {
+            if isAppend {
+                self.separator.frame.origin.y += 75
+                self.hrResult.frame.origin.y = self.separator.frame.origin.y + 46
+                self.minResult.frame.origin.y = self.separator.frame.origin.y + 46
+                self.secResult.frame.origin.y = self.separator.frame.origin.y + 46
+            }
+            else {
+                self.separator.frame.origin.y -= 75
+                self.hrResult.frame.origin.y = self.separator.frame.origin.y + 46
+                self.minResult.frame.origin.y = self.separator.frame.origin.y + 46
+                self.secResult.frame.origin.y = self.separator.frame.origin.y + 46
+            }
         }
         
-        if isAppend {
-            self.separator.frame.origin.y += 75
-            self.hrResult.frame.origin.y = self.separator.frame.origin.y + 46
-            self.minResult.frame.origin.y = self.separator.frame.origin.y + 46
-            self.secResult.frame.origin.y = self.separator.frame.origin.y + 46
-        }
-        else {
-            self.separator.frame.origin.y -= 75
-            self.hrResult.frame.origin.y = self.separator.frame.origin.y + 46
-            self.minResult.frame.origin.y = self.separator.frame.origin.y + 46
-            self.secResult.frame.origin.y = self.separator.frame.origin.y + 46
-        }
+        // 調整計算與加列按鈕位置
+        addRowButton.frame.origin.y = separator.frame.origin.y
+        calculateButton.frame.origin.y = separator.frame.origin.y + 46
     }
     
     @IBAction func focus(_ sender: UITapGestureRecognizer) {
@@ -358,6 +347,19 @@ class Page1ViewController : UIViewController {
             for j in i {
                 j.text = "00"
                 j.layer.borderColor = timeLabelBorderColor
+            }
+        }
+    }
+    
+    func refeshRemoveButtons() {
+        if removeRowButtons.count <= 1 {
+            for (i, _) in removeRowButtons.enumerated() {
+                removeRowButtons[i].isHidden = true
+            }
+        }
+        else {
+            for (i, _) in removeRowButtons.enumerated() {
+                removeRowButtons[i].isHidden = false
             }
         }
     }
