@@ -203,6 +203,7 @@ class Page1ViewController : UIViewController {
             label.removeFromSuperview()
         }
         self.timeRows.remove(at: n + 1)
+        // 重新照順序排定時間欄位的 tag
         
         // 刪除 + 和 - 按鈕
         self.operatorButtons[n * 2 + 1].removeFromSuperview()
@@ -233,6 +234,9 @@ class Page1ViewController : UIViewController {
                 self.timeRows[i][0].frame.origin.y -= 75
                 self.timeRows[i][1].frame.origin.y -= 75
                 self.timeRows[i][2].frame.origin.y -= 75
+                self.timeRows[i][0].tag = timeRows[i - 1][0].tag + 3
+                self.timeRows[i][1].tag = timeRows[i - 1][1].tag + 3
+                self.timeRows[i][2].tag = timeRows[i - 1][2].tag + 3
 
                 self.removeRowButtons[i - 1].frame.origin.y -= 75
             }
@@ -242,6 +246,22 @@ class Page1ViewController : UIViewController {
         adjustSeparatorAndResultLabels(isAppend: false)
         
         refeshRemoveButtons()
+        
+        // 檢查 focusedLabel 是否在要被移除的列中，如果是就把 focusedLabel 往上移一列
+        for i in (n + 1) * 3...(n + 1) * 3 + 2 {
+            if i == focusedLabel?.tag {
+                if n == timeRows.count - 1 { // 是最後一列
+                    focusedLabel = timeRows[n][i % 3]
+                    focusedLabel?.backgroundColor = timeLabelBackgroundColor
+                    break
+                }
+                else {
+                    focusedLabel = timeRows[n + 1][i % 3]
+                    focusedLabel?.backgroundColor = timeLabelBackgroundColor
+                    break
+                }
+            }
+        }
     }
     
     func adjustSeparatorAndResultLabels(isAppend: Bool) {
@@ -329,6 +349,8 @@ class Page1ViewController : UIViewController {
             self.focusedLabel?.text = ""
         }
         self.focusedLabel?.text! += (sender.titleLabel?.text!)!
+        
+        self.validate(number: focusedLabel!.text!)
     }
     
     
@@ -340,6 +362,8 @@ class Page1ViewController : UIViewController {
         if (self.focusedLabel?.text!.count)! == 0 {
             self.focusedLabel?.text = "00"
         }
+        
+        self.validate(number: focusedLabel!.text!)
     }
     
     @IBAction func clear(_ sender: UIButton) {
@@ -349,6 +373,8 @@ class Page1ViewController : UIViewController {
                 j.layer.borderColor = timeLabelBorderColor
             }
         }
+        
+        self.validate(number: focusedLabel!.text!)
     }
     
     func refeshRemoveButtons() {
@@ -362,6 +388,19 @@ class Page1ViewController : UIViewController {
                 removeRowButtons[i].isHidden = false
             }
         }
+    }
+    
+    func validate(number: String) {
+        btn1.isEnabled = number.count < 3 ? true : false
+        btn2.isEnabled = number.count < 3 ? true : false
+        btn3.isEnabled = number.count < 3 ? true : false
+        btn4.isEnabled = number.count < 3 ? true : false
+        btn5.isEnabled = number.count < 3 ? true : false
+        btn6.isEnabled = number.count < 3 ? true : false
+        btn7.isEnabled = number.count < 3 ? true : false
+        btn8.isEnabled = number.count < 3 ? true : false
+        btn9.isEnabled = number.count < 3 ? true : false
+        btn0.isEnabled = number.count < 3 ? true : false
     }
     
 //    func validate() -> Bool {
