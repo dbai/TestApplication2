@@ -17,9 +17,7 @@ class Page1ViewController : UIViewController {
     @IBOutlet weak var addRowButton: UIButton!
     @IBOutlet weak var separator: UILabel!
     @IBOutlet weak var calculateButton: UIButton!
-    
-    @IBOutlet weak var errorMessage: UILabel!
-    
+        
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     var focusedLabel: UILabel?
@@ -60,9 +58,7 @@ class Page1ViewController : UIViewController {
         timeRows[0][0].backgroundColor = self.timeLabelBackgroundColor
         focusedLabel = timeRows[0][0]
         addRow(UIButton())
-        
-//        self.errorMessage.text = ""
-        
+                
         let keyboardPanGesture = UIPanGestureRecognizer(target: self, action: #selector(panKeyboard))
         keyboard.addGestureRecognizer(keyboardPanGesture)
         keyboard.isUserInteractionEnabled = true
@@ -73,26 +69,10 @@ class Page1ViewController : UIViewController {
         smallKeyboard.isUserInteractionEnabled = true
         view.bringSubviewToFront(smallKeyboard)
         
-//        animator = UIDynamicAnimator(referenceView: view)
-//        snapBehavior = UISnapBehavior(item: keyboard, snapTo: view.center)
-//        animator!.addBehavior(snapBehavior!)
-        
         smallKeyboard.isHidden = true
     }
     
     @objc func panKeyboard(recognizer: UIPanGestureRecognizer) {
-//        switch recognizer.state {
-//            case .began:
-//                animator!.removeBehavior(snapBehavior!)
-//            case .changed:
-//                let translation = recognizer.translation(in: view)
-//                keyboard.center = CGPoint(x: keyboard.center.x + translation.x, y: keyboard.center.y + translation.y)
-//                recognizer.setTranslation(.zero, in: view)
-//            case .ended, .cancelled, .failed:
-//                animator!.addBehavior(snapBehavior!)
-//            default:
-//                break
-//        }
         switch recognizer.state {
         case .changed:
             UIView.animate(withDuration: 0.2, animations: {
@@ -131,18 +111,6 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func calculate(_ sender: UIButton) {
-//        if !validate() {
-//            errorMessage.text = "有錯誤，請修正"
-//            return
-//        }
-        
-//        errorMessage.text = ""
-//        for i in timeRows {
-//            for j in i {
-//                j.layer.borderColor = timeLabelBorderColor
-//            }
-//        }
-        
         var totalSec = 0
         var totalSecN = 0
         
@@ -241,6 +209,9 @@ class Page1ViewController : UIViewController {
         adjustSeparatorAndResultLabels(isAppend: true)
                 
         refeshRemoveButtons()
+        
+        view.bringSubviewToFront(keyboard)
+        view.bringSubviewToFront(smallKeyboard)
     }
     
     @IBAction func removeRow(_ sender: UIButton) {
@@ -316,6 +287,9 @@ class Page1ViewController : UIViewController {
                 }
             }
         }
+        
+        view.bringSubviewToFront(keyboard)
+        view.bringSubviewToFront(smallKeyboard)
     }
     
     func adjustSeparatorAndResultLabels(isAppend: Bool) {

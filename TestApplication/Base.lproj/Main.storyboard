@@ -122,13 +122,6 @@
                                     <action selector="calculate:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="dzG-R5-MTW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uT-QF-4Fu">
-                                <rect key="frame" x="20" y="447" width="374" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEd-4V-YA0">
                                 <rect key="frame" x="321" y="42" width="41" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -283,7 +276,6 @@
                         <outlet property="btn9" destination="JI8-pP-OTZ" id="0Ew-Xp-F8G"/>
                         <outlet property="btnBackspace" destination="N2H-bw-MJz" id="BxK-gD-SPd"/>
                         <outlet property="calculateButton" destination="H94-7v-Yse" id="qMj-dq-IeZ"/>
-                        <outlet property="errorMessage" destination="2uT-QF-4Fu" id="f7K-gp-vkn"/>
                         <outlet property="hrResult" destination="CnS-Ax-cbP" id="alf-Ma-PaH"/>
                         <outlet property="keyboard" destination="P4m-y6-w2g" id="AgD-wk-Dbw"/>
                         <outlet property="leftButton" destination="Cfm-uW-whZ" id="qWi-eO-wAC"/>
