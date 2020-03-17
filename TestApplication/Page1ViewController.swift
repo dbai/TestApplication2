@@ -85,6 +85,24 @@ class Page1ViewController : UIViewController {
         case .ended:
             let touchPoint = recognizer.location(in: self.view)
             self.keyboard.center = touchPoint
+//            print("touchPoint: \(touchPoint), \(UIScreen.main.nativeBounds), \(UIScreen.main.bounds), \(UIScreen.main.nativeScale)")
+//            print("\(UIScreen.main.bounds.minX), \(UIScreen.main.bounds.maxX), \(UIScreen.main.bounds.minY), \(UIScreen.main.bounds.maxY)")
+            if keyboard.center.x - (keyboard.frame.width / 2) <= UIScreen.main.bounds.minX {
+                keyboard.center.x = UIScreen.main.bounds.minX + (keyboard.frame.width / 2)
+            }
+            
+            if keyboard.center.x + (keyboard.frame.width / 2) >= UIScreen.main.bounds.maxX {
+                keyboard.center.x = UIScreen.main.bounds.maxX - (keyboard.frame.width / 2)
+            }
+            
+            if keyboard.center.y - (keyboard.frame.height / 2) <= UIScreen.main.bounds.minY {
+                keyboard.center.y = UIScreen.main.bounds.minY + (keyboard.frame.height / 2)
+            }
+            
+            if keyboard.center.y + (keyboard.frame.height / 2) >= UIScreen.main.bounds.maxY {
+                keyboard.center.y = UIScreen.main.bounds.maxY - (keyboard.frame.height / 2)
+            }
+            
             UIView.animate(withDuration: 0.1, animations: {
                 self.smallKeyboard.isHidden = true
                 self.keyboard.alpha = 1

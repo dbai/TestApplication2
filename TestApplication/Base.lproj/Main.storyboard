@@ -135,15 +135,6 @@
                                 <rect key="frame" x="70" y="502" width="275" height="246"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1q-SE-q8o">
-                                        <rect key="frame" x="219" y="70" width="30" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="C"/>
-                                        <connections>
-                                            <action selector="clear:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="tlG-Oa-1ir"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2H-bw-MJz">
                                         <rect key="frame" x="222" y="127" width="25" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -250,6 +241,14 @@
                                         <state key="normal" title="right" image="arrow.right" catalog="system"/>
                                         <connections>
                                             <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="HH2-A3-OCf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1q-SE-q8o">
+                                        <rect key="frame" x="202" y="35" width="62" height="62"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="C" image="C"/>
+                                        <connections>
+                                            <action selector="clear:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="tlG-Oa-1ir"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -359,6 +358,7 @@
         <image name="7" width="300" height="300"/>
         <image name="8" width="300" height="300"/>
         <image name="9" width="300" height="300"/>
+        <image name="C" width="300" height="300"/>
         <image name="arrow.left" catalog="system" width="64" height="48"/>
         <image name="arrow.right" catalog="system" width="64" height="48"/>
         <image name="delete.left" catalog="system" width="64" height="52"/>
