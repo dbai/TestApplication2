@@ -290,15 +290,19 @@ class Page1ViewController : UIViewController {
             return
         }
         
-        for i in self.timeRows {
-            for j in i {
-                if j.tag == label.tag {
-                    self.focusedLabel?.backgroundColor = .white
-                    label.backgroundColor = timeLabelBackgroundColor
-                    self.focusedLabel = label
+        if label.tag != focusedLabel?.tag {
+            for i in self.timeRows {
+                for j in i {
+                    if j.tag == label.tag {
+                        self.focusedLabel?.backgroundColor = .white
+                        label.backgroundColor = timeLabelBackgroundColor
+                        self.focusedLabel = label
+                    }
                 }
             }
         }
+        
+        validate(number: focusedLabel!.text!)
     }
     
     @IBAction func moveFocus(_ sender: UIButton) {
@@ -342,6 +346,8 @@ class Page1ViewController : UIViewController {
                 }
             }
         }
+        
+        validate(number: focusedLabel!.text!)
     }
     
     @IBAction func inputDigit(_ sender: UIButton) {
@@ -372,9 +378,7 @@ class Page1ViewController : UIViewController {
                 j.text = "00"
                 j.layer.borderColor = timeLabelBorderColor
             }
-        }
-        
-        self.validate(number: focusedLabel!.text!)
+        }        
     }
     
     func refeshRemoveButtons() {
