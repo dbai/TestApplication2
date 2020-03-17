@@ -24,6 +24,7 @@ class Page1ViewController : UIViewController {
     @IBOutlet weak var rightButton: UIButton!
     var focusedLabel: UILabel?
     
+    @IBOutlet weak var keyboard: UIView!
     @IBOutlet weak var btn1: UIButton!
     @IBOutlet weak var btn2: UIButton!
     @IBOutlet weak var btn3: UIButton!
@@ -45,6 +46,9 @@ class Page1ViewController : UIViewController {
     var timeLabelBorderColor = UIColor.lightGray.cgColor
 
     
+    var animator: UIDynamicAnimator?
+    var snapBehavior: UISnapBehavior?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -57,6 +61,37 @@ class Page1ViewController : UIViewController {
         addRow(UIButton())
         
 //        self.errorMessage.text = ""
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panKeyboard))
+        keyboard.addGestureRecognizer(panGesture)
+        keyboard.isUserInteractionEnabled = true
+        view.bringSubviewToFront(keyboard)
+        
+        animator = UIDynamicAnimator(referenceView: view)
+        snapBehavior = UISnapBehavior(item: keyboard, snapTo: view.center)
+        animator!.addBehavior(snapBehavior!)
+    }
+    
+    @objc func panKeyboard(recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+            case .began:
+                animator!.removeBehavior(snapBehavior!)
+            case .changed:
+                let translation = recognizer.translation(in: view)
+                keyboard.center = CGPoint(x: keyboard.center.x + translation.x, y: keyboard.center.y + translation.y)
+                recognizer.setTranslation(.zero, in: view)
+            case .ended, .cancelled, .failed:
+                animator!.addBehavior(snapBehavior!)
+            default:
+                break
+        }
+//        switch recognizer.state {
+//            case .changed:
+//                let translation = recognizer.translation(in: view)
+//                keyboard.center = CGPoint(x: keyboard.center.x + translation.x, y: keyboard.center.y + translation.y)
+//                recognizer.setTranslation(.zero, in: view)
+//            default: break
+//        }
     }
     
     @IBAction func addOrSubstract(_ sender: UIButton) {
