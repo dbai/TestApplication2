@@ -262,6 +262,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="small-keyboard" translatesAutoresizingMaskIntoConstraints="NO" id="2hS-Zz-96O">
+                                <rect key="frame" x="344" y="698" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -287,6 +291,7 @@
                         <outlet property="rightButton" destination="c2O-17-ixN" id="gLW-MJ-bRd"/>
                         <outlet property="secResult" destination="Jta-6r-Kyw" id="zjx-5m-InM"/>
                         <outlet property="separator" destination="rg1-nA-dUL" id="Rm6-Z5-iBX"/>
+                        <outlet property="smallKeyboard" destination="2hS-Zz-96O" id="RHc-cJ-6sL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMC-Gk-J2z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -365,5 +370,6 @@
         <image name="arrow.left" catalog="system" width="64" height="48"/>
         <image name="arrow.right" catalog="system" width="64" height="48"/>
         <image name="delete.left" catalog="system" width="64" height="52"/>
+        <image name="small-keyboard" width="300" height="300"/>
     </resources>
 </document>

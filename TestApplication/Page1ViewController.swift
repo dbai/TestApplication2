@@ -24,6 +24,7 @@ class Page1ViewController : UIViewController {
     @IBOutlet weak var rightButton: UIButton!
     var focusedLabel: UILabel?
     
+    @IBOutlet weak var smallKeyboard: UIImageView!
     @IBOutlet weak var keyboard: UIView!
     @IBOutlet weak var btn1: UIButton!
     @IBOutlet weak var btn2: UIButton!
@@ -62,36 +63,54 @@ class Page1ViewController : UIViewController {
         
 //        self.errorMessage.text = ""
         
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panKeyboard))
-        keyboard.addGestureRecognizer(panGesture)
+        let keyboardPanGesture = UIPanGestureRecognizer(target: self, action: #selector(panKeyboard))
+        keyboard.addGestureRecognizer(keyboardPanGesture)
         keyboard.isUserInteractionEnabled = true
         view.bringSubviewToFront(keyboard)
         
-        animator = UIDynamicAnimator(referenceView: view)
-        snapBehavior = UISnapBehavior(item: keyboard, snapTo: view.center)
-        animator!.addBehavior(snapBehavior!)
+        let smallKeyboardPanGesture = UIPanGestureRecognizer(target: self, action: #selector(panKeyboard))
+        smallKeyboard.addGestureRecognizer(smallKeyboardPanGesture)
+        smallKeyboard.isUserInteractionEnabled = true
+        view.bringSubviewToFront(smallKeyboard)
+        
+//        animator = UIDynamicAnimator(referenceView: view)
+//        snapBehavior = UISnapBehavior(item: keyboard, snapTo: view.center)
+//        animator!.addBehavior(snapBehavior!)
+        
+        smallKeyboard.isHidden = true
     }
     
     @objc func panKeyboard(recognizer: UIPanGestureRecognizer) {
-        switch recognizer.state {
-            case .began:
-                animator!.removeBehavior(snapBehavior!)
-            case .changed:
-                let translation = recognizer.translation(in: view)
-                keyboard.center = CGPoint(x: keyboard.center.x + translation.x, y: keyboard.center.y + translation.y)
-                recognizer.setTranslation(.zero, in: view)
-            case .ended, .cancelled, .failed:
-                animator!.addBehavior(snapBehavior!)
-            default:
-                break
-        }
 //        switch recognizer.state {
+//            case .began:
+//                animator!.removeBehavior(snapBehavior!)
 //            case .changed:
 //                let translation = recognizer.translation(in: view)
 //                keyboard.center = CGPoint(x: keyboard.center.x + translation.x, y: keyboard.center.y + translation.y)
 //                recognizer.setTranslation(.zero, in: view)
-//            default: break
+//            case .ended, .cancelled, .failed:
+//                animator!.addBehavior(snapBehavior!)
+//            default:
+//                break
 //        }
+        switch recognizer.state {
+        case .changed:
+            UIView.animate(withDuration: 0.2, animations: {
+                self.keyboard.alpha = 0
+                let touchPoint = recognizer.location(in: self.view)
+                self.smallKeyboard.center = touchPoint
+                self.smallKeyboard.isHidden = false
+            })
+        
+        case .ended:
+            let touchPoint = recognizer.location(in: self.view)
+            self.keyboard.center = touchPoint
+            UIView.animate(withDuration: 0.1, animations: {
+                self.smallKeyboard.isHidden = true
+                self.keyboard.alpha = 1
+            })
+        default: break
+        }
     }
     
     @IBAction func addOrSubstract(_ sender: UIButton) {
