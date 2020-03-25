@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-class Page1ViewController : UIViewController {    
+class Page1ViewController : UIViewController {
+//    var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
     @IBOutlet weak var hrResult: UILabel!
     @IBOutlet weak var minResult: UILabel!
     @IBOutlet weak var secResult: UILabel!
@@ -50,7 +54,13 @@ class Page1ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+//        scrollView = UIScrollView(frame: view.bounds)
+//        scrollView.backgroundColor = UIColor.black
+//        scrollView.contentSize = UIScreen.main.bounds.size
+//        scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        view.addSubview(scrollView)
+//        scrollView.contentSize = CGSize(width: 375, height: 1000)
         
         calculateButton.frame.origin.y = separator.frame.origin.y
         
@@ -58,6 +68,13 @@ class Page1ViewController : UIViewController {
         timeRows[0][0].backgroundColor = self.timeLabelBackgroundColor
         focusedLabel = timeRows[0][0]
         addRow(UIButton())
+        
+//        addRow(UIButton())
+//        addRow(UIButton())
+//        addRow(UIButton())
+//        addRow(UIButton())
+//        addRow(UIButton())
+//        addRow(UIButton())
                 
         let keyboardPanGesture = UIPanGestureRecognizer(target: self, action: #selector(panKeyboard))
         keyboard.addGestureRecognizer(keyboardPanGesture)
@@ -184,7 +201,8 @@ class Page1ViewController : UIViewController {
                 button.tag = operatorButtons.count
                 button.addTarget(self, action: #selector(addOrSubstract(_:)), for: .touchUpInside)
                 operatorButtons.append(button)
-                self.view.addSubview(button)
+//                self.view.addSubview(button)
+                contentView.addSubview(button)
             }
             operators.append(true)
         }
@@ -200,13 +218,15 @@ class Page1ViewController : UIViewController {
         for (i, label) in row.enumerated() {
             label.text = "00"
             label.font = .systemFont(ofSize: 20)
+            label.textColor = .darkText
             label.layer.borderWidth = 1
             label.layer.borderColor = timeLabelBorderColor
             label.textAlignment = .center
             label.tag = self.timeRows.count * 3 + i
             label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focus(_:))))
             label.isUserInteractionEnabled = true
-            self.view.addSubview(label)
+//            self.view.addSubview(label)
+            contentView.addSubview(label)
         }
         self.timeRows.append(row)
         
@@ -219,7 +239,8 @@ class Page1ViewController : UIViewController {
             removeButton.frame = CGRect(x: 321, y: removeRowButtons.count == 0 ? 155 : self.removeRowButtons[self.removeRowButtons.count - 1].frame.origin.y + 75, width: 41, height: 36)
             removeButton.tag = self.removeRowButtons.count
             removeButton.addTarget(self, action: #selector(removeRow(_:)), for: .touchUpInside)
-            self.view.addSubview(removeButton)
+//            self.view.addSubview(removeButton)
+            contentView.addSubview(removeButton)
             self.removeRowButtons.append(removeButton)
         }
 
@@ -228,8 +249,10 @@ class Page1ViewController : UIViewController {
                 
         refeshRemoveButtons()
         
-        view.bringSubviewToFront(keyboard)
-        view.bringSubviewToFront(smallKeyboard)
+//        view.bringSubviewToFront(keyboard)
+//        view.bringSubviewToFront(smallKeyboard)
+        contentView.bringSubviewToFront(keyboard)
+        contentView.bringSubviewToFront(smallKeyboard)
     }
     
     @IBAction func removeRow(_ sender: UIButton) {
@@ -329,6 +352,16 @@ class Page1ViewController : UIViewController {
         // 調整計算與加列按鈕位置
         addRowButton.frame.origin.y = separator.frame.origin.y
         calculateButton.frame.origin.y = separator.frame.origin.y + 46
+        
+        viewDidLayoutSubviews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+//        print(calculateButton.frame.origin.y + calculateButton.frame.height)
+//        print(UIScreen.main.bounds.maxY)
+//        print("\(self.contentView.frame.width), \(calculateButton.frame.origin.y + calculateButton.frame.height + 80)")
+        
+        scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: calculateButton.frame.origin.y + calculateButton.frame.height + 80)
     }
     
     @IBAction func focus(_ sender: UITapGestureRecognizer) {
