@@ -122,7 +122,7 @@ class Page1ViewController : UIViewController {
             
             UIView.animate(withDuration: 0.1, animations: {
                 self.smallKeyboard.isHidden = true
-                self.keyboard.alpha = 1
+                self.keyboard.alpha = 0.8
             })
         default: break
         }
@@ -357,9 +357,9 @@ class Page1ViewController : UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-//        print(calculateButton.frame.origin.y + calculateButton.frame.height)
+        print(calculateButton.frame.origin.y + calculateButton.frame.height)
 //        print(UIScreen.main.bounds.maxY)
-//        print("\(self.contentView.frame.width), \(calculateButton.frame.origin.y + calculateButton.frame.height + 80)")
+        print("\(self.contentView.frame.width), \(calculateButton.frame.origin.y + calculateButton.frame.height + 80)")
         
         scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: calculateButton.frame.origin.y + calculateButton.frame.height + 80)
     }
