@@ -39,6 +39,9 @@ class Page1ViewController : UIViewController {
     @IBOutlet weak var btn9: UIButton!
     @IBOutlet weak var btn0: UIButton!
     @IBOutlet weak var btnBackspace: UIButton!
+    @IBOutlet weak var dummyLabel: UILabel!    
+    @IBOutlet weak var dummyTopContraint: NSLayoutConstraint!
+    @IBOutlet weak var dummyBottomContraint: NSLayoutConstraint!
     
     var removeRowButtons = [UIButton]() // 刪列按鈕
     var operatorButtons = [UIButton]() // 時間列前的 + 和 - 按鈕
@@ -48,6 +51,7 @@ class Page1ViewController : UIViewController {
     var timeLabelBackgroundColor = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1.0)
     var timeLabelBorderColor = UIColor.lightGray.cgColor
 
+    var originalConstraint: CGFloat?
     
     var animator: UIDynamicAnimator?
     var snapBehavior: UISnapBehavior?
@@ -62,6 +66,7 @@ class Page1ViewController : UIViewController {
 //        view.addSubview(scrollView)
 //        scrollView.contentSize = CGSize(width: 375, height: 1000)
         
+        originalConstraint = self.dummyBottomContraint.constant
         calculateButton.frame.origin.y = separator.frame.origin.y
         
         addRow(UIButton())
@@ -69,12 +74,13 @@ class Page1ViewController : UIViewController {
         focusedLabel = timeRows[0][0]
         addRow(UIButton())
         
-//        addRow(UIButton())
-//        addRow(UIButton())
-//        addRow(UIButton())
-//        addRow(UIButton())
-//        addRow(UIButton())
-//        addRow(UIButton())
+        addRow(UIButton())
+        addRow(UIButton())
+        addRow(UIButton())
+        addRow(UIButton())
+        addRow(UIButton())
+        addRow(UIButton())
+        // will be used in calculate the height constraint of the scrollable content view
                 
         let keyboardPanGesture = UIPanGestureRecognizer(target: self, action: #selector(panKeyboard))
         keyboard.addGestureRecognizer(keyboardPanGesture)
@@ -146,6 +152,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func calculate(_ sender: UIButton) {
+//        print("按了計算")
         var totalSec = 0
         var totalSecN = 0
         
@@ -179,6 +186,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func addRow(_ sender: UIButton) {
+        print("加第 \(self.timeRows.count + 1) 列")
         // 增加 + 和 - 按鈕
         if timeRows.count != 0 {
             let operatorRow: [UIButton] = [UIButton(type: .system), UIButton(type: .system)]
@@ -251,11 +259,12 @@ class Page1ViewController : UIViewController {
         
 //        view.bringSubviewToFront(keyboard)
 //        view.bringSubviewToFront(smallKeyboard)
-        contentView.bringSubviewToFront(keyboard)
-        contentView.bringSubviewToFront(smallKeyboard)
+//        contentView.bringSubviewToFront(keyboard)
+//        contentView.bringSubviewToFront(smallKeyboard)
     }
     
     @IBAction func removeRow(_ sender: UIButton) {
+        print("減第 \(self.timeRows.count) 列 \(Date())")
         let n = sender.tag
         
         // 判斷欲刪之列是不是最後一列，如果不是，就要把刪除之列後面的列往上移
@@ -329,8 +338,8 @@ class Page1ViewController : UIViewController {
             }
         }
         
-        view.bringSubviewToFront(keyboard)
-        view.bringSubviewToFront(smallKeyboard)
+//        view.bringSubviewToFront(keyboard)
+//        view.bringSubviewToFront(smallKeyboard)
     }
     
     func adjustSeparatorAndResultLabels(isAppend: Bool) {
@@ -357,17 +366,36 @@ class Page1ViewController : UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        print(calculateButton.frame.origin.y + calculateButton.frame.height)
+//        print(calculateButton.frame.origin.y + calculateButton.frame.height)
 //        print(UIScreen.main.bounds.maxY)
-        print("\(self.contentView.frame.width), \(calculateButton.frame.origin.y + calculateButton.frame.height + 80)")
+//        print("\(self.contentView.frame.width), \(calculateButton.frame.origin.y + calculateButton.frame.height + 80)")
         
-        scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: calculateButton.frame.origin.y + calculateButton.frame.height + 80)
+        print("Scrollview's bound: \(scrollView.bounds)\nCalculate's bottom: \(calculateButton.frame.origin.y + calculateButton.frame.height)")
+        
+//        scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: calculateButton.frame.origin.y + calculateButton.frame.height)
+//        scrollView.setContentOffset(CGPoint(x: 0.0, y: 75.0), animated: true)
+        
+//        print("dummyTopContraint: \(dummyTopContraint.constant), dummyLabel hight: \(dummyLabel.frame.height), dummyBottomContraint: \(self.dummyBottomContraint.constant)")
+        
+        if calculateButton.frame.origin.y + calculateButton.frame.height > scrollView.bounds.height {
+            let timesOf75 = Int((calculateButton.frame.origin.y + calculateButton.frame.height - scrollView.bounds.height) / 75)
+            self.dummyBottomContraint.constant = originalConstraint! + (CGFloat(timesOf75) + 1) * 75
+//            print("dummyBottomContraint.constant: \(self.dummyBottomContraint.constant)")
+        }
+        else {
+            self.dummyBottomContraint.constant = self.originalConstraint!
+        }
+        
+        contentView.layoutIfNeeded()
+        
+//        print("after, \(scrollView.bounds), \(calculateButton.frame.origin.y + calculateButton.frame.height)")
     }
     
     @IBAction func focus(_ sender: UITapGestureRecognizer) {
         guard let label = sender.view as? UILabel else {
             return
         }
+//        print("焦點在 \(label.tag)")
         
         if label.tag != focusedLabel?.tag {
             for i in self.timeRows {
