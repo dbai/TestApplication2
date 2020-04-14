@@ -162,9 +162,8 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="kp5-Y4-0uK"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="C45-9l-ne9"/>
                             </scrollView>
-                            <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P4m-y6-w2g">
-                                <rect key="frame" x="69" y="498" width="275" height="246"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4m-y6-w2g">
+                                <rect key="frame" x="69.666666666666686" y="542" width="275" height="246"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2H-bw-MJz">
                                         <rect key="frame" x="222" y="127" width="25" height="22"/>
@@ -284,18 +283,29 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="246" id="mvj-ow-X5J"/>
+                                    <constraint firstAttribute="width" constant="275" id="zYp-Pm-02K"/>
+                                </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="small-keyboard" translatesAutoresizingMaskIntoConstraints="NO" id="2hS-Zz-96O">
-                                <rect key="frame" x="182" y="596" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small-keyboard" translatesAutoresizingMaskIntoConstraints="NO" id="2hS-Zz-96O">
+                                <rect key="frame" x="182" y="640" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0TH-Bo-yjZ"/>
+                                    <constraint firstAttribute="width" constant="50" id="ivM-Co-nT8"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DvO-eo-fsz" firstAttribute="top" secondItem="Gwb-WU-fT0" secondAttribute="bottom" id="3kO-8I-rVY"/>
+                            <constraint firstItem="fd3-97-wUR" firstAttribute="top" secondItem="2hS-Zz-96O" secondAttribute="bottom" constant="118" id="8oc-5y-OR2"/>
                             <constraint firstItem="DvO-eo-fsz" firstAttribute="leading" secondItem="JiH-s1-A9f" secondAttribute="leading" id="Fw4-yj-11s"/>
                             <constraint firstAttribute="bottom" secondItem="DvO-eo-fsz" secondAttribute="bottom" id="Nsb-Pw-LYz"/>
+                            <constraint firstItem="fd3-97-wUR" firstAttribute="top" secondItem="P4m-y6-w2g" secondAttribute="bottom" constant="20" id="OdG-Bg-6Ph"/>
                             <constraint firstAttribute="trailing" secondItem="DvO-eo-fsz" secondAttribute="trailing" id="bKl-nd-lCE"/>
+                            <constraint firstItem="2hS-Zz-96O" firstAttribute="centerX" secondItem="JiH-s1-A9f" secondAttribute="centerX" id="dCU-ay-8pX"/>
+                            <constraint firstItem="P4m-y6-w2g" firstAttribute="centerX" secondItem="JiH-s1-A9f" secondAttribute="centerX" id="mTN-l2-b2l"/>
                         </constraints>
                     </view>
                     <connections>

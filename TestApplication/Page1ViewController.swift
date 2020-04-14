@@ -51,7 +51,7 @@ class Page1ViewController : UIViewController {
     var timeLabelBackgroundColor = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1.0)
     var timeLabelBorderColor = UIColor.lightGray.cgColor
 
-    var originalConstraint: CGFloat?
+//    var originalConstraint: CGFloat?
     
     var animator: UIDynamicAnimator?
     var snapBehavior: UISnapBehavior?
@@ -66,7 +66,9 @@ class Page1ViewController : UIViewController {
 //        view.addSubview(scrollView)
 //        scrollView.contentSize = CGSize(width: 375, height: 1000)
         
-        originalConstraint = self.dummyBottomContraint.constant
+//        self.dummyBottomContraint.constant = UIScreen.main.bounds.maxY - self.dummyTopContraint.constant
+//        print("Originally self.dummyBottomContraint is \(self.dummyBottomContraint.constant)")
+//        originalConstraint = self.dummyBottomContraint.constant
         calculateButton.frame.origin.y = separator.frame.origin.y
         
         addRow(UIButton())
@@ -74,12 +76,12 @@ class Page1ViewController : UIViewController {
         focusedLabel = timeRows[0][0]
         addRow(UIButton())
         
-        addRow(UIButton())
-        addRow(UIButton())
-        addRow(UIButton())
-        addRow(UIButton())
-        addRow(UIButton())
-        addRow(UIButton())
+//        addRow(UIButton())
+//        addRow(UIButton())
+//        addRow(UIButton())
+//        addRow(UIButton())
+//        addRow(UIButton())
+//        addRow(UIButton())
         // will be used in calculate the height constraint of the scrollable content view
                 
         let keyboardPanGesture = UIPanGestureRecognizer(target: self, action: #selector(panKeyboard))
@@ -186,7 +188,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func addRow(_ sender: UIButton) {
-        print("加第 \(self.timeRows.count + 1) 列")
+//        print("加第 \(self.timeRows.count + 1) 列")
         // 增加 + 和 - 按鈕
         if timeRows.count != 0 {
             let operatorRow: [UIButton] = [UIButton(type: .system), UIButton(type: .system)]
@@ -264,7 +266,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func removeRow(_ sender: UIButton) {
-        print("減第 \(self.timeRows.count) 列 \(Date())")
+//        print("減第 \(self.timeRows.count) 列 \(Date())")
         let n = sender.tag
         
         // 判斷欲刪之列是不是最後一列，如果不是，就要把刪除之列後面的列往上移
@@ -363,28 +365,33 @@ class Page1ViewController : UIViewController {
         calculateButton.frame.origin.y = separator.frame.origin.y + 46
         
         viewDidLayoutSubviews()
+//        print("加列嗎？\(isAppend) ============")
     }
     
     override func viewDidLayoutSubviews() {
 //        print(calculateButton.frame.origin.y + calculateButton.frame.height)
-//        print(UIScreen.main.bounds.maxY)
-//        print("\(self.contentView.frame.width), \(calculateButton.frame.origin.y + calculateButton.frame.height + 80)")
+//        print("UIScreen bound maxY: \(UIScreen.main.bounds.maxY)")
+//        print("Content view frame height: \(self.contentView.frame.height)")
         
-        print("Scrollview's bound: \(scrollView.bounds)\nCalculate's bottom: \(calculateButton.frame.origin.y + calculateButton.frame.height)")
+//        print("Scrollview's bound: \(scrollView.bounds)\nCalculate's bottom: \(calculateButton.frame.origin.y + calculateButton.frame.height)")
         
 //        scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: calculateButton.frame.origin.y + calculateButton.frame.height)
 //        scrollView.setContentOffset(CGPoint(x: 0.0, y: 75.0), animated: true)
         
 //        print("dummyTopContraint: \(dummyTopContraint.constant), dummyLabel hight: \(dummyLabel.frame.height), dummyBottomContraint: \(self.dummyBottomContraint.constant)")
         
-        if calculateButton.frame.origin.y + calculateButton.frame.height > scrollView.bounds.height {
-            let timesOf75 = Int((calculateButton.frame.origin.y + calculateButton.frame.height - scrollView.bounds.height) / 75)
-            self.dummyBottomContraint.constant = originalConstraint! + (CGFloat(timesOf75) + 1) * 75
+//        if calculateButton.frame.origin.y + calculateButton.frame.height > scrollView.bounds.height {
+////            let timesOf75 = Int((calculateButton.frame.origin.y + calculateButton.frame.height - scrollView.bounds.height) / 75)
+////            self.dummyBottomContraint.constant = originalConstraint! + (CGFloat(timesOf75) + 1) * 75
+//            self.dummyBottomContraint.constant = calculateButton.frame.origin.y + calculateButton.frame.height - self.dummyTopContraint.constant + 20
 //            print("dummyBottomContraint.constant: \(self.dummyBottomContraint.constant)")
-        }
-        else {
-            self.dummyBottomContraint.constant = self.originalConstraint!
-        }
+//        }
+//        else {
+//            self.dummyBottomContraint.constant = self.originalConstraint!
+//            print("Calculate button bottom < Scroll view bound height, bottom constraint is \(self.dummyBottomContraint.constant)")
+//        }
+        
+        self.dummyBottomContraint.constant = calculateButton.frame.origin.y + calculateButton.frame.height - self.dummyTopContraint.constant + 20
         
         contentView.layoutIfNeeded()
         
