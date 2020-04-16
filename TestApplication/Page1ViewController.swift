@@ -43,6 +43,12 @@ class Page1ViewController : UIViewController {
     @IBOutlet weak var dummyTopContraint: NSLayoutConstraint!
     @IBOutlet weak var dummyBottomContraint: NSLayoutConstraint!
     
+    @IBOutlet weak var addRowTopConstraint: NSLayoutConstraint!
+    
+    
+//    @IBOutlet weak var leftMargin: NSLayoutConstraint!
+//    @IBOutlet weak var spaceBetweenSecondAndAddRowButton: NSLayoutConstraint!
+    
     var removeRowButtons = [UIButton]() // 刪列按鈕
     var operatorButtons = [UIButton]() // 時間列前的 + 和 - 按鈕
     var operators = [Bool]() // 每列選到的運算元，true for +, false for -
@@ -58,6 +64,8 @@ class Page1ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        layout()
         
 //        scrollView = UIScrollView(frame: view.bounds)
 //        scrollView.backgroundColor = UIColor.black
@@ -95,6 +103,10 @@ class Page1ViewController : UIViewController {
         view.bringSubviewToFront(smallKeyboard)
         
         smallKeyboard.isHidden = true
+    }
+    
+    func layout() {
+//        self.leftMargin.constant = UIScreen.main.bounds.maxX * 0.1
     }
     
     @objc func panKeyboard(recognizer: UIPanGestureRecognizer) {
@@ -361,7 +373,9 @@ class Page1ViewController : UIViewController {
         }
         
         // 調整計算與加列按鈕位置
-        addRowButton.frame.origin.y = separator.frame.origin.y
+//        print("Separator's Y: \(separator.frame.origin.y)")
+//        addRowButton.frame.origin.y = separator.frame.origin.y
+        self.addRowTopConstraint.constant = separator.frame.origin.y
         calculateButton.frame.origin.y = separator.frame.origin.y + 46
         
         viewDidLayoutSubviews()
@@ -372,6 +386,10 @@ class Page1ViewController : UIViewController {
 //        print(calculateButton.frame.origin.y + calculateButton.frame.height)
 //        print("UIScreen bound maxY: \(UIScreen.main.bounds.maxY)")
 //        print("Content view frame height: \(self.contentView.frame.height)")
+        
+        print("UIScreen.main.bounds.maxX: \(UIScreen.main.bounds.maxX), self.contentView.frame.width: \(self.contentView.frame.width)")
+//        self.spaceBetweenSecondAndAddRowButton.constant = self.contentView.frame.width * 0.1
+//        print(self.spaceBetweenSecondAndAddRowButton.constant)
         
 //        print("Scrollview's bound: \(scrollView.bounds)\nCalculate's bottom: \(calculateButton.frame.origin.y + calculateButton.frame.height)")
         
