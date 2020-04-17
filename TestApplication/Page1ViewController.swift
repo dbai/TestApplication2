@@ -14,6 +14,10 @@ class Page1ViewController : UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var hrLabel: UILabel!
+    @IBOutlet weak var minLabel: UILabel!
+    @IBOutlet weak var secLabel: UILabel!
+    
     @IBOutlet weak var hrResult: UILabel!
     @IBOutlet weak var minResult: UILabel!
     @IBOutlet weak var secResult: UILabel!
@@ -45,9 +49,7 @@ class Page1ViewController : UIViewController {
     
     @IBOutlet weak var addRowTopConstraint: NSLayoutConstraint!
     
-    
-//    @IBOutlet weak var leftMargin: NSLayoutConstraint!
-//    @IBOutlet weak var spaceBetweenSecondAndAddRowButton: NSLayoutConstraint!
+    @IBOutlet weak var leftMargin: NSLayoutConstraint!
     
     var removeRowButtons = [UIButton]() // 刪列按鈕
     var operatorButtons = [UIButton]() // 時間列前的 + 和 - 按鈕
@@ -77,7 +79,7 @@ class Page1ViewController : UIViewController {
 //        self.dummyBottomContraint.constant = UIScreen.main.bounds.maxY - self.dummyTopContraint.constant
 //        print("Originally self.dummyBottomContraint is \(self.dummyBottomContraint.constant)")
 //        originalConstraint = self.dummyBottomContraint.constant
-        calculateButton.frame.origin.y = separator.frame.origin.y
+//        calculateButton.frame.origin.y = separator.frame.origin.y
         
         addRow(UIButton())
         timeRows[0][0].backgroundColor = self.timeLabelBackgroundColor
@@ -106,7 +108,11 @@ class Page1ViewController : UIViewController {
     }
     
     func layout() {
-//        self.leftMargin.constant = UIScreen.main.bounds.maxX * 0.1
+        self.leftMargin.constant = UIScreen.main.bounds.maxX * 0.1
+        viewDidLayoutSubviews()
+        hrResult.center.x = hrLabel.center.x
+        minResult.center.x = minLabel.center.x
+        secResult.center.x = secLabel.center.x
     }
     
     @objc func panKeyboard(recognizer: UIPanGestureRecognizer) {
@@ -206,8 +212,10 @@ class Page1ViewController : UIViewController {
             let operatorRow: [UIButton] = [UIButton(type: .system), UIButton(type: .system)]
 
             if (self.operatorButtons.count == 0) {
-                operatorRow[0].frame = CGRect(x: 129, y: 121, width: 30, height: 25) //+
-                operatorRow[1].frame = CGRect(x: 167, y: 121, width: 30, height: 25) //-
+                operatorRow[0].frame = CGRect(x: 0, y: 121, width: 30, height: 25) //+
+                operatorRow[0].center.x = minLabel.frame.minX
+                operatorRow[1].frame = CGRect(x: 0, y: 121, width: 30, height: 25) //-
+                operatorRow[1].center.x = minLabel.frame.maxX
             }
             else {
                 operatorRow[0].frame = CGRect(x: 129/*self.operatorButtons[self.operatorButtons.count - 2].frame.origin.x*/, y: self.operatorButtons[self.operatorButtons.count - 2].frame.origin.y + 75, width: 30, height: 25) //+
@@ -231,10 +239,13 @@ class Page1ViewController : UIViewController {
         
         // 增加時間欄位列
         let lastRowY = self.timeRows.count == 0 ? 80 : self.timeRows[self.timeRows.count - 1][2].frame.origin.y + 75
-        let row: [UILabel] = [UILabel(), UILabel(), UILabel()]
-        row[0].frame = CGRect(x: 42, y: lastRowY, width: 54, height: 34)
-        row[1].frame = CGRect(x: 135, y: lastRowY, width: 54, height: 34)
-        row[2].frame = CGRect(x: 232, y: lastRowY, width: 54, height: 34)
+        let row: [UILabel] = [UILabel(), UILabel(), UILabel()]        
+        row[0].frame = CGRect(x: hrLabel.frame.origin.x, y: lastRowY, width: 54, height: 34)
+        row[0].center.x = hrLabel.center.x
+        row[1].frame = CGRect(x: minLabel.frame.origin.x, y: lastRowY, width: 54, height: 34)
+        row[1].center.x = minLabel.center.x
+        row[2].frame = CGRect(x: secLabel.frame.origin.x, y: lastRowY, width: 54, height: 34)
+        row[2].center.x = secLabel.center.x
         
         // 加進 timeRows 陣列以及畫面上
         for (i, label) in row.enumerated() {
@@ -255,10 +266,10 @@ class Page1ViewController : UIViewController {
         // 增加減列按鈕
         if timeRows.count > 1 {
             let removeButton = UIButton(type: .system)
-            removeButton.setTitle("減列", for: .normal)
+            removeButton.setTitle("⤴︎", for: .normal)
             removeButton.setTitleColor(.systemBlue, for: .normal)
             removeButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-            removeButton.frame = CGRect(x: 321, y: removeRowButtons.count == 0 ? 155 : self.removeRowButtons[self.removeRowButtons.count - 1].frame.origin.y + 75, width: 41, height: 36)
+            removeButton.frame = CGRect(x: addRowButton.frame.origin.x, y: removeRowButtons.count == 0 ? 155 : self.removeRowButtons[self.removeRowButtons.count - 1].frame.origin.y + 75, width: addRowButton.frame.size.width, height: addRowButton.frame.size.height)
             removeButton.tag = self.removeRowButtons.count
             removeButton.addTarget(self, action: #selector(removeRow(_:)), for: .touchUpInside)
 //            self.view.addSubview(removeButton)
@@ -376,7 +387,8 @@ class Page1ViewController : UIViewController {
 //        print("Separator's Y: \(separator.frame.origin.y)")
 //        addRowButton.frame.origin.y = separator.frame.origin.y
         self.addRowTopConstraint.constant = separator.frame.origin.y
-        calculateButton.frame.origin.y = separator.frame.origin.y + 46
+        calculateButton.center.y = secResult.center.y
+        calculateButton.center.x = addRowButton.center.x
         
         viewDidLayoutSubviews()
 //        print("加列嗎？\(isAppend) ============")
@@ -387,7 +399,7 @@ class Page1ViewController : UIViewController {
 //        print("UIScreen bound maxY: \(UIScreen.main.bounds.maxY)")
 //        print("Content view frame height: \(self.contentView.frame.height)")
         
-        print("UIScreen.main.bounds.maxX: \(UIScreen.main.bounds.maxX), self.contentView.frame.width: \(self.contentView.frame.width)")
+//        print("UIScreen.main.bounds.maxX: \(UIScreen.main.bounds.maxX), self.contentView.frame.width: \(self.contentView.frame.width)")
 //        self.spaceBetweenSecondAndAddRowButton.constant = self.contentView.frame.width * 0.1
 //        print(self.spaceBetweenSecondAndAddRowButton.constant)
         
