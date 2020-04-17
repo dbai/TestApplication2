@@ -24,6 +24,7 @@ class Page1ViewController : UIViewController {
     
     @IBOutlet weak var addRowButton: UIButton!
     @IBOutlet weak var separator: UILabel!
+    @IBOutlet weak var separatorView: CanvasView!
     @IBOutlet weak var calculateButton: UIButton!
         
     @IBOutlet weak var leftButton: UIButton!
@@ -346,18 +347,34 @@ class Page1ViewController : UIViewController {
     }
     
     func adjustSeparatorAndResultLabels(isAppend: Bool) {
+//        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 200, height: 200))
+//        let image = renderer.image { (context) in
+//          UIColor.darkGray.setStroke()
+//          context.stroke(renderer.format.bounds)
+//          UIColor(displayP3Red: 158/255, green: 215/255, blue: 245/255, alpha: 1).setFill()
+//          context.fill(CGRect(x: 1, y: 1, width: 140, height: 140))
+//        }
+        
         if timeRows.count >= 2 {
             if isAppend {
-                self.separator.frame.origin.y += 75
-                self.hrResult.frame.origin.y = self.separator.frame.origin.y + 46
-                self.minResult.frame.origin.y = self.separator.frame.origin.y + 46
-                self.secResult.frame.origin.y = self.separator.frame.origin.y + 46
+//                self.separator.frame.origin.y += 75
+//                self.hrResult.frame.origin.y = self.separator.frame.origin.y + 46
+//                self.minResult.frame.origin.y = self.separator.frame.origin.y + 46
+//                self.secResult.frame.origin.y = self.separator.frame.origin.y + 46
+                self.separatorView.frame.origin.y += 75
+                self.hrResult.frame.origin.y = self.separatorView.frame.origin.y + 46
+                self.minResult.frame.origin.y = self.separatorView.frame.origin.y + 46
+                self.secResult.frame.origin.y = self.separatorView.frame.origin.y + 46
             }
             else {
-                self.separator.frame.origin.y -= 75
-                self.hrResult.frame.origin.y = self.separator.frame.origin.y + 46
-                self.minResult.frame.origin.y = self.separator.frame.origin.y + 46
-                self.secResult.frame.origin.y = self.separator.frame.origin.y + 46
+//                self.separator.frame.origin.y -= 75
+//                self.hrResult.frame.origin.y = self.separator.frame.origin.y + 46
+//                self.minResult.frame.origin.y = self.separator.frame.origin.y + 46
+//                self.secResult.frame.origin.y = self.separator.frame.origin.y + 46
+                self.separatorView.frame.origin.y -= 75
+                self.hrResult.frame.origin.y = self.separatorView.frame.origin.y + 46
+                self.minResult.frame.origin.y = self.separatorView.frame.origin.y + 46
+                self.secResult.frame.origin.y = self.separatorView.frame.origin.y + 46
             }
         }
         
