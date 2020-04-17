@@ -69,18 +69,6 @@ class Page1ViewController : UIViewController {
         
         layout()
         
-//        scrollView = UIScrollView(frame: view.bounds)
-//        scrollView.backgroundColor = UIColor.black
-//        scrollView.contentSize = UIScreen.main.bounds.size
-//        scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        view.addSubview(scrollView)
-//        scrollView.contentSize = CGSize(width: 375, height: 1000)
-        
-//        self.dummyBottomContraint.constant = UIScreen.main.bounds.maxY - self.dummyTopContraint.constant
-//        print("Originally self.dummyBottomContraint is \(self.dummyBottomContraint.constant)")
-//        originalConstraint = self.dummyBottomContraint.constant
-//        calculateButton.frame.origin.y = separator.frame.origin.y
-        
         addRow(UIButton())
         timeRows[0][0].backgroundColor = self.timeLabelBackgroundColor
         focusedLabel = timeRows[0][0]
@@ -92,7 +80,6 @@ class Page1ViewController : UIViewController {
 //        addRow(UIButton())
 //        addRow(UIButton())
 //        addRow(UIButton())
-        // will be used in calculate the height constraint of the scrollable content view
                 
         let keyboardPanGesture = UIPanGestureRecognizer(target: self, action: #selector(panKeyboard))
         keyboard.addGestureRecognizer(keyboardPanGesture)
@@ -128,8 +115,7 @@ class Page1ViewController : UIViewController {
         case .ended:
             let touchPoint = recognizer.location(in: self.view)
             self.keyboard.center = touchPoint
-//            print("touchPoint: \(touchPoint), \(UIScreen.main.nativeBounds), \(UIScreen.main.bounds), \(UIScreen.main.nativeScale)")
-//            print("\(UIScreen.main.bounds.minX), \(UIScreen.main.bounds.maxX), \(UIScreen.main.bounds.minY), \(UIScreen.main.bounds.maxY)")
+
             if keyboard.center.x - (keyboard.frame.width / 2) <= UIScreen.main.bounds.minX {
                 keyboard.center.x = UIScreen.main.bounds.minX + (keyboard.frame.width / 2)
             }
@@ -172,7 +158,6 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func calculate(_ sender: UIButton) {
-//        print("按了計算")
         var totalSec = 0
         var totalSecN = 0
         
@@ -206,7 +191,6 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func addRow(_ sender: UIButton) {
-//        print("加第 \(self.timeRows.count + 1) 列")
         // 增加 + 和 - 按鈕
         if timeRows.count != 0 {
             let operatorRow: [UIButton] = [UIButton(type: .system), UIButton(type: .system)]
@@ -272,7 +256,6 @@ class Page1ViewController : UIViewController {
             removeButton.frame = CGRect(x: addRowButton.frame.origin.x, y: removeRowButtons.count == 0 ? 155 : self.removeRowButtons[self.removeRowButtons.count - 1].frame.origin.y + 75, width: addRowButton.frame.size.width, height: addRowButton.frame.size.height)
             removeButton.tag = self.removeRowButtons.count
             removeButton.addTarget(self, action: #selector(removeRow(_:)), for: .touchUpInside)
-//            self.view.addSubview(removeButton)
             contentView.addSubview(removeButton)
             self.removeRowButtons.append(removeButton)
         }
@@ -281,11 +264,6 @@ class Page1ViewController : UIViewController {
         adjustSeparatorAndResultLabels(isAppend: true)
                 
         refeshRemoveButtons()
-        
-//        view.bringSubviewToFront(keyboard)
-//        view.bringSubviewToFront(smallKeyboard)
-//        contentView.bringSubviewToFront(keyboard)
-//        contentView.bringSubviewToFront(smallKeyboard)
     }
     
     @IBAction func removeRow(_ sender: UIButton) {
