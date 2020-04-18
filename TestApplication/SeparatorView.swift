@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CanvasView: UIView {
+class SeparatorView: UIView {
 
     
     // Only override draw() if you perform custom drawing.
@@ -16,10 +16,11 @@ class CanvasView: UIView {
     override func draw(_ rect: CGRect) {
         // Drawing code
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: 256, y: 0))
+//        UIColor.red.set()
         path.move(to: CGPoint(x: 0, y: 10))
-        path.addLine(to: CGPoint(x: 256, y: 10))
+        path.addLine(to: CGPoint(x: self.bounds.maxX, y: 10))
+        path.move(to: CGPoint(x: 0, y: 15))
+        path.addLine(to: CGPoint(x: self.bounds.maxX, y: 15))
         path.stroke()
     }
     

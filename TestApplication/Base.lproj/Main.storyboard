@@ -93,17 +93,10 @@
                                                     <action selector="addRow:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="lmP-pr-12z"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="========================" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rg1-nA-dUL">
-                                                <rect key="frame" x="36" y="137" width="256" height="21"/>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Rn-1k-5j3" userLabel="Separator View" customClass="SeparatorView" customModule="TestApplication" customModuleProvider="target">
+                                                <rect key="frame" x="56" y="137" width="205" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Rn-1k-5j3" userLabel="Separator View" customClass="CanvasView" customModule="TestApplication" customModuleProvider="target">
-                                                <rect key="frame" x="36" y="137" width="256" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnS-Ax-cbP">
                                                 <rect key="frame" x="56" y="183" width="28" height="27"/>
@@ -132,26 +125,26 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2UR-1s-i1T" userLabel="Left Margin">
+                                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2UR-1s-i1T" userLabel="Left Margin">
                                                 <rect key="frame" x="0.0" y="48" width="50" height="28"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="RIY-zS-qDo"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Taf-Xy-YsD" userLabel="Right Margin">
+                                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Taf-Xy-YsD" userLabel="Right Margin">
                                                 <rect key="frame" x="335" y="51.5" width="40" height="21"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZu-rf-p2w" userLabel="Space1">
+                                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZu-rf-p2w" userLabel="Space1">
                                                 <rect key="frame" x="91" y="50" width="47" height="24"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GcE-be-ljb" userLabel="Space2">
+                                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GcE-be-ljb" userLabel="Space2">
                                                 <rect key="frame" x="179" y="50" width="47.5" height="24"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxf-MT-JWc" userLabel="Space3">
+                                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxf-MT-JWc" userLabel="Space3">
                                                 <rect key="frame" x="267.5" y="50" width="37.5" height="24"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </view>
@@ -394,7 +387,6 @@
                         <outlet property="scrollView" destination="DvO-eo-fsz" id="hH0-tS-ink"/>
                         <outlet property="secLabel" destination="XTu-ye-WZQ" id="A4Q-h2-EWc"/>
                         <outlet property="secResult" destination="Jta-6r-Kyw" id="zjx-5m-InM"/>
-                        <outlet property="separator" destination="rg1-nA-dUL" id="Rm6-Z5-iBX"/>
                         <outlet property="separatorView" destination="0Rn-1k-5j3" id="1tf-gt-yxa"/>
                         <outlet property="smallKeyboard" destination="2hS-Zz-96O" id="RHc-cJ-6sL"/>
                     </connections>

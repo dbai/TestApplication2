@@ -10,7 +10,7 @@
 		3D41FFBB24060DA300377503 /* TestApp StickerPackExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3D41FFBA24060DA300377503 /* TestApp StickerPackExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3D41FFBF24060DA300377503 /* Stickers.xcstickers in Resources */ = {isa = PBXBuildFile; fileRef = 3D41FFBE24060DA300377503 /* Stickers.xcstickers */; };
 		3D41FFC024060DA300377503 /* Stickers.xcstickers in Resources */ = {isa = PBXBuildFile; fileRef = 3D41FFBE24060DA300377503 /* Stickers.xcstickers */; };
-		3D9DC4702449B65F009C1CF0 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9DC46F2449B65F009C1CF0 /* CanvasView.swift */; };
+		3D9DC4702449B65F009C1CF0 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9DC46F2449B65F009C1CF0 /* SeparatorView.swift */; };
 		3DBCC8B7241F5DAF003B0821 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCC8B6241F5DAF003B0821 /* Assets.xcassets */; };
 		E6D929671EB18A1F0082239E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D929661EB18A1F0082239E /* AppDelegate.swift */; };
 		E6D929691EB18A1F0082239E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D929681EB18A1F0082239E /* ViewController.swift */; };
@@ -76,7 +76,7 @@
 		3D41FFB724060DA300377503 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D41FFBA24060DA300377503 /* TestApp StickerPackExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TestApp StickerPackExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D41FFBE24060DA300377503 /* Stickers.xcstickers */ = {isa = PBXFileReference; lastKnownFileType = folder.stickers; name = Stickers.xcstickers; path = "TestApp StickerPackExtension/Stickers.xcstickers"; sourceTree = "<group>"; };
-		3D9DC46F2449B65F009C1CF0 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		3D9DC46F2449B65F009C1CF0 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		3DBCC8B6241F5DAF003B0821 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6D929631EB18A1F0082239E /* TestApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6D929661EB18A1F0082239E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 				E6D929661EB18A1F0082239E /* AppDelegate.swift */,
 				E6D929681EB18A1F0082239E /* ViewController.swift */,
 				E6D9296A1EB18A1F0082239E /* Main.storyboard */,
-				3D9DC46F2449B65F009C1CF0 /* CanvasView.swift */,
+				3D9DC46F2449B65F009C1CF0 /* SeparatorView.swift */,
 				3DBCC8B6241F5DAF003B0821 /* Assets.xcassets */,
 				E6D9296F1EB18A1F0082239E /* LaunchScreen.storyboard */,
 				E6D929721EB18A1F0082239E /* Info.plist */,
@@ -387,7 +387,7 @@
 			files = (
 				E6D929951EB18F790082239E /* Page1ViewController.swift in Sources */,
 				E6D929691EB18A1F0082239E /* ViewController.swift in Sources */,
-				3D9DC4702449B65F009C1CF0 /* CanvasView.swift in Sources */,
+				3D9DC4702449B65F009C1CF0 /* SeparatorView.swift in Sources */,
 				E6D929971EB18FE80082239E /* Page2ViewController.swift in Sources */,
 				E6D929671EB18A1F0082239E /* AppDelegate.swift in Sources */,
 			);

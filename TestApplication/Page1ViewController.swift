@@ -23,8 +23,8 @@ class Page1ViewController : UIViewController {
     @IBOutlet weak var secResult: UILabel!
     
     @IBOutlet weak var addRowButton: UIButton!
-    @IBOutlet weak var separator: UILabel!
-    @IBOutlet weak var separatorView: CanvasView!
+//    @IBOutlet weak var separator: UILabel!
+    @IBOutlet weak var separatorView: SeparatorView!
     @IBOutlet weak var calculateButton: UIButton!
         
     @IBOutlet weak var leftButton: UIButton!
@@ -97,7 +97,14 @@ class Page1ViewController : UIViewController {
     
     func layout() {
         self.leftMargin.constant = UIScreen.main.bounds.maxX * 0.1
+//        viewDidLayoutSubviews()
+        
+//        print("\(secLabel.frame.maxX), \(separatorView.frame.origin.x)")
+//        row[0].frame = CGRect(x: hrLabel.frame.origin.x, y: lastRowY, width: 54, height: 34)
+//        row[0].center.x = hrLabel.center.x
         viewDidLayoutSubviews()
+        separatorView.frame.origin.x = hrLabel.frame.minX - 5
+        separatorView.frame.size.width = secLabel.frame.maxX - separatorView.frame.origin.x + 5
         hrResult.center.x = hrLabel.center.x
         minResult.center.x = minLabel.center.x
         secResult.center.x = secLabel.center.x
@@ -381,7 +388,8 @@ class Page1ViewController : UIViewController {
         // 調整計算與加列按鈕位置
 //        print("Separator's Y: \(separator.frame.origin.y)")
 //        addRowButton.frame.origin.y = separator.frame.origin.y
-        self.addRowTopConstraint.constant = separator.frame.origin.y
+//        self.addRowTopConstraint.constant = separator.frame.origin.y
+        self.addRowTopConstraint.constant = separatorView.frame.origin.y
         calculateButton.center.y = secResult.center.y
         calculateButton.center.x = addRowButton.center.x
         
