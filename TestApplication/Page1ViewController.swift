@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class Page1ViewController : UIViewController {
 //    var scrollView: UIScrollView!
@@ -62,8 +63,10 @@ class Page1ViewController : UIViewController {
 
 //    var originalConstraint: CGFloat?
     
-    var animator: UIDynamicAnimator?
-    var snapBehavior: UISnapBehavior?
+//    var animator: UIDynamicAnimator?
+//    var snapBehavior: UISnapBehavior?
+    
+    var audioPlayer = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +96,14 @@ class Page1ViewController : UIViewController {
         view.bringSubviewToFront(smallKeyboard)
         
         smallKeyboard.isHidden = true
+        
+        // Sound effects
+        guard let player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "click", ofType: "m4a")!)) else {
+            print("Failed to initialize AVAudioPlayer")
+            return
+        }
+        audioPlayer = player
+        audioPlayer.prepareToPlay()
     }
     
     func layout() {
@@ -453,7 +464,9 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func moveFocus(_ sender: UIButton) {
-        if sender.titleLabel?.text == "left" {
+        btnTouchedUp(btn: sender)
+        
+        if sender.tag == 0 {
             if self.focusedLabel!.tag > 0 {
                 var tmp: UILabel?
                 outerLoop: for i in timeRows {
@@ -498,6 +511,8 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func inputDigit(_ sender: UIButton) {
+        btnTouchedUp(btn: sender)
+        
         if self.focusedLabel?.text! == "00" {
             self.focusedLabel?.text = ""
         }
@@ -506,8 +521,20 @@ class Page1ViewController : UIViewController {
         self.validate(number: focusedLabel!.text!)
     }
     
+    @IBAction func btnTouhedDown(_ sender: UIButton) {
+        sender.layer.borderWidth = 1
+        sender.layer.borderColor = UIColor.blue.cgColor
+    }
+    
+    func btnTouchedUp(btn: UIButton) {
+        btn.layer.borderWidth = 0
+        btn.layer.borderColor = nil
+        audioPlayer.play()
+    }
     
     @IBAction func backspace(_ sender: UIButton) {
+        btnTouchedUp(btn: sender)
+        
         if (self.focusedLabel?.text!.count)! > 0 && Int((self.focusedLabel?.text!)!)! != 0 {
             self.focusedLabel?.text!.removeLast()
         }
@@ -520,12 +547,20 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func clear(_ sender: UIButton) {
+        btnTouchedUp(btn: sender)
+        
         for i in timeRows {
             for j in i {
                 j.text = "00"
                 j.layer.borderColor = timeLabelBorderColor
             }
-        }        
+        }
+        
+        self.validate(number: focusedLabel!.text!)
+        
+        hrResult.text! = "00"
+        minResult.text! = "00"
+        secResult.text! = "00"
     }
     
     func refeshRemoveButtons() {

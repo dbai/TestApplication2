@@ -99,21 +99,14 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnS-Ax-cbP">
-                                                <rect key="frame" x="56" y="183" width="28" height="27"/>
+                                                <rect key="frame" x="50" y="183" width="41" height="27"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QQ-Jf-0cZ">
-                                                <rect key="frame" x="144" y="183" width="28" height="27"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jta-6r-Kyw">
-                                                <rect key="frame" x="233" y="183" width="28" height="27"/>
+                                                <rect key="frame" x="138" y="183" width="41" height="27"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -160,6 +153,13 @@
                                                     <action selector="calculate:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="dzG-R5-MTW"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jta-6r-Kyw">
+                                                <rect key="frame" x="227" y="183" width="41" height="27"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -212,129 +212,143 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="C45-9l-ne9"/>
                             </scrollView>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4m-y6-w2g">
-                                <rect key="frame" x="50" y="381" width="275" height="246"/>
+                                <rect key="frame" x="49.5" y="381" width="276" height="246"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2H-bw-MJz">
-                                        <rect key="frame" x="222" y="127" width="25" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="delete.left" catalog="system"/>
-                                        <connections>
-                                            <action selector="backspace:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="qHY-Hl-9gU"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXc-Bi-4Gc">
-                                        <rect key="frame" x="8" y="34" width="62" height="65"/>
+                                        <rect key="frame" x="5" y="34" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="1" image="1"/>
                                         <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="tdx-ap-qEQ"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="4p8-Cx-nrX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2L-2M-zch">
-                                        <rect key="frame" x="72" y="37" width="62" height="60"/>
+                                        <rect key="frame" x="74" y="34" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="2" image="2"/>
                                         <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="MBx-5v-EY6"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="9na-oX-XDx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpa-87-W7l">
-                                        <rect key="frame" x="138" y="34" width="62" height="65"/>
+                                        <rect key="frame" x="143" y="34" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="3" image="3"/>
                                         <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="KUe-RH-VNv"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="WzL-Ye-aa5"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRl-Nd-55W">
-                                        <rect key="frame" x="8" y="103" width="62" height="68"/>
+                                        <rect key="frame" x="5" y="104" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="4" image="4"/>
                                         <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="KCf-qS-42w"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="Yfg-aS-ks0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moh-uo-v77">
-                                        <rect key="frame" x="72" y="105" width="62" height="65"/>
+                                        <rect key="frame" x="74" y="104" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <state key="normal" title="5" image="5"/>
                                         <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="FCy-AE-VsT"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="zBU-pZ-em5"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZJ-qI-lsO">
-                                        <rect key="frame" x="138" y="105" width="62" height="65"/>
+                                        <rect key="frame" x="143" y="104" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <state key="normal" title="6" image="6"/>
                                         <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="xr1-vh-ehO"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="cuX-v2-pjw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAF-Zn-RGk">
-                                        <rect key="frame" x="8" y="172" width="62" height="68"/>
+                                        <rect key="frame" x="5" y="172" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="7" image="7"/>
                                         <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="efT-f2-oFe"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="Zrv-VD-aha"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G51-Su-QmQ">
-                                        <rect key="frame" x="72" y="173" width="62" height="65"/>
+                                        <rect key="frame" x="74" y="173" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="8" image="8"/>
                                         <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="ZKI-ig-zsD"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="Doj-4m-Nsf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JI8-pP-OTZ">
-                                        <rect key="frame" x="136" y="173" width="62" height="65"/>
+                                        <rect key="frame" x="143" y="173" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="9" image="9"/>
                                         <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="lG2-kc-zyf"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="DxD-HE-f2f"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0Y-fZ-aZ4">
-                                        <rect key="frame" x="202" y="172" width="62" height="65"/>
+                                        <rect key="frame" x="212" y="173" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="0" image="0"/>
                                         <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="aN0-c3-Mtw"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="sHh-mT-kRV"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfm-uW-whZ">
-                                        <rect key="frame" x="68" y="17" width="20" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="left" image="arrow.left" catalog="system"/>
-                                        <connections>
-                                            <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="NF7-NV-SJ3"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2O-17-ixN">
-                                        <rect key="frame" x="195" y="17" width="17" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="right" image="arrow.right" catalog="system"/>
-                                        <connections>
-                                            <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="HH2-A3-OCf"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1q-SE-q8o">
-                                        <rect key="frame" x="202" y="35" width="62" height="62"/>
+                                        <rect key="frame" x="212" y="35" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="C" image="C"/>
                                         <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="8YT-kb-jxb"/>
                                             <action selector="clear:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="tlG-Oa-1ir"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2H-bw-MJz">
+                                        <rect key="frame" x="211.5" y="104" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="delete.left" catalog="system"/>
+                                        <connections>
+                                            <action selector="backspace:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="qHY-Hl-9gU"/>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="Htw-vW-6VF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfm-uW-whZ">
+                                        <rect key="frame" x="45" y="0.0" width="60" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" image="arrow.left" catalog="system"/>
+                                        <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="D9x-Og-8VI"/>
+                                            <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="NF7-NV-SJ3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2O-17-ixN">
+                                        <rect key="frame" x="172" y="0.0" width="60" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" image="arrow.right" catalog="system"/>
+                                        <connections>
+                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="G3A-H9-0UQ"/>
+                                            <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="HH2-A3-OCf"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="246" id="mvj-ow-X5J"/>
-                                    <constraint firstAttribute="width" constant="275" id="zYp-Pm-02K"/>
+                                    <constraint firstAttribute="width" constant="276" id="zYp-Pm-02K"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small-keyboard" translatesAutoresizingMaskIntoConstraints="NO" id="2hS-Zz-96O">
