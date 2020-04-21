@@ -60,6 +60,7 @@ class Page1ViewController : UIViewController {
     
     var timeLabelBackgroundColor = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1.0)
     var timeLabelBorderColor = UIColor.lightGray.cgColor
+    var btnBorderColor = UIColor.blue.cgColor
 
 //    var originalConstraint: CGFloat?
     
@@ -67,6 +68,7 @@ class Page1ViewController : UIViewController {
 //    var snapBehavior: UISnapBehavior?
     
     var audioPlayer = AVAudioPlayer()
+    var audioPlayer2 = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,8 +104,14 @@ class Page1ViewController : UIViewController {
             print("Failed to initialize AVAudioPlayer")
             return
         }
+        guard let player2 = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "ding", ofType: "m4a")!)) else {
+            print("Failed to initialize AVAudioPlayer")
+            return
+        }
         audioPlayer = player
+        audioPlayer2 = player2
         audioPlayer.prepareToPlay()
+        audioPlayer2.prepareToPlay()
     }
     
     func layout() {
@@ -160,23 +168,25 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func addOrSubstract(_ sender: UIButton) {
-        if sender.titleLabel?.text == "+" {
-            self.operatorButtons[sender.tag].setTitleColor(.systemBlue, for: .normal)
-            self.operatorButtons[sender.tag].backgroundColor = self.timeLabelBackgroundColor
-            self.operatorButtons[sender.tag + 1].setTitleColor(.gray, for: .normal)
-            self.operatorButtons[sender.tag + 1].backgroundColor = .white
+        audioPlayer.play()
+        
+        if sender.tag % 2 != 1 {
+            self.operatorButtons[sender.tag].layer.borderWidth = 1
+            self.operatorButtons[sender.tag].layer.borderColor = btnBorderColor
+            self.operatorButtons[sender.tag + 1].layer.borderWidth = 0
             self.operators[sender.tag / 2] = true
         }
         else {
-            self.operatorButtons[sender.tag - 1].setTitleColor(.gray, for: .normal)
-            self.operatorButtons[sender.tag - 1].backgroundColor = .white
-            self.operatorButtons[sender.tag].setTitleColor(.systemBlue, for: .normal)
-            self.operatorButtons[sender.tag].backgroundColor = self.timeLabelBackgroundColor
+            self.operatorButtons[sender.tag - 1].layer.borderWidth = 0
+            self.operatorButtons[sender.tag].layer.borderWidth = 1
+            self.operatorButtons[sender.tag].layer.borderColor = btnBorderColor
             self.operators[sender.tag / 2] = false
         }
     }
     
     @IBAction func calculate(_ sender: UIButton) {
+        audioPlayer2.play()
+        
         var totalSec = 0
         var totalSecN = 0
         
@@ -210,31 +220,33 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func addRow(_ sender: UIButton) {
+        btnTouchedUp(btn: sender)
+        
         // 增加 + 和 - 按鈕
         if timeRows.count != 0 {
-            let operatorRow: [UIButton] = [UIButton(type: .system), UIButton(type: .system)]
+            let operatorRow: [UIButton] = [UIButton(type: .custom), UIButton(type: .custom)]
 
             if (self.operatorButtons.count == 0) {
-                operatorRow[0].frame = CGRect(x: 0, y: 121, width: 30, height: 25) //+
+                operatorRow[0].frame = CGRect(x: 0, y: 121, width: 25, height: 25) //+
                 operatorRow[0].center.x = minLabel.frame.minX
-                operatorRow[1].frame = CGRect(x: 0, y: 121, width: 30, height: 25) //-
+                operatorRow[1].frame = CGRect(x: 0, y: 121, width: 25, height: 25) //-
                 operatorRow[1].center.x = minLabel.frame.maxX
             }
             else {
-                operatorRow[0].frame = CGRect(x: 129/*self.operatorButtons[self.operatorButtons.count - 2].frame.origin.x*/, y: self.operatorButtons[self.operatorButtons.count - 2].frame.origin.y + 75, width: 30, height: 25) //+
-                operatorRow[1].frame = CGRect(x: 167/*self.operatorButtons[self.operatorButtons.count - 1].frame.origin.x*/, y: self.operatorButtons[self.operatorButtons.count - 1].frame.origin.y + 75, width: 30, height: 25) //-
+                operatorRow[0].frame = CGRect(x: 0, y: self.operatorButtons[self.operatorButtons.count - 2].frame.origin.y + 75, width: 25, height: 25) //+
+                operatorRow[0].center.x = minLabel.frame.minX
+                operatorRow[1].frame = CGRect(x: 0, y: self.operatorButtons[self.operatorButtons.count - 1].frame.origin.y + 75, width: 25, height: 25) //-
+                operatorRow[1].center.x = minLabel.frame.maxX
             }
             
             // 加進 operatorButtons 陣列以及畫面上
             for (i, button) in operatorRow.enumerated() {
-                button.setTitle(i == 0 ? "+" : "-", for: .normal)
-                button.setTitleColor(i == 0 ? .systemBlue : .gray, for: .normal)
-                button.backgroundColor = i == 0 ? self.timeLabelBackgroundColor : .white
-                button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+                button.setImage(UIImage(named: i == 0 ? "+" : "-"), for: .normal)
+                button.layer.borderWidth = i == 0 ? 1 : 0
+                button.layer.borderColor = btnBorderColor
                 button.tag = operatorButtons.count
                 button.addTarget(self, action: #selector(addOrSubstract(_:)), for: .touchUpInside)
                 operatorButtons.append(button)
-//                self.view.addSubview(button)
                 contentView.addSubview(button)
             }
             operators.append(true)
@@ -286,6 +298,8 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func removeRow(_ sender: UIButton) {
+        btnTouchedUp(btn: sender)
+        
 //        print("減第 \(self.timeRows.count) 列 \(Date())")
         let n = sender.tag
         
@@ -523,7 +537,7 @@ class Page1ViewController : UIViewController {
     
     @IBAction func btnTouhedDown(_ sender: UIButton) {
         sender.layer.borderWidth = 1
-        sender.layer.borderColor = UIColor.blue.cgColor
+        sender.layer.borderColor = btnBorderColor
     }
     
     func btnTouchedUp(btn: UIButton) {

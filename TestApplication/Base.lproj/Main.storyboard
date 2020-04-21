@@ -68,31 +68,23 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="842"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小時" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUP-ah-NpO">
-                                                <rect key="frame" x="50" y="50" width="41" height="24"/>
+                                                <rect key="frame" x="50" y="40" width="41" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分鐘" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLY-co-9hl">
-                                                <rect key="frame" x="138" y="50" width="41" height="24"/>
+                                                <rect key="frame" x="138" y="40" width="41" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="秒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTu-ye-WZQ">
-                                                <rect key="frame" x="226.5" y="50" width="41" height="24"/>
+                                                <rect key="frame" x="226.5" y="40" width="41" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEd-4V-YA0">
-                                                <rect key="frame" x="305" y="42" width="30" height="36"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="⤵︎"/>
-                                                <connections>
-                                                    <action selector="addRow:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="lmP-pr-12z"/>
-                                                </connections>
-                                            </button>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Rn-1k-5j3" userLabel="Separator View" customClass="SeparatorView" customModule="TestApplication" customModuleProvider="target">
                                                 <rect key="frame" x="56" y="137" width="205" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -119,36 +111,33 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2UR-1s-i1T" userLabel="Left Margin">
-                                                <rect key="frame" x="0.0" y="48" width="50" height="28"/>
+                                                <rect key="frame" x="0.0" y="38" width="50" height="28"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="RIY-zS-qDo"/>
                                                 </constraints>
                                             </view>
                                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Taf-Xy-YsD" userLabel="Right Margin">
-                                                <rect key="frame" x="335" y="51.5" width="40" height="21"/>
+                                                <rect key="frame" x="335" y="41.5" width="40" height="21"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </view>
                                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZu-rf-p2w" userLabel="Space1">
-                                                <rect key="frame" x="91" y="50" width="47" height="24"/>
+                                                <rect key="frame" x="91" y="40" width="47" height="24"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </view>
                                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GcE-be-ljb" userLabel="Space2">
-                                                <rect key="frame" x="179" y="50" width="47.5" height="24"/>
+                                                <rect key="frame" x="179" y="40" width="47.5" height="24"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </view>
                                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxf-MT-JWc" userLabel="Space3">
-                                                <rect key="frame" x="267.5" y="50" width="37.5" height="24"/>
+                                                <rect key="frame" x="267.5" y="40" width="37.5" height="24"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H94-7v-Yse">
-                                                <rect key="frame" x="294" y="178" width="41" height="36"/>
+                                                <rect key="frame" x="305" y="179" width="30" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="計算">
-                                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
+                                                <state key="normal" title="＝"/>
                                                 <connections>
                                                     <action selector="calculate:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="dzG-R5-MTW"/>
                                                 </connections>
@@ -160,6 +149,14 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEd-4V-YA0">
+                                                <rect key="frame" x="305" y="34" width="30" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="⤵︎"/>
+                                                <connections>
+                                                    <action selector="addRow:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="lmP-pr-12z"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -184,7 +181,7 @@
                                             <constraint firstItem="aZu-rf-p2w" firstAttribute="leading" secondItem="NUP-ah-NpO" secondAttribute="trailing" id="NA0-RW-sXC"/>
                                             <constraint firstItem="q6V-QD-wNO" firstAttribute="top" secondItem="9QW-eV-wx0" secondAttribute="top" constant="137" id="Qpm-HS-tmi"/>
                                             <constraint firstItem="NUP-ah-NpO" firstAttribute="leading" secondItem="2UR-1s-i1T" secondAttribute="trailing" id="Txn-cy-979"/>
-                                            <constraint firstItem="mEd-4V-YA0" firstAttribute="top" secondItem="9QW-eV-wx0" secondAttribute="top" constant="42" id="XFE-iu-8yw"/>
+                                            <constraint firstItem="mEd-4V-YA0" firstAttribute="top" secondItem="9QW-eV-wx0" secondAttribute="top" constant="34" id="XFE-iu-8yw"/>
                                             <constraint firstItem="Xxf-MT-JWc" firstAttribute="leading" secondItem="XTu-ye-WZQ" secondAttribute="trailing" id="YMb-R3-GLB"/>
                                             <constraint firstItem="2UR-1s-i1T" firstAttribute="centerY" secondItem="NUP-ah-NpO" secondAttribute="centerY" id="aDD-Ry-UKW"/>
                                             <constraint firstItem="GcE-be-ljb" firstAttribute="width" secondItem="aZu-rf-p2w" secondAttribute="width" id="aPg-dn-PRE"/>
@@ -196,7 +193,7 @@
                                             <constraint firstItem="Taf-Xy-YsD" firstAttribute="centerY" secondItem="2UR-1s-i1T" secondAttribute="centerY" id="iSp-xg-aK3"/>
                                             <constraint firstItem="aZu-rf-p2w" firstAttribute="centerY" secondItem="2UR-1s-i1T" secondAttribute="centerY" id="mpj-g8-Gfa"/>
                                             <constraint firstAttribute="trailing" secondItem="Taf-Xy-YsD" secondAttribute="trailing" id="ot5-6c-9pc"/>
-                                            <constraint firstItem="NUP-ah-NpO" firstAttribute="top" secondItem="9QW-eV-wx0" secondAttribute="top" constant="50" id="tnP-E1-2Mb"/>
+                                            <constraint firstItem="NUP-ah-NpO" firstAttribute="top" secondItem="9QW-eV-wx0" secondAttribute="top" constant="40" id="tnP-E1-2Mb"/>
                                             <constraint firstItem="mEd-4V-YA0" firstAttribute="height" secondItem="NUP-ah-NpO" secondAttribute="height" multiplier="1.5" id="ve6-Qg-0PG"/>
                                         </constraints>
                                     </view>
