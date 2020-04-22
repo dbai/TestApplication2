@@ -277,9 +277,19 @@ class Page1ViewController : UIViewController {
         
         // 加進 timeRows 陣列以及畫面上
         for (i, label) in row.enumerated() {
+            if #available(iOS 13.0, *) {
+                label.textColor = .label
+            } else {
+                label.textColor = .systemGray
+            }
+            if #available(iOS 13.0, *) {
+                label.shadowColor = .systemBackground
+            } else {
+                // Fallback on earlier versions
+            }
+            label.shadowOffset = CGSize(width: 1, height: 1)
             label.text = "00"
             label.font = .systemFont(ofSize: 20)
-            label.textColor = .darkText
             label.layer.borderWidth = 1
             label.layer.borderColor = timeLabelBorderColor
             label.textAlignment = .center
@@ -482,7 +492,11 @@ class Page1ViewController : UIViewController {
             for i in self.timeRows {
                 for j in i {
                     if j.tag == label.tag {
-                        self.focusedLabel?.backgroundColor = .white
+                        if #available(iOS 13.0, *) {
+                            self.focusedLabel?.backgroundColor = .systemBackground
+                        } else {
+                            self.focusedLabel?.backgroundColor = contentView.backgroundColor
+                        }  // Change background color of the previous focused label to default
                         label.backgroundColor = timeLabelBackgroundColor
                         self.focusedLabel = label
                     }
@@ -501,12 +515,16 @@ class Page1ViewController : UIViewController {
                 var tmp: UILabel?
                 outerLoop: for i in timeRows {
                     for j in i {
-                        if j.tag + 1 == self.focusedLabel!.tag {
+                        if j.tag + 1 == self.focusedLabel!.tag { // the new focused label
                             j.backgroundColor = timeLabelBackgroundColor
                             tmp = j
                         }
-                        else if j.tag == self.focusedLabel!.tag {
-                            j.backgroundColor = .white
+                        else if j.tag == self.focusedLabel!.tag { // the previous focused label
+                            if #available(iOS 13.0, *) {
+                                j.backgroundColor = .systemBackground
+                            } else {
+                                j.backgroundColor = contentView.backgroundColor
+                            }
                             self.focusedLabel = tmp
                             break outerLoop
                         }
@@ -524,10 +542,14 @@ class Page1ViewController : UIViewController {
             if self.focusedLabel!.tag < noOfLabel - 1 {
                 outerLoop: for i in timeRows {
                     for j in i {
-                        if j.tag == self.focusedLabel!.tag {
-                            j.backgroundColor = .white
+                        if j.tag == self.focusedLabel!.tag { // the previous focused label
+                            if #available(iOS 13.0, *) {
+                                j.backgroundColor = .systemBackground
+                            } else {
+                                j.backgroundColor = contentView.backgroundColor
+                            }
                         }
-                        else if j.tag == self.focusedLabel!.tag + 1 {
+                        else if j.tag == self.focusedLabel!.tag + 1 { // the new focused label
                             self.focusedLabel = j
                             j.backgroundColor = timeLabelBackgroundColor
                             break outerLoop

@@ -16,7 +16,13 @@ class SeparatorView: UIView {
     override func draw(_ rect: CGRect) {
         // Drawing code
         let path = UIBezierPath()
-//        UIColor.red.set()
+        
+        if #available(iOS 13.0, *) {
+            UIColor.label.set()
+        } else {
+            UIColor.systemGray.set()
+        }
+        
         path.move(to: CGPoint(x: 0, y: 10))
         path.addLine(to: CGPoint(x: self.bounds.maxX, y: 10))
         path.move(to: CGPoint(x: 0, y: 15))
