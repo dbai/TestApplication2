@@ -67,8 +67,11 @@ class Page1ViewController : UIViewController {
 //    var animator: UIDynamicAnimator?
 //    var snapBehavior: UISnapBehavior?
     
+    var soundSetting = true
     var audioPlayer = AVAudioPlayer()
     var audioPlayer2 = AVAudioPlayer()
+    
+    let userDefault = UserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +103,16 @@ class Page1ViewController : UIViewController {
         smallKeyboard.isHidden = true
         
         // Sound effects
+        guard let _ = try? AVAudioSession.sharedInstance().setCategory(.ambient) else {
+            print("Failed to set AVAudioSession catergory")
+            return
+        }
+        
+        if UserDefaults.standard.value(forKey: "sound") == nil {
+            UserDefaults.standard.set(true, forKey: "sound")
+        }
+        soundSetting = UserDefaults.standard.bool(forKey: "sound")
+
         guard let player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "click", ofType: "m4a")!)) else {
             print("Failed to initialize AVAudioPlayer")
             return
@@ -168,7 +181,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func addOrSubstract(_ sender: UIButton) {
-        audioPlayer.play()
+        playSound(player: audioPlayer, soundOn: self.soundSetting)
         
         if sender.tag % 2 != 1 {
             self.operatorButtons[sender.tag].layer.borderWidth = 1
@@ -185,7 +198,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func calculate(_ sender: UIButton) {
-        audioPlayer2.play()
+        playSound(player: audioPlayer2, soundOn: self.soundSetting)
         
         var totalSec = 0
         var totalSecN = 0
@@ -217,11 +230,11 @@ class Page1ViewController : UIViewController {
         self.hrResult.text = String(format: "%02d", hrResult)
         self.minResult.text = String(format: "%02d", minResult)
         self.secResult.text = String(format: "%02d", secResult)
+        
+        btnTouchedUp(btn: sender, playSound: true)
     }
     
     @IBAction func addRow(_ sender: UIButton) {
-        btnTouchedUp(btn: sender, playSound: true)
-        
         // 增加 + 和 - 按鈕
         if timeRows.count != 0 {
             let operatorRow: [UIButton] = [UIButton(type: .custom), UIButton(type: .custom)]
@@ -287,7 +300,9 @@ class Page1ViewController : UIViewController {
             removeButton.frame = CGRect(x: addRowButton.frame.origin.x, y: removeRowButtons.count == 0 ? 155 : self.removeRowButtons[self.removeRowButtons.count - 1].frame.origin.y + 75, width: addRowButton.frame.size.width, height: addRowButton.frame.size.height)
             removeButton.tag = self.removeRowButtons.count
             removeButton.addTarget(self, action: #selector(removeRow(_:)), for: .touchUpInside)
-            removeButton.addTarget(self, action: #selector(btnTouhedDown(_:)), for: .touchDown)
+            removeButton.addTarget(self, action: #selector(btnTouchedDown(_:)), for: .touchDown)
+            removeButton.addTarget(self, action: #selector(btnTouchedUp(btn:playSound:)), for: .touchCancel)
+            removeButton.addTarget(self, action: #selector(btnTouchedUp(btn:playSound:)), for: .touchDragOutside)
             contentView.addSubview(removeButton)
             self.removeRowButtons.append(removeButton)
         }
@@ -296,11 +311,11 @@ class Page1ViewController : UIViewController {
         adjustSeparatorAndResultLabels(isAppend: true)
                 
         refeshRemoveButtons()
+        
+        btnTouchedUp(btn: sender, playSound: true)
     }
     
     @IBAction func removeRow(_ sender: UIButton) {
-        btnTouchedUp(btn: sender, playSound: true)
-        
 //        print("減第 \(self.timeRows.count) 列 \(Date())")
         let n = sender.tag
         
@@ -374,9 +389,8 @@ class Page1ViewController : UIViewController {
                 }
             }
         }
-        
-//        view.bringSubviewToFront(keyboard)
-//        view.bringSubviewToFront(smallKeyboard)
+
+        btnTouchedUp(btn: sender, playSound: true)
     }
     
     func adjustSeparatorAndResultLabels(isAppend: Bool) {
@@ -462,7 +476,7 @@ class Page1ViewController : UIViewController {
             return
         }
         
-        audioPlayer.play()
+        playSound(player: audioPlayer, soundOn: self.soundSetting)
         
         if label.tag != focusedLabel?.tag {
             for i in self.timeRows {
@@ -537,7 +551,7 @@ class Page1ViewController : UIViewController {
         self.validate(number: focusedLabel!.text!)
     }
     
-    @IBAction func btnTouhedDown(_ sender: UIButton) {
+    @IBAction func btnTouchedDown(_ sender: UIButton) {
         sender.layer.borderWidth = 1
         sender.layer.borderColor = btnBorderColor
     }
@@ -547,7 +561,7 @@ class Page1ViewController : UIViewController {
         btn.layer.borderColor = nil
         
         if playSound {
-            audioPlayer.play()
+            self.playSound(player: audioPlayer, soundOn: self.soundSetting)
         }
     }
     
@@ -608,6 +622,12 @@ class Page1ViewController : UIViewController {
         btn0.isEnabled = number.count < 3 ? true : false
     }
     
+    func playSound(player: AVAudioPlayer, soundOn: Bool) {
+        if soundOn {
+            player.play()
+        }
+    }
+    
 //    func validate() -> Bool {
 //        var result = true
 //        
@@ -626,4 +646,18 @@ class Page1ViewController : UIViewController {
 //        
 //        return result
 //    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let button = sender as? UIButton {
+            btnTouchedUp(btn: button, playSound: true)
+        }
+    }
+    
+    @IBAction func backFromSettingsPage(segue: UIStoryboardSegue) {
+//        let source = segue.source as? SettingsViewController
+//        if let soundOn = source?.soundSetting {
+//            self.soundSetting = soundOn
+//        }
+        UserDefaults.standard.set(soundSetting, forKey: "sound")
+    }
 }

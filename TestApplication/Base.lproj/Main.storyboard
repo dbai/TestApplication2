@@ -139,6 +139,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="＝"/>
                                                 <connections>
+                                                    <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="RL6-Mb-hDB"/>
+                                                    <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchDragOutside" id="S2D-md-OPc"/>
+                                                    <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="eBj-kI-UaA"/>
                                                     <action selector="calculate:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="dzG-R5-MTW"/>
                                                 </connections>
                                             </button>
@@ -150,12 +153,27 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEd-4V-YA0">
-                                                <rect key="frame" x="305" y="34" width="30" height="36"/>
+                                                <rect key="frame" x="305" y="100" width="30" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="⤵︎"/>
                                                 <connections>
                                                     <action selector="addRow:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="lmP-pr-12z"/>
-                                                    <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="foK-74-Tpe"/>
+                                                    <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="foK-74-Tpe"/>
+                                                    <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchDragOutside" id="KB8-qS-fXm"/>
+                                                    <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="nlX-DM-yYJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UF-gf-W6X" userLabel="Settings">
+                                                <rect key="frame" x="309" y="40" width="22" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="gear" catalog="system"/>
+                                                <connections>
+                                                    <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="KMs-yj-W7j"/>
+                                                    <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="wlh-fF-WEN"/>
+                                                    <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="Jw8-82-IkQ"/>
+                                                    <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchDragOutside" id="ttg-uK-i6x"/>
+                                                    <segue destination="cfd-nT-07W" kind="presentation" id="phA-lR-5fd"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -163,6 +181,7 @@
                                         <constraints>
                                             <constraint firstItem="XTu-ye-WZQ" firstAttribute="height" secondItem="NUP-ah-NpO" secondAttribute="height" id="0jg-ii-Q8z"/>
                                             <constraint firstItem="GcE-be-ljb" firstAttribute="leading" secondItem="MLY-co-9hl" secondAttribute="trailing" id="0o4-rH-fpL"/>
+                                            <constraint firstItem="0UF-gf-W6X" firstAttribute="centerY" secondItem="NUP-ah-NpO" secondAttribute="centerY" id="0yd-fi-lcX"/>
                                             <constraint firstItem="GcE-be-ljb" firstAttribute="centerY" secondItem="2UR-1s-i1T" secondAttribute="centerY" id="3Ty-xc-nbx"/>
                                             <constraint firstItem="Taf-Xy-YsD" firstAttribute="leading" secondItem="mEd-4V-YA0" secondAttribute="trailing" id="5KJ-r7-Aqf"/>
                                             <constraint firstItem="2UR-1s-i1T" firstAttribute="leading" secondItem="9QW-eV-wx0" secondAttribute="leading" id="6cV-0l-Rqd"/>
@@ -182,7 +201,7 @@
                                             <constraint firstItem="aZu-rf-p2w" firstAttribute="leading" secondItem="NUP-ah-NpO" secondAttribute="trailing" id="NA0-RW-sXC"/>
                                             <constraint firstItem="q6V-QD-wNO" firstAttribute="top" secondItem="9QW-eV-wx0" secondAttribute="top" constant="137" id="Qpm-HS-tmi"/>
                                             <constraint firstItem="NUP-ah-NpO" firstAttribute="leading" secondItem="2UR-1s-i1T" secondAttribute="trailing" id="Txn-cy-979"/>
-                                            <constraint firstItem="mEd-4V-YA0" firstAttribute="top" secondItem="9QW-eV-wx0" secondAttribute="top" constant="34" id="XFE-iu-8yw"/>
+                                            <constraint firstItem="mEd-4V-YA0" firstAttribute="top" secondItem="9QW-eV-wx0" secondAttribute="top" constant="100" id="XFE-iu-8yw"/>
                                             <constraint firstItem="Xxf-MT-JWc" firstAttribute="leading" secondItem="XTu-ye-WZQ" secondAttribute="trailing" id="YMb-R3-GLB"/>
                                             <constraint firstItem="2UR-1s-i1T" firstAttribute="centerY" secondItem="NUP-ah-NpO" secondAttribute="centerY" id="aDD-Ry-UKW"/>
                                             <constraint firstItem="GcE-be-ljb" firstAttribute="width" secondItem="aZu-rf-p2w" secondAttribute="width" id="aPg-dn-PRE"/>
@@ -192,6 +211,7 @@
                                             <constraint firstAttribute="bottom" secondItem="q6V-QD-wNO" secondAttribute="bottom" constant="705" id="i0g-Tz-Pia"/>
                                             <constraint firstItem="MLY-co-9hl" firstAttribute="width" secondItem="NUP-ah-NpO" secondAttribute="width" id="iEu-7O-b68"/>
                                             <constraint firstItem="Taf-Xy-YsD" firstAttribute="centerY" secondItem="2UR-1s-i1T" secondAttribute="centerY" id="iSp-xg-aK3"/>
+                                            <constraint firstItem="0UF-gf-W6X" firstAttribute="centerX" secondItem="mEd-4V-YA0" secondAttribute="centerX" id="jsH-2H-Uei"/>
                                             <constraint firstItem="aZu-rf-p2w" firstAttribute="centerY" secondItem="2UR-1s-i1T" secondAttribute="centerY" id="mpj-g8-Gfa"/>
                                             <constraint firstAttribute="trailing" secondItem="Taf-Xy-YsD" secondAttribute="trailing" id="ot5-6c-9pc"/>
                                             <constraint firstItem="NUP-ah-NpO" firstAttribute="top" secondItem="9QW-eV-wx0" secondAttribute="top" constant="40" id="tnP-E1-2Mb"/>
@@ -217,8 +237,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="1" image="1"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="tdx-ap-qEQ"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="dNo-5I-Bhw"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="tdx-ap-qEQ"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="4p8-Cx-nrX"/>
                                         </connections>
                                     </button>
@@ -227,8 +247,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="2" image="2"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="MBx-5v-EY6"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="wUg-uE-OTn"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="MBx-5v-EY6"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="9na-oX-XDx"/>
                                         </connections>
                                     </button>
@@ -237,8 +257,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="3" image="3"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="KUe-RH-VNv"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="t7H-A4-Z36"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="KUe-RH-VNv"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="WzL-Ye-aa5"/>
                                         </connections>
                                     </button>
@@ -247,8 +267,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="4" image="4"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="KCf-qS-42w"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="Whm-A6-Jxv"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="KCf-qS-42w"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="Yfg-aS-ks0"/>
                                         </connections>
                                     </button>
@@ -258,8 +278,8 @@
                                         <gestureRecognizers/>
                                         <state key="normal" title="5" image="5"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="FCy-AE-VsT"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="3xz-BS-wt6"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="FCy-AE-VsT"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="zBU-pZ-em5"/>
                                         </connections>
                                     </button>
@@ -269,8 +289,8 @@
                                         <gestureRecognizers/>
                                         <state key="normal" title="6" image="6"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="xr1-vh-ehO"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="Qcg-Xs-utp"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="xr1-vh-ehO"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="cuX-v2-pjw"/>
                                         </connections>
                                     </button>
@@ -279,8 +299,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="7" image="7"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="efT-f2-oFe"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="Mnk-qg-91d"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="efT-f2-oFe"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="Zrv-VD-aha"/>
                                         </connections>
                                     </button>
@@ -289,8 +309,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="8" image="8"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="ZKI-ig-zsD"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="hYs-mg-fL9"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="ZKI-ig-zsD"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="Doj-4m-Nsf"/>
                                         </connections>
                                     </button>
@@ -299,8 +319,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="9" image="9"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="lG2-kc-zyf"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="51h-Cd-AId"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="lG2-kc-zyf"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="DxD-HE-f2f"/>
                                         </connections>
                                     </button>
@@ -309,8 +329,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="0" image="0"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="aN0-c3-Mtw"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="25L-6l-GwH"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="aN0-c3-Mtw"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="sHh-mT-kRV"/>
                                         </connections>
                                     </button>
@@ -319,8 +339,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="C" image="C"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="8YT-kb-jxb"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="7kV-up-f4Y"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="8YT-kb-jxb"/>
                                             <action selector="clear:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="tlG-Oa-1ir"/>
                                         </connections>
                                     </button>
@@ -330,8 +350,8 @@
                                         <state key="normal" image="delete.left" catalog="system"/>
                                         <connections>
                                             <action selector="backspace:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="qHY-Hl-9gU"/>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="Htw-vW-6VF"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="ytS-ex-aQa"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="Htw-vW-6VF"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfm-uW-whZ">
@@ -340,8 +360,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" image="arrow.left" catalog="system"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="D9x-Og-8VI"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="lYb-HC-iK2"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="D9x-Og-8VI"/>
                                             <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="NF7-NV-SJ3"/>
                                         </connections>
                                     </button>
@@ -351,8 +371,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" image="arrow.right" catalog="system"/>
                                         <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="G3A-H9-0UQ"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="JRo-AT-NUN"/>
-                                            <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="G3A-H9-0UQ"/>
                                             <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="HH2-A3-OCf"/>
                                         </connections>
                                     </button>
@@ -451,6 +471,76 @@
             </objects>
             <point key="canvasLocation" x="821.60000000000002" y="-295.50224887556226"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="Rt3-Xp-j0n">
+            <objects>
+                <viewController id="cfd-nT-07W" customClass="SettingsViewController" customModule="TestApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lhb-gm-JMP"/>
+                        <viewControllerLayoutGuide type="bottom" id="VsV-gx-KDb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G7c-21-Pfe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="hdy-CL-9zm">
+                                <rect key="frame" x="115" y="305.5" width="145" height="36"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音效" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmg-lx-5L6">
+                                        <rect key="frame" x="0.0" y="0.0" width="63" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fSM-ui-8dl" userLabel="Sound Switch">
+                                        <rect key="frame" x="96" y="0.0" width="51" height="36"/>
+                                        <connections>
+                                            <action selector="switchSound:" destination="cfd-nT-07W" eventType="valueChanged" id="UOQ-Ud-wR0"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="LTc-rq-bPP"/>
+                                    <constraint firstAttribute="width" constant="145" id="qWN-w9-Hma"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oc9-N9-DnB">
+                                <rect key="frame" x="16" y="20" width="41" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="取消"/>
+                                <connections>
+                                    <segue destination="xgE-Rd-hPp" kind="unwind" unwindAction="backFromSettingsPageWithSegue:" id="mgY-EB-CgN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CpG-GA-aLU">
+                                <rect key="frame" x="318" y="20" width="41" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="儲存"/>
+                                <connections>
+                                    <segue destination="xgE-Rd-hPp" kind="unwind" unwindAction="backFromSettingsPageWithSegue:" id="efm-rO-Pqo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Oc9-N9-DnB" firstAttribute="top" secondItem="Lhb-gm-JMP" secondAttribute="bottom" constant="20" id="OvZ-ni-dW0"/>
+                            <constraint firstItem="CpG-GA-aLU" firstAttribute="top" secondItem="Lhb-gm-JMP" secondAttribute="bottom" constant="20" id="P3G-Eo-BLa"/>
+                            <constraint firstItem="hdy-CL-9zm" firstAttribute="centerY" secondItem="G7c-21-Pfe" secondAttribute="centerY" id="PU5-Qv-NOz"/>
+                            <constraint firstItem="CpG-GA-aLU" firstAttribute="trailing" secondItem="G7c-21-Pfe" secondAttribute="trailingMargin" id="Tpb-nT-EYz"/>
+                            <constraint firstItem="Oc9-N9-DnB" firstAttribute="leading" secondItem="G7c-21-Pfe" secondAttribute="leadingMargin" id="Y5Y-hG-X4u"/>
+                            <constraint firstItem="hdy-CL-9zm" firstAttribute="centerX" secondItem="G7c-21-Pfe" secondAttribute="centerX" id="bE6-0E-nCk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fav-Gq-drF"/>
+                    <connections>
+                        <outlet property="soundSwitch" destination="fSM-ui-8dl" id="usf-q7-hhu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="24u-I9-n8p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="xgE-Rd-hPp" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1602" y="-291"/>
+        </scene>
         <!--Page2 View Controller-->
         <scene sceneID="XZi-Cd-auW">
             <objects>
@@ -492,6 +582,7 @@
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="delete.left" catalog="system" width="128" height="104"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="small-keyboard" width="300" height="300"/>
     </resources>
 </document>
