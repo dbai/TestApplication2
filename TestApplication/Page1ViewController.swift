@@ -220,7 +220,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func addRow(_ sender: UIButton) {
-        btnTouchedUp(btn: sender)
+        btnTouchedUp(btn: sender, playSound: true)
         
         // 增加 + 和 - 按鈕
         if timeRows.count != 0 {
@@ -287,6 +287,7 @@ class Page1ViewController : UIViewController {
             removeButton.frame = CGRect(x: addRowButton.frame.origin.x, y: removeRowButtons.count == 0 ? 155 : self.removeRowButtons[self.removeRowButtons.count - 1].frame.origin.y + 75, width: addRowButton.frame.size.width, height: addRowButton.frame.size.height)
             removeButton.tag = self.removeRowButtons.count
             removeButton.addTarget(self, action: #selector(removeRow(_:)), for: .touchUpInside)
+            removeButton.addTarget(self, action: #selector(btnTouhedDown(_:)), for: .touchDown)
             contentView.addSubview(removeButton)
             self.removeRowButtons.append(removeButton)
         }
@@ -298,7 +299,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func removeRow(_ sender: UIButton) {
-        btnTouchedUp(btn: sender)
+        btnTouchedUp(btn: sender, playSound: true)
         
 //        print("減第 \(self.timeRows.count) 列 \(Date())")
         let n = sender.tag
@@ -460,7 +461,8 @@ class Page1ViewController : UIViewController {
         guard let label = sender.view as? UILabel else {
             return
         }
-//        print("焦點在 \(label.tag)")
+        
+        audioPlayer.play()
         
         if label.tag != focusedLabel?.tag {
             for i in self.timeRows {
@@ -478,7 +480,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func moveFocus(_ sender: UIButton) {
-        btnTouchedUp(btn: sender)
+        btnTouchedUp(btn: sender, playSound: true)
         
         if sender.tag == 0 {
             if self.focusedLabel!.tag > 0 {
@@ -525,7 +527,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func inputDigit(_ sender: UIButton) {
-        btnTouchedUp(btn: sender)
+        btnTouchedUp(btn: sender, playSound: true)
         
         if self.focusedLabel?.text! == "00" {
             self.focusedLabel?.text = ""
@@ -540,14 +542,17 @@ class Page1ViewController : UIViewController {
         sender.layer.borderColor = btnBorderColor
     }
     
-    func btnTouchedUp(btn: UIButton) {
+    @IBAction func btnTouchedUp(btn: UIButton, playSound: Bool) {
         btn.layer.borderWidth = 0
         btn.layer.borderColor = nil
-        audioPlayer.play()
+        
+        if playSound {
+            audioPlayer.play()
+        }
     }
     
     @IBAction func backspace(_ sender: UIButton) {
-        btnTouchedUp(btn: sender)
+        btnTouchedUp(btn: sender, playSound: true)
         
         if (self.focusedLabel?.text!.count)! > 0 && Int((self.focusedLabel?.text!)!)! != 0 {
             self.focusedLabel?.text!.removeLast()
@@ -561,7 +566,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func clear(_ sender: UIButton) {
-        btnTouchedUp(btn: sender)
+        btnTouchedUp(btn: sender, playSound: true)
         
         for i in timeRows {
             for j in i {

@@ -155,6 +155,7 @@
                                                 <state key="normal" title="⤵︎"/>
                                                 <connections>
                                                     <action selector="addRow:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="lmP-pr-12z"/>
+                                                    <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="foK-74-Tpe"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -216,6 +217,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="1" image="1"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="dNo-5I-Bhw"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="tdx-ap-qEQ"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="4p8-Cx-nrX"/>
                                         </connections>
@@ -225,6 +227,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="2" image="2"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="wUg-uE-OTn"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="MBx-5v-EY6"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="9na-oX-XDx"/>
                                         </connections>
@@ -234,6 +237,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="3" image="3"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="t7H-A4-Z36"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="KUe-RH-VNv"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="WzL-Ye-aa5"/>
                                         </connections>
@@ -243,6 +247,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="4" image="4"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="Whm-A6-Jxv"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="KCf-qS-42w"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="Yfg-aS-ks0"/>
                                         </connections>
@@ -253,6 +258,7 @@
                                         <gestureRecognizers/>
                                         <state key="normal" title="5" image="5"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="3xz-BS-wt6"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="FCy-AE-VsT"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="zBU-pZ-em5"/>
                                         </connections>
@@ -263,6 +269,7 @@
                                         <gestureRecognizers/>
                                         <state key="normal" title="6" image="6"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="Qcg-Xs-utp"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="xr1-vh-ehO"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="cuX-v2-pjw"/>
                                         </connections>
@@ -272,6 +279,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="7" image="7"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="Mnk-qg-91d"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="efT-f2-oFe"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="Zrv-VD-aha"/>
                                         </connections>
@@ -281,6 +289,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="8" image="8"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="hYs-mg-fL9"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="ZKI-ig-zsD"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="Doj-4m-Nsf"/>
                                         </connections>
@@ -290,6 +299,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="9" image="9"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="51h-Cd-AId"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="lG2-kc-zyf"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="DxD-HE-f2f"/>
                                         </connections>
@@ -299,6 +309,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="0" image="0"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="25L-6l-GwH"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="aN0-c3-Mtw"/>
                                             <action selector="inputDigit:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="sHh-mT-kRV"/>
                                         </connections>
@@ -308,6 +319,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="C" image="C"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="7kV-up-f4Y"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="8YT-kb-jxb"/>
                                             <action selector="clear:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="tlG-Oa-1ir"/>
                                         </connections>
@@ -318,6 +330,7 @@
                                         <state key="normal" image="delete.left" catalog="system"/>
                                         <connections>
                                             <action selector="backspace:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="qHY-Hl-9gU"/>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="ytS-ex-aQa"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="Htw-vW-6VF"/>
                                         </connections>
                                     </button>
@@ -327,6 +340,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" image="arrow.left" catalog="system"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="lYb-HC-iK2"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="D9x-Og-8VI"/>
                                             <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="NF7-NV-SJ3"/>
                                         </connections>
@@ -337,6 +351,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" image="arrow.right" catalog="system"/>
                                         <connections>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="JRo-AT-NUN"/>
                                             <action selector="btnTouhedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="G3A-H9-0UQ"/>
                                             <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="HH2-A3-OCf"/>
                                         </connections>
