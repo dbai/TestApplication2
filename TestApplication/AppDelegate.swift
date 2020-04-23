@@ -13,9 +13,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var soundSetting = true
+    var supportDarkMode = true
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if UserDefaults.standard.value(forKey: "sound") == nil {
+            UserDefaults.standard.set(true, forKey: "sound")
+        }
+        soundSetting = UserDefaults.standard.bool(forKey: "sound")
+        
+        if UserDefaults.standard.value(forKey: "supportDarkMode") == nil {
+            UserDefaults.standard.set(true, forKey: "supportDarkMode")
+        }
+        supportDarkMode = UserDefaults.standard.bool(forKey: "supportDarkMode")        
+        
+        if #available(iOS 13.0, *) {
+            if !supportDarkMode {
+                window?.overrideUserInterfaceStyle = .light
+            }
+            else {
+                window?.overrideUserInterfaceStyle = .unspecified
+            }
+        }
+        
         return true
     }
 

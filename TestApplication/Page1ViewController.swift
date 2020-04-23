@@ -11,7 +11,9 @@ import UIKit
 import AVFoundation
 
 class Page1ViewController : UIViewController {
-//    var scrollView: UIScrollView!
+
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     
@@ -67,7 +69,7 @@ class Page1ViewController : UIViewController {
 //    var animator: UIDynamicAnimator?
 //    var snapBehavior: UISnapBehavior?
     
-    var soundSetting = true
+//    var soundSetting = true
     var audioPlayer = AVAudioPlayer()
     var audioPlayer2 = AVAudioPlayer()
     
@@ -108,10 +110,10 @@ class Page1ViewController : UIViewController {
             return
         }
         
-        if UserDefaults.standard.value(forKey: "sound") == nil {
-            UserDefaults.standard.set(true, forKey: "sound")
-        }
-        soundSetting = UserDefaults.standard.bool(forKey: "sound")
+//        if UserDefaults.standard.value(forKey: "sound") == nil {
+//            UserDefaults.standard.set(true, forKey: "sound")
+//        }
+//        soundSetting = UserDefaults.standard.bool(forKey: "sound")
 
         guard let player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "click", ofType: "m4a")!)) else {
             print("Failed to initialize AVAudioPlayer")
@@ -126,12 +128,6 @@ class Page1ViewController : UIViewController {
         audioPlayer.prepareToPlay()
         audioPlayer2.prepareToPlay()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        print("Page1 appeared")
-//        super.viewWillAppear(animated)
-//        soundSetting = UserDefaults.standard.bool(forKey: "sound")
-//    }
     
     func layout() {
         self.leftMargin.constant = UIScreen.main.bounds.maxX * 0.1
@@ -187,7 +183,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func addOrSubstract(_ sender: UIButton) {
-        playSound(player: audioPlayer, soundOn: self.soundSetting)
+        playSound(player: audioPlayer, soundOn: appDelegate.soundSetting)
         
         if sender.tag % 2 != 1 {
             self.operatorButtons[sender.tag].layer.borderWidth = 1
@@ -204,7 +200,7 @@ class Page1ViewController : UIViewController {
     }
     
     @IBAction func calculate(_ sender: UIButton) {
-        playSound(player: audioPlayer2, soundOn: self.soundSetting)
+        playSound(player: audioPlayer2, soundOn: appDelegate.soundSetting)
         
         var totalSec = 0
         var totalSecN = 0
@@ -492,7 +488,7 @@ class Page1ViewController : UIViewController {
             return
         }
         
-        playSound(player: audioPlayer, soundOn: self.soundSetting)
+        playSound(player: audioPlayer, soundOn: appDelegate.soundSetting)
         
         if label.tag != focusedLabel?.tag {
             for i in self.timeRows {
@@ -589,7 +585,7 @@ class Page1ViewController : UIViewController {
         btn.layer.borderColor = nil
         
         if playSound {
-            self.playSound(player: audioPlayer, soundOn: self.soundSetting)
+            self.playSound(player: audioPlayer, soundOn: appDelegate.soundSetting)
         }
     }
     
@@ -679,9 +675,6 @@ class Page1ViewController : UIViewController {
         if let button = sender as? UIButton {
             btnTouchedUp(btn: button, playSound: true)
         }
-        
-        let settingsPage = segue.destination as? SettingsViewController
-        settingsPage?.page1ViewController = self
     }
     
     @IBAction func backFromSettingsPage(segue: UIStoryboardSegue) {

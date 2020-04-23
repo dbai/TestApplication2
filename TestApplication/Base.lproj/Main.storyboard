@@ -483,52 +483,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="hdy-CL-9zm">
-                                <rect key="frame" x="115" y="305.5" width="145" height="36"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音效" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmg-lx-5L6">
-                                        <rect key="frame" x="0.0" y="0.0" width="63" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fSM-ui-8dl" userLabel="Sound Switch">
-                                        <rect key="frame" x="96" y="0.0" width="51" height="36"/>
-                                        <connections>
-                                            <action selector="switchSound:" destination="cfd-nT-07W" eventType="valueChanged" id="UOQ-Ud-wR0"/>
-                                        </connections>
-                                    </switch>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="LTc-rq-bPP"/>
-                                    <constraint firstAttribute="width" constant="145" id="qWN-w9-Hma"/>
-                                </constraints>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oc9-N9-DnB" userLabel="Close">
-                                <rect key="frame" x="16" y="20" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oc9-N9-DnB" userLabel="Close">
+                                <rect key="frame" x="16" y="20" width="17.5" height="22"/>
                                 <state key="normal" image="xmark" catalog="system"/>
                                 <connections>
                                     <segue destination="xgE-Rd-hPp" kind="unwind" unwindAction="backFromSettingsPageWithSegue:" id="mgY-EB-CgN"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="PSp-7T-Eg4">
+                                <rect key="frame" x="70.5" y="269.5" width="234" height="108"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="hdy-CL-9zm" userLabel="Sound Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="234" height="36"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音效" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmg-lx-5L6">
+                                                <rect key="frame" x="0.0" y="0.0" width="152" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fSM-ui-8dl" userLabel="Sound Switch">
+                                                <rect key="frame" x="185" y="0.0" width="51" height="36"/>
+                                                <connections>
+                                                    <action selector="switchSound:" destination="cfd-nT-07W" eventType="valueChanged" id="UOQ-Ud-wR0"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="LTc-rq-bPP"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="Cna-TZ-4p9" userLabel="UIStyle Stack View">
+                                        <rect key="frame" x="0.0" y="72" width="234" height="36"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支援深色模式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXO-cQ-S32">
+                                                <rect key="frame" x="0.0" y="0.0" width="152" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2r5-8Y-jWA" userLabel="UIStyle Switch">
+                                                <rect key="frame" x="185" y="0.0" width="51" height="36"/>
+                                                <connections>
+                                                    <action selector="switchSupportDarkMode:" destination="cfd-nT-07W" eventType="valueChanged" id="fn6-37-3Rp"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="Ii2-ZK-4os"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Oc9-N9-DnB" firstAttribute="top" secondItem="Lhb-gm-JMP" secondAttribute="bottom" constant="20" id="OvZ-ni-dW0"/>
-                            <constraint firstItem="hdy-CL-9zm" firstAttribute="centerY" secondItem="G7c-21-Pfe" secondAttribute="centerY" id="PU5-Qv-NOz"/>
                             <constraint firstItem="Oc9-N9-DnB" firstAttribute="leading" secondItem="G7c-21-Pfe" secondAttribute="leadingMargin" id="Y5Y-hG-X4u"/>
-                            <constraint firstItem="hdy-CL-9zm" firstAttribute="centerX" secondItem="G7c-21-Pfe" secondAttribute="centerX" id="bE6-0E-nCk"/>
+                            <constraint firstItem="PSp-7T-Eg4" firstAttribute="centerX" secondItem="G7c-21-Pfe" secondAttribute="centerX" id="mkz-Jj-R4x"/>
+                            <constraint firstItem="PSp-7T-Eg4" firstAttribute="centerY" secondItem="G7c-21-Pfe" secondAttribute="centerY" id="rgO-q5-L6k"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fav-Gq-drF"/>
                     <connections>
                         <outlet property="soundSwitch" destination="fSM-ui-8dl" id="usf-q7-hhu"/>
+                        <outlet property="supportDarkModeSwitch" destination="2r5-8Y-jWA" id="F0c-OJ-IiG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="24u-I9-n8p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="xgE-Rd-hPp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1602" y="-291"/>
+            <point key="canvasLocation" x="1600.8" y="-291.00449775112446"/>
         </scene>
         <!--Page2 View Controller-->
         <scene sceneID="XZi-Cd-auW">

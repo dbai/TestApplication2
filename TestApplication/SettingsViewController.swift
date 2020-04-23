@@ -9,20 +9,24 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
-    var page1ViewController: Page1ViewController?
+    
     @IBOutlet weak var soundSwitch: UISwitch!
+    @IBOutlet weak var supportDarkModeSwitch: UISwitch!
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         soundSwitch.setOn(UserDefaults.standard.bool(forKey: "sound"), animated: false)
+        supportDarkModeSwitch.setOn(UserDefaults.standard.bool(forKey: "supportDarkMode"), animated: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
-        page1ViewController?.soundSetting = soundSwitch.isOn
+        appDelegate.soundSetting = soundSwitch.isOn
+        appDelegate.supportDarkMode = supportDarkModeSwitch.isOn
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -34,5 +38,24 @@ class SettingsViewController: UIViewController {
     
     @IBAction func switchSound(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey: "sound")
+    }
+    
+    @IBAction func switchSupportDarkMode(_ sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey: "supportDarkMode")
+        
+        if !sender.isOn {
+            if #available(iOS 13.0, *) {
+                appDelegate.window?.overrideUserInterfaceStyle = .light
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+        else {
+            if #available(iOS 13.0, *) {
+                appDelegate.window?.overrideUserInterfaceStyle = .unspecified
+            } else {
+                
+            }
+        }
     }
 }
