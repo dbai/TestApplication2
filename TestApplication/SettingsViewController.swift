@@ -10,40 +10,29 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    var soundSetting = true
+    var page1ViewController: Page1ViewController?
     @IBOutlet weak var soundSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        soundSetting = UserDefaults.standard.bool(forKey: "sound")
-        soundSwitch.setOn(soundSetting, animated: false)
+        soundSwitch.setOn(UserDefaults.standard.bool(forKey: "sound"), animated: false)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let button = sender as? UIButton {
-            if button.tag == 1 {
-                let mainPage = segue.destination as? Page1ViewController
-                mainPage?.soundSetting = soundSetting
-//                print("Sound saved \(mainPage?.soundSetting)")
-            }
-        }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        page1ViewController?.soundSetting = soundSwitch.isOn
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let button = sender as? UIButton {
+//            let mainPage = segue.destination as? Page1ViewController
+//            mainPage?.soundSetting = soundSwitch.isOn
+//        }
+//    }
     
     @IBAction func switchSound(_ sender: UISwitch) {
-        soundSetting = sender.isOn
-//        print("Sound set to \(soundSetting)")
+        UserDefaults.standard.set(sender.isOn, forKey: "sound")
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

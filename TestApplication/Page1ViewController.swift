@@ -127,6 +127,12 @@ class Page1ViewController : UIViewController {
         audioPlayer2.prepareToPlay()
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        print("Page1 appeared")
+//        super.viewWillAppear(animated)
+//        soundSetting = UserDefaults.standard.bool(forKey: "sound")
+//    }
+    
     func layout() {
         self.leftMargin.constant = UIScreen.main.bounds.maxX * 0.1
 //        viewDidLayoutSubviews()
@@ -673,13 +679,12 @@ class Page1ViewController : UIViewController {
         if let button = sender as? UIButton {
             btnTouchedUp(btn: button, playSound: true)
         }
+        
+        let settingsPage = segue.destination as? SettingsViewController
+        settingsPage?.page1ViewController = self
     }
     
     @IBAction func backFromSettingsPage(segue: UIStoryboardSegue) {
 //        let source = segue.source as? SettingsViewController
-//        if let soundOn = source?.soundSetting {
-//            self.soundSetting = soundOn
-//        }
-        UserDefaults.standard.set(soundSetting, forKey: "sound")
     }
 }
