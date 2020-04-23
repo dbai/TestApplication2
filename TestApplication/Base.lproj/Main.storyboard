@@ -8,61 +8,19 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TestApplication" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMb-pv-f5i">
-                                <rect key="frame" x="124" y="278" width="166" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="時間計算機"/>
-                                <connections>
-                                    <action selector="goToPage1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B4w-sx-aO3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPe-5E-ytH">
-                                <rect key="frame" x="124" y="359" width="126" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="到畫面2"/>
-                                <connections>
-                                    <action selector="goToPage2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SQF-zu-rmt"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <connections>
-                        <segue destination="LA2-4o-4IQ" kind="presentation" identifier="toPage1" id="IHg-gI-70p"/>
-                        <segue destination="qTr-QR-Uje" kind="presentation" identifier="toPage2" id="Lfi-my-7sk"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="31.884057971014496" y="36.830357142857139"/>
-        </scene>
-        <!--Page1 View Controller-->
         <scene sceneID="Qi2-o8-Tfw">
             <objects>
-                <viewController id="LA2-4o-4IQ" customClass="Page1ViewController" customModule="TestApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LA2-4o-4IQ" customClass="ViewController" customModule="TestApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gwb-WU-fT0"/>
                         <viewControllerLayoutGuide type="bottom" id="fd3-97-wUR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JiH-s1-A9f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DvO-eo-fsz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QW-eV-wx0" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="842"/>
@@ -153,7 +111,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEd-4V-YA0">
-                                                <rect key="frame" x="305" y="100" width="30" height="36"/>
+                                                <rect key="frame" x="305" y="80" width="30" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="⤵︎"/>
                                                 <connections>
@@ -201,7 +159,7 @@
                                             <constraint firstItem="aZu-rf-p2w" firstAttribute="leading" secondItem="NUP-ah-NpO" secondAttribute="trailing" id="NA0-RW-sXC"/>
                                             <constraint firstItem="q6V-QD-wNO" firstAttribute="top" secondItem="9QW-eV-wx0" secondAttribute="top" constant="137" id="Qpm-HS-tmi"/>
                                             <constraint firstItem="NUP-ah-NpO" firstAttribute="leading" secondItem="2UR-1s-i1T" secondAttribute="trailing" id="Txn-cy-979"/>
-                                            <constraint firstItem="mEd-4V-YA0" firstAttribute="top" secondItem="9QW-eV-wx0" secondAttribute="top" constant="100" id="XFE-iu-8yw"/>
+                                            <constraint firstItem="mEd-4V-YA0" firstAttribute="top" secondItem="9QW-eV-wx0" secondAttribute="top" constant="80" id="XFE-iu-8yw"/>
                                             <constraint firstItem="Xxf-MT-JWc" firstAttribute="leading" secondItem="XTu-ye-WZQ" secondAttribute="trailing" id="YMb-R3-GLB"/>
                                             <constraint firstItem="2UR-1s-i1T" firstAttribute="centerY" secondItem="NUP-ah-NpO" secondAttribute="centerY" id="aDD-Ry-UKW"/>
                                             <constraint firstItem="GcE-be-ljb" firstAttribute="width" secondItem="aZu-rf-p2w" secondAttribute="width" id="aPg-dn-PRE"/>
@@ -230,7 +188,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="C45-9l-ne9"/>
                             </scrollView>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4m-y6-w2g">
-                                <rect key="frame" x="49.5" y="381" width="276" height="246"/>
+                                <rect key="frame" x="49.5" y="401" width="276" height="246"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXc-Bi-4Gc">
                                         <rect key="frame" x="5" y="34" width="60" height="60"/>
@@ -384,7 +342,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small-keyboard" translatesAutoresizingMaskIntoConstraints="NO" id="2hS-Zz-96O">
-                                <rect key="frame" x="162.5" y="479" width="50" height="50"/>
+                                <rect key="frame" x="162.5" y="499" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0TH-Bo-yjZ"/>
                                     <constraint firstAttribute="width" constant="50" id="ivM-Co-nT8"/>
@@ -554,31 +512,6 @@
                 <exit id="xgE-Rd-hPp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1600.8" y="-291.00449775112446"/>
-        </scene>
-        <!--Page2 View Controller-->
-        <scene sceneID="XZi-Cd-auW">
-            <objects>
-                <viewController id="qTr-QR-Uje" customClass="Page2ViewController" customModule="TestApplication" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="A8W-a3-puJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="cVs-ww-aZ9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="IcC-uZ-g6a">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ln3-Yo-5Fx" customClass="CanvasView" customModule="TestApplication" customModuleProvider="target">
-                                <rect key="frame" x="67" y="259" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qCm-hT-Ot3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="825" y="394"/>
         </scene>
     </scenes>
     <resources>
