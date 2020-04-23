@@ -18,8 +18,8 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        soundSwitch.setOn(UserDefaults.standard.bool(forKey: "sound"), animated: false)
-        supportDarkModeSwitch.setOn(UserDefaults.standard.bool(forKey: "supportDarkMode"), animated: false)
+        soundSwitch.setOn(appDelegate.soundSetting, animated: false)
+        supportDarkModeSwitch.setOn(appDelegate.supportDarkMode, animated: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
