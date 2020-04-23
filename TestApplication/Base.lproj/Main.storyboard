@@ -396,36 +396,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMC-Gk-J2z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="3l1-St-bIV" userLabel="Tap Gesture Recognizer 1">
-                    <connections>
-                        <action selector="focus:" destination="LA2-4o-4IQ" id="KqG-4w-Yhp"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="DHv-mq-dPl" userLabel="Tap Gesture Recognizer 2">
-                    <connections>
-                        <action selector="focus:" destination="LA2-4o-4IQ" id="Qo0-DM-gIx"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="t9h-eO-MfG" userLabel="Tap Gesture Recognizer 3">
-                    <connections>
-                        <action selector="focus:" destination="LA2-4o-4IQ" id="bTv-8C-oMZ"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="nlZ-F9-jxY" userLabel="Tap Gesture Recognizer 4">
-                    <connections>
-                        <action selector="focus:" destination="LA2-4o-4IQ" id="01P-tn-3tW"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="YKE-yg-bON" userLabel="Tap Gesture Recognizer 5">
-                    <connections>
-                        <action selector="focus:" destination="LA2-4o-4IQ" id="LBK-nE-Gw0"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="z1C-iP-Woc" userLabel="Tap Gesture Recognizer 6">
-                    <connections>
-                        <action selector="focus:" destination="LA2-4o-4IQ" id="8da-d3-ai9"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="821.60000000000002" y="-295.50224887556226"/>
         </scene>
