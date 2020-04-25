@@ -10,10 +10,9 @@
 		3D41FFBB24060DA300377503 /* TestApp StickerPackExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3D41FFBA24060DA300377503 /* TestApp StickerPackExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3D41FFBF24060DA300377503 /* Stickers.xcstickers in Resources */ = {isa = PBXBuildFile; fileRef = 3D41FFBE24060DA300377503 /* Stickers.xcstickers */; };
 		3D41FFC024060DA300377503 /* Stickers.xcstickers in Resources */ = {isa = PBXBuildFile; fileRef = 3D41FFBE24060DA300377503 /* Stickers.xcstickers */; };
+		3D7E2C0D2454478900BB1360 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 3D7E2C0C2454478900BB1360 /* Sounds */; };
 		3D9DC4702449B65F009C1CF0 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9DC46F2449B65F009C1CF0 /* SeparatorView.swift */; };
 		3DBCC8B7241F5DAF003B0821 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCC8B6241F5DAF003B0821 /* Assets.xcassets */; };
-		3DF7711F244DB17000205FE3 /* click.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3DF7711E244DB17000205FE3 /* click.m4a */; };
-		3DF77123244EF66B00205FE3 /* ding.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3DF77122244EF66B00205FE3 /* ding.m4a */; };
 		3DF77125244FF82100205FE3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF77124244FF82100205FE3 /* SettingsViewController.swift */; };
 		E6D929671EB18A1F0082239E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D929661EB18A1F0082239E /* AppDelegate.swift */; };
 		E6D9296C1EB18A1F0082239E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6D9296A1EB18A1F0082239E /* Main.storyboard */; };
@@ -77,10 +76,9 @@
 		3D41FFB724060DA300377503 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D41FFBA24060DA300377503 /* TestApp StickerPackExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TestApp StickerPackExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D41FFBE24060DA300377503 /* Stickers.xcstickers */ = {isa = PBXFileReference; lastKnownFileType = folder.stickers; name = Stickers.xcstickers; path = "TestApp StickerPackExtension/Stickers.xcstickers"; sourceTree = "<group>"; };
+		3D7E2C0C2454478900BB1360 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		3D9DC46F2449B65F009C1CF0 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		3DBCC8B6241F5DAF003B0821 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3DF7711E244DB17000205FE3 /* click.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = click.m4a; sourceTree = "<group>"; };
-		3DF77122244EF66B00205FE3 /* ding.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ding.m4a; sourceTree = "<group>"; };
 		3DF77124244FF82100205FE3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E6D929631EB18A1F0082239E /* TestApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6D929661EB18A1F0082239E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,8 +163,7 @@
 				E6D929941EB18F790082239E /* ViewController.swift */,
 				3D9DC46F2449B65F009C1CF0 /* SeparatorView.swift */,
 				3DF77124244FF82100205FE3 /* SettingsViewController.swift */,
-				3DF7711E244DB17000205FE3 /* click.m4a */,
-				3DF77122244EF66B00205FE3 /* ding.m4a */,
+				3D7E2C0C2454478900BB1360 /* Sounds */,
 			);
 			path = TestApplication;
 			sourceTree = "<group>";
@@ -361,11 +358,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D7E2C0D2454478900BB1360 /* Sounds in Resources */,
 				E6D929711EB18A1F0082239E /* LaunchScreen.storyboard in Resources */,
 				3DBCC8B7241F5DAF003B0821 /* Assets.xcassets in Resources */,
 				E6D9296C1EB18A1F0082239E /* Main.storyboard in Resources */,
-				3DF77123244EF66B00205FE3 /* ding.m4a in Resources */,
-				3DF7711F244DB17000205FE3 /* click.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

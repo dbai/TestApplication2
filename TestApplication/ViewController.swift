@@ -26,13 +26,13 @@ class ViewController : UIViewController {
     @IBOutlet weak var secResult: UILabel!
     
     @IBOutlet weak var addRowButton: UIButton!
-//    @IBOutlet weak var separator: UILabel!
     @IBOutlet weak var separatorView: SeparatorView!
     @IBOutlet weak var calculateButton: UIButton!
-        
-    @IBOutlet weak var leftButton: UIButton!
-    @IBOutlet weak var rightButton: UIButton!
-    var focusedLabel: UILabel?
+    
+    var removeRowButtons = [UIButton]() // 刪列按鈕
+    var operatorButtons = [UIButton]() // 時間列前的 + 和 - 按鈕
+    var operators = [Bool]() // 每列選到的運算元，true for +, false for -
+    var timeRows = [[UILabel]]()
     
     @IBOutlet weak var smallKeyboard: UIImageView!
     @IBOutlet weak var keyboard: UIView!
@@ -47,29 +47,23 @@ class ViewController : UIViewController {
     @IBOutlet weak var btn9: UIButton!
     @IBOutlet weak var btn0: UIButton!
     @IBOutlet weak var btnBackspace: UIButton!
-    @IBOutlet weak var dummyLabel: UILabel!    
-    @IBOutlet weak var dummyTopContraint: NSLayoutConstraint!
-    @IBOutlet weak var dummyBottomContraint: NSLayoutConstraint!
+            
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
+    var focusedLabel: UILabel?
     
-    @IBOutlet weak var addRowTopConstraint: NSLayoutConstraint!
+    var keyboardPosition: CGPoint?
     
     @IBOutlet weak var leftMargin: NSLayoutConstraint!
-    
-    var removeRowButtons = [UIButton]() // 刪列按鈕
-    var operatorButtons = [UIButton]() // 時間列前的 + 和 - 按鈕
-    var operators = [Bool]() // 每列選到的運算元，true for +, false for -
-    var timeRows = [[UILabel]]()
+    @IBOutlet weak var addRowTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var dummyLabel: UILabel!
+    @IBOutlet weak var dummyTopContraint: NSLayoutConstraint!
+    @IBOutlet weak var dummyBottomContraint: NSLayoutConstraint!
     
     var timeLabelBackgroundColor = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1.0)
     var timeLabelBorderColor = UIColor.lightGray.cgColor
     var btnBorderColor = UIColor.blue.cgColor
 
-//    var originalConstraint: CGFloat?
-    
-//    var animator: UIDynamicAnimator?
-//    var snapBehavior: UISnapBehavior?
-    
-//    var soundSetting = true
     var audioPlayer = AVAudioPlayer()
     var audioPlayer2 = AVAudioPlayer()
     
@@ -84,59 +78,53 @@ class ViewController : UIViewController {
         timeRows[0][0].backgroundColor = self.timeLabelBackgroundColor
         focusedLabel = timeRows[0][0]
         addRow(UIButton())
-        
-//        addRow(UIButton())
-//        addRow(UIButton())
-//        addRow(UIButton())
-//        addRow(UIButton())
-//        addRow(UIButton())
-//        addRow(UIButton())
                 
-        let keyboardPanGesture = UIPanGestureRecognizer(target: self, action: #selector(panKeyboard))
-        keyboard.addGestureRecognizer(keyboardPanGesture)
+        // For testing purpose only
+        addMultipleRows(numberOfRows: 1)
+                
+        let keyboardGesture = UILongPressGestureRecognizer(target: self, action: #selector(panKeyboard))
+        keyboardGesture.minimumPressDuration = 0.1
+        keyboardGesture.allowableMovement = 3
+        keyboard.addGestureRecognizer(keyboardGesture)
         keyboard.isUserInteractionEnabled = true
         view.bringSubviewToFront(keyboard)
-        
-        let smallKeyboardPanGesture = UIPanGestureRecognizer(target: self, action: #selector(panKeyboard))
-        smallKeyboard.addGestureRecognizer(smallKeyboardPanGesture)
-        smallKeyboard.isUserInteractionEnabled = true
-        view.bringSubviewToFront(smallKeyboard)
         
         smallKeyboard.isHidden = true
         
         // Sound effects
         guard let _ = try? AVAudioSession.sharedInstance().setCategory(.ambient) else {
-            print("Failed to set AVAudioSession catergory")
+            print("Failed to set AVAudioSession catergory.")
             return
         }
-        
-//        if UserDefaults.standard.value(forKey: "sound") == nil {
-//            UserDefaults.standard.set(true, forKey: "sound")
-//        }
-//        soundSetting = UserDefaults.standard.bool(forKey: "sound")
-
-        guard let player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "click", ofType: "m4a")!)) else {
-            print("Failed to initialize AVAudioPlayer")
+        guard let player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "/Sounds/click", ofType: "m4a")!)) else {
+            print("Failed to initialize AVAudioPlayer for click sound.")
             return
         }
-        guard let player2 = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "ding", ofType: "m4a")!)) else {
-            print("Failed to initialize AVAudioPlayer")
+        guard let player2 = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "/Sounds/ding", ofType: "m4a")!)) else {
+            print("Failed to initialize AVAudioPlayer for ding sound.")
             return
         }
         audioPlayer = player
         audioPlayer2 = player2
         audioPlayer.prepareToPlay()
         audioPlayer2.prepareToPlay()
+        
+        // Remember the keyboard position
+        NotificationCenter.default.addObserver(self, selector: #selector(restoreKeyboardPosition), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    @objc func restoreKeyboardPosition() {
+        guard let pos = keyboardPosition else {
+            return
+        }
+        
+        keyboard.center = pos
     }
     
     func layout() {
         self.leftMargin.constant = UIScreen.main.bounds.maxX * 0.1
-//        viewDidLayoutSubviews()
-        
-//        print("\(secLabel.frame.maxX), \(separatorView.frame.origin.x)")
-//        row[0].frame = CGRect(x: hrLabel.frame.origin.x, y: lastRowY, width: 54, height: 34)
-//        row[0].center.x = hrLabel.center.x
         viewDidLayoutSubviews()
+        
         separatorView.frame.origin.x = hrLabel.frame.minX - 5
         separatorView.frame.size.width = secLabel.frame.maxX - separatorView.frame.origin.x + 5
         hrResult.center.x = hrLabel.center.x
@@ -144,7 +132,7 @@ class ViewController : UIViewController {
         secResult.center.x = secLabel.center.x
     }
     
-    @objc func panKeyboard(recognizer: UIPanGestureRecognizer) {
+    @objc func panKeyboard(recognizer: UILongPressGestureRecognizer) {
         switch recognizer.state {
         case .changed:
             UIView.animate(withDuration: 0.2, animations: {
@@ -166,74 +154,23 @@ class ViewController : UIViewController {
                 keyboard.center.x = UIScreen.main.bounds.maxX - (keyboard.frame.width / 2)
             }
             
-            if keyboard.center.y - (keyboard.frame.height / 2) <= UIScreen.main.bounds.minY {
-                keyboard.center.y = UIScreen.main.bounds.minY + (keyboard.frame.height / 2)
+            if keyboard.center.y - (keyboard.frame.height / 2) <= scrollView.frame.minY {
+                keyboard.center.y = scrollView.frame.minY + (keyboard.frame.height / 2)
             }
             
             if keyboard.center.y + (keyboard.frame.height / 2) >= UIScreen.main.bounds.maxY {
                 keyboard.center.y = UIScreen.main.bounds.maxY - (keyboard.frame.height / 2)
             }
             
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: 0.2, animations: {
                 self.smallKeyboard.isHidden = true
                 self.keyboard.alpha = 0.8
             })
+            
+            keyboardPosition = keyboard.center
+            
         default: break
         }
-    }
-    
-    @IBAction func addOrSubstract(_ sender: UIButton) {
-        playSound(player: audioPlayer, soundOn: appDelegate.soundSetting)
-        
-        if sender.tag % 2 != 1 {
-            self.operatorButtons[sender.tag].layer.borderWidth = 1
-            self.operatorButtons[sender.tag].layer.borderColor = btnBorderColor
-            self.operatorButtons[sender.tag + 1].layer.borderWidth = 0
-            self.operators[sender.tag / 2] = true
-        }
-        else {
-            self.operatorButtons[sender.tag - 1].layer.borderWidth = 0
-            self.operatorButtons[sender.tag].layer.borderWidth = 1
-            self.operatorButtons[sender.tag].layer.borderColor = btnBorderColor
-            self.operators[sender.tag / 2] = false
-        }
-    }
-    
-    @IBAction func calculate(_ sender: UIButton) {
-        playSound(player: audioPlayer2, soundOn: appDelegate.soundSetting)
-        
-        var totalSec = 0
-        var totalSecN = 0
-        
-        for (i, row) in self.timeRows.enumerated() {
-            let hrN = Int(row[0].text!)!
-            let minN = Int(row[1].text!)!
-            let secN = Int(row[2].text!)!
-
-            totalSecN = hrN * 3600 + minN * 60 + secN
-            
-            if i == 0 {
-                totalSec = totalSecN
-            }
-            else {
-                if operators[i - 1] {
-                    totalSec = totalSec + totalSecN
-                }
-                else {
-                    totalSec = totalSec - totalSecN
-                }
-            }
-        }
-                
-        let hrResult = totalSec / 3600
-        let minResult = (totalSec % 3600) / 60
-        let secResult = (totalSec % 3600) % 60
-        
-        self.hrResult.text = String(format: "%02d", hrResult)
-        self.minResult.text = String(format: "%02d", minResult)
-        self.secResult.text = String(format: "%02d", secResult)
-        
-        btnTouchedUp(btn: sender, playSound: false)
     }
     
     @IBAction func addRow(_ sender: UIButton) {
@@ -281,13 +218,10 @@ class ViewController : UIViewController {
         for (i, label) in row.enumerated() {
             if #available(iOS 13.0, *) {
                 label.textColor = .label
-            } else {
-                label.textColor = .systemGray
-            }
-            if #available(iOS 13.0, *) {
                 label.shadowColor = .systemBackground
             } else {
-                // Fallback on earlier versions
+                label.textColor = .systemGray
+                label.shadowColor = contentView.backgroundColor
             }
             label.shadowOffset = CGSize(width: 1, height: 1)
             label.text = "00"
@@ -298,7 +232,6 @@ class ViewController : UIViewController {
             label.tag = self.timeRows.count * 3 + i
             label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focus(_:))))
             label.isUserInteractionEnabled = true
-//            self.view.addSubview(label)
             contentView.addSubview(label)
         }
         self.timeRows.append(row)
@@ -321,14 +254,12 @@ class ViewController : UIViewController {
 
         // 調整結果列
         adjustSeparatorAndResultLabels(isAppend: true)
-                
         refeshRemoveButtons()
         
         btnTouchedUp(btn: sender, playSound: true)
     }
     
     @IBAction func removeRow(_ sender: UIButton) {
-//        print("減第 \(self.timeRows.count) 列 \(Date())")
         let n = sender.tag
         
         // 判斷欲刪之列是不是最後一列，如果不是，就要把刪除之列後面的列往上移
@@ -364,7 +295,6 @@ class ViewController : UIViewController {
         }
 
         //若刪的是中間的列，則下面的列要往上移
-//        print("operatorButtons.count: \(operatorButtons.count), operators.count: \(operators.count), removeRowButtons.count: \(removeRowButtons.count), timeRows.count: \(timeRows.count)")
         if shouldMoveUpRemainingRows {
             for i in n + 1...self.timeRows.count - 1 {
                 self.operatorButtons[(i - 1) * 2].frame.origin.y -= 75
@@ -383,7 +313,6 @@ class ViewController : UIViewController {
 
         // 調整結果列
         adjustSeparatorAndResultLabels(isAppend: false)
-        
         refeshRemoveButtons()
         
         // 檢查 focusedLabel 是否在要被移除的列中，如果是就把 focusedLabel 往上移一列
@@ -404,32 +333,33 @@ class ViewController : UIViewController {
 
         btnTouchedUp(btn: sender, playSound: true)
     }
+
+    @IBAction func addOrSubstract(_ sender: UIButton) {
+        playSound(player: audioPlayer, soundOn: appDelegate.soundSetting)
+        
+        if sender.tag % 2 != 1 {
+            self.operatorButtons[sender.tag].layer.borderWidth = 1
+            self.operatorButtons[sender.tag].layer.borderColor = btnBorderColor
+            self.operatorButtons[sender.tag + 1].layer.borderWidth = 0
+            self.operators[sender.tag / 2] = true
+        }
+        else {
+            self.operatorButtons[sender.tag - 1].layer.borderWidth = 0
+            self.operatorButtons[sender.tag].layer.borderWidth = 1
+            self.operatorButtons[sender.tag].layer.borderColor = btnBorderColor
+            self.operators[sender.tag / 2] = false
+        }
+    }
     
     func adjustSeparatorAndResultLabels(isAppend: Bool) {
-//        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 200, height: 200))
-//        let image = renderer.image { (context) in
-//          UIColor.darkGray.setStroke()
-//          context.stroke(renderer.format.bounds)
-//          UIColor(displayP3Red: 158/255, green: 215/255, blue: 245/255, alpha: 1).setFill()
-//          context.fill(CGRect(x: 1, y: 1, width: 140, height: 140))
-//        }
-        
         if timeRows.count >= 2 {
             if isAppend {
-//                self.separator.frame.origin.y += 75
-//                self.hrResult.frame.origin.y = self.separator.frame.origin.y + 46
-//                self.minResult.frame.origin.y = self.separator.frame.origin.y + 46
-//                self.secResult.frame.origin.y = self.separator.frame.origin.y + 46
                 self.separatorView.frame.origin.y += 75
                 self.hrResult.frame.origin.y = self.separatorView.frame.origin.y + 46
                 self.minResult.frame.origin.y = self.separatorView.frame.origin.y + 46
                 self.secResult.frame.origin.y = self.separatorView.frame.origin.y + 46
             }
             else {
-//                self.separator.frame.origin.y -= 75
-//                self.hrResult.frame.origin.y = self.separator.frame.origin.y + 46
-//                self.minResult.frame.origin.y = self.separator.frame.origin.y + 46
-//                self.secResult.frame.origin.y = self.separator.frame.origin.y + 46
                 self.separatorView.frame.origin.y -= 75
                 self.hrResult.frame.origin.y = self.separatorView.frame.origin.y + 46
                 self.minResult.frame.origin.y = self.separatorView.frame.origin.y + 46
@@ -438,48 +368,29 @@ class ViewController : UIViewController {
         }
         
         // 調整計算與加列按鈕位置
-//        print("Separator's Y: \(separator.frame.origin.y)")
-//        addRowButton.frame.origin.y = separator.frame.origin.y
-//        self.addRowTopConstraint.constant = separatorView.frame.origin.y
-//        calculateButton.center.y = secResult.center.y
         calculateButton.center.y = separatorView.center.y + 2
         calculateButton.center.x = addRowButton.center.x
         
         viewDidLayoutSubviews()
     }
+
+    func refeshRemoveButtons() {
+        if removeRowButtons.count <= 1 {
+            for (i, _) in removeRowButtons.enumerated() {
+                removeRowButtons[i].isHidden = true
+            }
+        }
+        else {
+            for (i, _) in removeRowButtons.enumerated() {
+                removeRowButtons[i].isHidden = false
+            }
+        }
+    }
     
     override func viewDidLayoutSubviews() {
-//        print(calculateButton.frame.origin.y + calculateButton.frame.height)
-//        print("UIScreen bound maxY: \(UIScreen.main.bounds.maxY)")
-//        print("Content view frame height: \(self.contentView.frame.height)")
-        
-//        print("UIScreen.main.bounds.maxX: \(UIScreen.main.bounds.maxX), self.contentView.frame.width: \(self.contentView.frame.width)")
-//        self.spaceBetweenSecondAndAddRowButton.constant = self.contentView.frame.width * 0.1
-//        print(self.spaceBetweenSecondAndAddRowButton.constant)
-        
-//        print("Scrollview's bound: \(scrollView.bounds)\nCalculate's bottom: \(calculateButton.frame.origin.y + calculateButton.frame.height)")
-        
-//        scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: calculateButton.frame.origin.y + calculateButton.frame.height)
-//        scrollView.setContentOffset(CGPoint(x: 0.0, y: 75.0), animated: true)
-        
-//        print("dummyTopContraint: \(dummyTopContraint.constant), dummyLabel hight: \(dummyLabel.frame.height), dummyBottomContraint: \(self.dummyBottomContraint.constant)")
-        
-//        if calculateButton.frame.origin.y + calculateButton.frame.height > scrollView.bounds.height {
-////            let timesOf75 = Int((calculateButton.frame.origin.y + calculateButton.frame.height - scrollView.bounds.height) / 75)
-////            self.dummyBottomContraint.constant = originalConstraint! + (CGFloat(timesOf75) + 1) * 75
-//            self.dummyBottomContraint.constant = calculateButton.frame.origin.y + calculateButton.frame.height - self.dummyTopContraint.constant + 20
-//            print("dummyBottomContraint.constant: \(self.dummyBottomContraint.constant)")
-//        }
-//        else {
-//            self.dummyBottomContraint.constant = self.originalConstraint!
-//            print("Calculate button bottom < Scroll view bound height, bottom constraint is \(self.dummyBottomContraint.constant)")
-//        }
-        
         self.dummyBottomContraint.constant = calculateButton.frame.origin.y + calculateButton.frame.height - self.dummyTopContraint.constant + 20
         
         contentView.layoutIfNeeded()
-        
-//        print("after, \(scrollView.bounds), \(calculateButton.frame.origin.y + calculateButton.frame.height)")
     }
     
     @IBAction func focus(_ sender: UITapGestureRecognizer) {
@@ -573,21 +484,7 @@ class ViewController : UIViewController {
         
         self.validate(number: focusedLabel!.text!)
     }
-    
-    @IBAction func btnTouchedDown(_ sender: UIButton) {
-        sender.layer.borderWidth = 1
-        sender.layer.borderColor = btnBorderColor
-    }
-    
-    @IBAction func btnTouchedUp(btn: UIButton, playSound: Bool) {
-        btn.layer.borderWidth = 0
-        btn.layer.borderColor = nil
-        
-        if playSound {
-            self.playSound(player: audioPlayer, soundOn: appDelegate.soundSetting)
-        }
-    }
-    
+
     @IBAction func backspace(_ sender: UIButton) {
         btnTouchedUp(btn: sender, playSound: true)
         
@@ -618,20 +515,7 @@ class ViewController : UIViewController {
         minResult.text! = "00"
         secResult.text! = "00"
     }
-    
-    func refeshRemoveButtons() {
-        if removeRowButtons.count <= 1 {
-            for (i, _) in removeRowButtons.enumerated() {
-                removeRowButtons[i].isHidden = true
-            }
-        }
-        else {
-            for (i, _) in removeRowButtons.enumerated() {
-                removeRowButtons[i].isHidden = false
-            }
-        }
-    }
-    
+
     func validate(number: String) {
         btn1.isEnabled = number.count < 3 ? true : false
         btn2.isEnabled = number.count < 3 ? true : false
@@ -645,30 +529,62 @@ class ViewController : UIViewController {
         btn0.isEnabled = number.count < 3 ? true : false
     }
     
+    @IBAction func calculate(_ sender: UIButton) {
+        playSound(player: audioPlayer2, soundOn: appDelegate.soundSetting)
+        
+        var totalSec = 0
+        var totalSecN = 0
+        
+        for (i, row) in self.timeRows.enumerated() {
+            let hrN = Int(row[0].text!)!
+            let minN = Int(row[1].text!)!
+            let secN = Int(row[2].text!)!
+
+            totalSecN = hrN * 3600 + minN * 60 + secN
+            
+            if i == 0 {
+                totalSec = totalSecN
+            }
+            else {
+                if operators[i - 1] {
+                    totalSec = totalSec + totalSecN
+                }
+                else {
+                    totalSec = totalSec - totalSecN
+                }
+            }
+        }
+                
+        let hrResult = totalSec / 3600
+        let minResult = (totalSec % 3600) / 60
+        let secResult = (totalSec % 3600) % 60
+        
+        self.hrResult.text = String(format: "%02d", hrResult)
+        self.minResult.text = String(format: "%02d", minResult)
+        self.secResult.text = String(format: "%02d", secResult)
+        
+        btnTouchedUp(btn: sender, playSound: false)
+    }
+    
+    @IBAction func btnTouchedDown(_ sender: UIButton) {
+        sender.layer.borderWidth = 1
+        sender.layer.borderColor = btnBorderColor
+    }
+    
+    @IBAction func btnTouchedUp(btn: UIButton, playSound: Bool) {
+        btn.layer.borderWidth = 0
+        btn.layer.borderColor = nil
+        
+        if playSound {
+            self.playSound(player: audioPlayer, soundOn: appDelegate.soundSetting)
+        }
+    }
+    
     func playSound(player: AVAudioPlayer, soundOn: Bool) {
         if soundOn {
             player.play()
         }
     }
-    
-//    func validate() -> Bool {
-//        var result = true
-//        
-//        for (_, line) in self.timeRows.enumerated() {
-//            for j in 0...2 {
-//                line[j].backgroundColor = .white
-//                let value = Int(line[j].text!)!
-//                if (j == 0 && value >= 24) || (j != 0 && value >= 60) {
-//                    line[j].layer.borderColor = UIColor.red.cgColor
-//                    result = false
-//                }
-//            }
-//        }
-//        
-//        self.focusedLabel?.backgroundColor = timeLabelBackgroundColor
-//        
-//        return result
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let button = sender as? UIButton {
@@ -678,5 +594,15 @@ class ViewController : UIViewController {
     
     @IBAction func backFromSettingsPage(segue: UIStoryboardSegue) {
 //        let source = segue.source as? SettingsViewController
+    }
+    
+    func addMultipleRows(numberOfRows: Int) {
+        if numberOfRows <= 0 {
+            return
+        }
+        
+        for _ in 0...numberOfRows - 1 {
+            addRow(UIButton())
+        }
     }
 }
