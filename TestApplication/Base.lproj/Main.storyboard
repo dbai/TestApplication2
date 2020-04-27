@@ -140,18 +140,6 @@
                                                 <rect key="frame" x="267.5" y="40" width="37.5" height="24"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H94-7v-Yse">
-                                                <rect key="frame" x="305" y="179" width="30" height="36"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="＝"/>
-                                                <connections>
-                                                    <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="RL6-Mb-hDB"/>
-                                                    <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchDragOutside" id="S2D-md-OPc"/>
-                                                    <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="eBj-kI-UaA"/>
-                                                    <action selector="calculate:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="dzG-R5-MTW"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEd-4V-YA0">
                                                 <rect key="frame" x="305" y="100" width="30" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -174,6 +162,17 @@
                                                     <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="Jw8-82-IkQ"/>
                                                     <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchDragOutside" id="ttg-uK-i6x"/>
                                                     <segue destination="cfd-nT-07W" kind="presentation" id="phA-lR-5fd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H94-7v-Yse">
+                                                <rect key="frame" x="305" y="178" width="30" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="＝" image="Equal"/>
+                                                <connections>
+                                                    <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="RL6-Mb-hDB"/>
+                                                    <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchDragOutside" id="S2D-md-OPc"/>
+                                                    <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="eBj-kI-UaA"/>
+                                                    <action selector="calculate:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="dzG-R5-MTW"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -230,10 +229,32 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="C45-9l-ne9"/>
                             </scrollView>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4m-y6-w2g">
-                                <rect key="frame" x="49.5" y="381" width="276" height="246"/>
+                                <rect key="frame" x="49.5" y="361" width="276" height="266"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfm-uW-whZ">
+                                        <rect key="frame" x="45" y="3" width="60" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" image="Left"/>
+                                        <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="D9x-Og-8VI"/>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="lYb-HC-iK2"/>
+                                            <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="NF7-NV-SJ3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2O-17-ixN">
+                                        <rect key="frame" x="172" y="3" width="60" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" image="Right"/>
+                                        <connections>
+                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="G3A-H9-0UQ"/>
+                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="JRo-AT-NUN"/>
+                                            <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="HH2-A3-OCf"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXc-Bi-4Gc">
-                                        <rect key="frame" x="5" y="34" width="60" height="60"/>
+                                        <rect key="frame" x="4" y="59" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="1" image="1"/>
                                         <connections>
@@ -243,7 +264,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2L-2M-zch">
-                                        <rect key="frame" x="74" y="34" width="60" height="60"/>
+                                        <rect key="frame" x="73" y="59" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="2" image="2"/>
                                         <connections>
@@ -253,7 +274,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpa-87-W7l">
-                                        <rect key="frame" x="143" y="34" width="60" height="60"/>
+                                        <rect key="frame" x="142" y="59" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="3" image="3"/>
                                         <connections>
@@ -263,7 +284,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRl-Nd-55W">
-                                        <rect key="frame" x="5" y="104" width="60" height="60"/>
+                                        <rect key="frame" x="4" y="129" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="4" image="4"/>
                                         <connections>
@@ -273,7 +294,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moh-uo-v77">
-                                        <rect key="frame" x="74" y="104" width="60" height="60"/>
+                                        <rect key="frame" x="73" y="129" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <state key="normal" title="5" image="5"/>
@@ -284,7 +305,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZJ-qI-lsO">
-                                        <rect key="frame" x="143" y="104" width="60" height="60"/>
+                                        <rect key="frame" x="142" y="129" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <state key="normal" title="6" image="6"/>
@@ -295,7 +316,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAF-Zn-RGk">
-                                        <rect key="frame" x="5" y="172" width="60" height="60"/>
+                                        <rect key="frame" x="4" y="197" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="7" image="7"/>
                                         <connections>
@@ -305,7 +326,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G51-Su-QmQ">
-                                        <rect key="frame" x="74" y="173" width="60" height="60"/>
+                                        <rect key="frame" x="73" y="198" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="8" image="8"/>
                                         <connections>
@@ -315,7 +336,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JI8-pP-OTZ">
-                                        <rect key="frame" x="143" y="173" width="60" height="60"/>
+                                        <rect key="frame" x="142" y="198" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="9" image="9"/>
                                         <connections>
@@ -325,7 +346,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0Y-fZ-aZ4">
-                                        <rect key="frame" x="212" y="173" width="60" height="60"/>
+                                        <rect key="frame" x="211" y="198" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="0" image="0"/>
                                         <connections>
@@ -335,7 +356,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1q-SE-q8o">
-                                        <rect key="frame" x="212" y="35" width="60" height="60"/>
+                                        <rect key="frame" x="211" y="60" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="C" image="C"/>
                                         <connections>
@@ -345,41 +366,19 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2H-bw-MJz">
-                                        <rect key="frame" x="211.5" y="104" width="60" height="60"/>
+                                        <rect key="frame" x="210" y="129" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="delete.left" catalog="system"/>
+                                        <state key="normal" image="Back"/>
                                         <connections>
                                             <action selector="backspace:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="qHY-Hl-9gU"/>
                                             <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="Htw-vW-6VF"/>
                                             <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="ytS-ex-aQa"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfm-uW-whZ">
-                                        <rect key="frame" x="45" y="0.0" width="60" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" image="arrow.left.to.line.alt" catalog="system"/>
-                                        <connections>
-                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="D9x-Og-8VI"/>
-                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="lYb-HC-iK2"/>
-                                            <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="NF7-NV-SJ3"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2O-17-ixN">
-                                        <rect key="frame" x="172" y="0.0" width="60" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" image="arrow.right.to.line.alt" catalog="system"/>
-                                        <connections>
-                                            <action selector="btnTouchedDown:" destination="LA2-4o-4IQ" eventType="touchDown" id="G3A-H9-0UQ"/>
-                                            <action selector="btnTouchedUpWithBtn:playSound:" destination="LA2-4o-4IQ" eventType="touchCancel" id="JRo-AT-NUN"/>
-                                            <action selector="moveFocus:" destination="LA2-4o-4IQ" eventType="touchUpInside" id="HH2-A3-OCf"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="246" id="mvj-ow-X5J"/>
+                                    <constraint firstAttribute="height" constant="266" id="mvj-ow-X5J"/>
                                     <constraint firstAttribute="width" constant="276" id="zYp-Pm-02K"/>
                                 </constraints>
                             </view>
@@ -592,10 +591,11 @@
         <image name="7" width="300" height="300"/>
         <image name="8" width="300" height="300"/>
         <image name="9" width="300" height="300"/>
+        <image name="Back" width="300" height="300"/>
         <image name="C" width="300" height="300"/>
-        <image name="arrow.left.to.line.alt" catalog="system" width="128" height="89"/>
-        <image name="arrow.right.to.line.alt" catalog="system" width="128" height="89"/>
-        <image name="delete.left" catalog="system" width="128" height="104"/>
+        <image name="Equal" width="300" height="300"/>
+        <image name="Left" width="300" height="300"/>
+        <image name="Right" width="300" height="300"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="small-keyboard" width="300" height="300"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
