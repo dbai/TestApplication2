@@ -60,7 +60,8 @@ class ViewController : UIViewController {
     @IBOutlet weak var dummyTopContraint: NSLayoutConstraint!
     @IBOutlet weak var dummyBottomContraint: NSLayoutConstraint!
     
-    var timeLabelBackgroundColor = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1.0)
+    var focusedBackgroundColor = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1.0)
+    var focusedBackgroundColorInDarkMode = UIColor(red: 130 / 255.0, green: 130 / 255.0, blue: 130 / 255.0, alpha: 1.0)
     var timeLabelBorderColor = UIColor.lightGray.cgColor
     var btnBorderColor = UIColor.blue.cgColor
 
@@ -75,16 +76,16 @@ class ViewController : UIViewController {
         layout()
         
         addRow(UIButton())
-        timeRows[0][0].backgroundColor = self.timeLabelBackgroundColor
         focusedLabel = timeRows[0][0]
+        timeRows[0][0].backgroundColor = getFocusedBackgroundColor()
         addRow(UIButton())
                 
         // For testing purpose only
-        addMultipleRows(numberOfRows: 1)
+//        addMultipleRows(numberOfRows: 6)
                 
         let keyboardGesture = UILongPressGestureRecognizer(target: self, action: #selector(panKeyboard))
-        keyboardGesture.minimumPressDuration = 0.1
-        keyboardGesture.allowableMovement = 3
+        keyboardGesture.minimumPressDuration = 0.2
+        keyboardGesture.allowableMovement = CGFloat.infinity
         keyboard.addGestureRecognizer(keyboardGesture)
         keyboard.isUserInteractionEnabled = true
         view.bringSubviewToFront(keyboard)
@@ -110,7 +111,7 @@ class ViewController : UIViewController {
         audioPlayer2.prepareToPlay()
         
         // Remember the keyboard position
-        NotificationCenter.default.addObserver(self, selector: #selector(restoreKeyboardPosition), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(restoreKeyboardPosition), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     @objc func restoreKeyboardPosition() {
@@ -119,6 +120,12 @@ class ViewController : UIViewController {
         }
         
         keyboard.center = pos
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        focusedLabel?.backgroundColor = getFocusedBackgroundColor()
     }
     
     func layout() {
@@ -218,12 +225,9 @@ class ViewController : UIViewController {
         for (i, label) in row.enumerated() {
             if #available(iOS 13.0, *) {
                 label.textColor = .label
-                label.shadowColor = .systemBackground
             } else {
                 label.textColor = .systemGray
-                label.shadowColor = contentView.backgroundColor
             }
-            label.shadowOffset = CGSize(width: 1, height: 1)
             label.text = "00"
             label.font = .systemFont(ofSize: 20)
             label.layer.borderWidth = 1
@@ -320,12 +324,12 @@ class ViewController : UIViewController {
             if i == focusedLabel?.tag {
                 if n == timeRows.count - 1 { // 是最後一列
                     focusedLabel = timeRows[n][i % 3]
-                    focusedLabel?.backgroundColor = timeLabelBackgroundColor
+                    focusedLabel?.backgroundColor = getFocusedBackgroundColor()
                     break
                 }
                 else {
                     focusedLabel = timeRows[n + 1][i % 3]
-                    focusedLabel?.backgroundColor = timeLabelBackgroundColor
+                    focusedLabel?.backgroundColor = getFocusedBackgroundColor()
                     break
                 }
             }
@@ -388,7 +392,15 @@ class ViewController : UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        self.dummyBottomContraint.constant = calculateButton.frame.origin.y + calculateButton.frame.height - self.dummyTopContraint.constant + 20
+        super.viewDidLayoutSubviews()
+        
+        dummyBottomContraint.constant = hrResult.frame.maxY - dummyTopContraint.constant
+        if hrResult.frame.maxY <= scrollView.frame.height {
+            dummyBottomContraint.constant = scrollView.frame.height - dummyTopContraint.constant
+        }
+//        print("hrResult.frame.maxY: \(hrResult.frame.maxY)")
+//        print("scrollView.frame.height: \(scrollView.frame.height)")
+//        print("dummyBottomContraint.constant: \(dummyBottomContraint.constant)")
         
         contentView.layoutIfNeeded()
     }
@@ -409,7 +421,7 @@ class ViewController : UIViewController {
                         } else {
                             self.focusedLabel?.backgroundColor = contentView.backgroundColor
                         }  // Change background color of the previous focused label to default
-                        label.backgroundColor = timeLabelBackgroundColor
+                        label.backgroundColor = getFocusedBackgroundColor()
                         self.focusedLabel = label
                     }
                 }
@@ -428,7 +440,7 @@ class ViewController : UIViewController {
                 outerLoop: for i in timeRows {
                     for j in i {
                         if j.tag + 1 == self.focusedLabel!.tag { // the new focused label
-                            j.backgroundColor = timeLabelBackgroundColor
+                            j.backgroundColor = getFocusedBackgroundColor()
                             tmp = j
                         }
                         else if j.tag == self.focusedLabel!.tag { // the previous focused label
@@ -463,7 +475,7 @@ class ViewController : UIViewController {
                         }
                         else if j.tag == self.focusedLabel!.tag + 1 { // the new focused label
                             self.focusedLabel = j
-                            j.backgroundColor = timeLabelBackgroundColor
+                            j.backgroundColor = getFocusedBackgroundColor()
                             break outerLoop
                         }
                     }
@@ -603,6 +615,19 @@ class ViewController : UIViewController {
         
         for _ in 0...numberOfRows - 1 {
             addRow(UIButton())
+        }
+    }
+    
+    func getFocusedBackgroundColor() -> UIColor {
+        if #available(iOS 12.0, *) {
+            if self.traitCollection.userInterfaceStyle == .dark {
+                return focusedBackgroundColorInDarkMode
+            }
+            else {
+                return focusedBackgroundColor
+            }
+        } else {
+            return focusedBackgroundColor
         }
     }
 }
