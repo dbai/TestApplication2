@@ -341,7 +341,7 @@ class ViewController : UIViewController {
     @IBAction func addOrSubstract(_ sender: UIButton) {
         playSound(player: audioPlayer, soundOn: appDelegate.soundSetting)
         
-        if sender.tag % 2 != 1 {
+        if sender.tag % 2 == 0 {
             self.operatorButtons[sender.tag].layer.borderWidth = 1
             self.operatorButtons[sender.tag].layer.borderColor = btnBorderColor
             self.operatorButtons[sender.tag + 1].layer.borderWidth = 0
